@@ -12,20 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SuperbetBeclean.Pages;
 
-namespace SuperbetBeclean
+namespace SuperbetBeclean.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    /// 
+    public partial class LoginPage : Page
     {
-        public MainWindow()
+        private Frame _mainFrame;
+
+        public LoginPage(Frame mainFrame)
         {
             InitializeComponent();
-            MainFrame.Navigate(new LoginPage(MainFrame));
+            _mainFrame = mainFrame;
         }
 
+        private void onClickLoginButton(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new MainMenu(_mainFrame));
+        }
     }
 }

@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SuperbetBeclean
+namespace SuperbetBeclean.Windows
 {
     /// <summary>
-    /// Interaction logic for WelcomeToPokerMainPage.xaml
+    /// Interaction logic for RulesWindow.xaml
     /// </summary>
-    public partial class WelcomeToPokerMainPage : Window
+    public partial class RulesWindow : Window
     {
-        public WelcomeToPokerMainPage()
+        public RulesWindow()
         {
             InitializeComponent();
         }
 
-        private void switchOnClickToRulesPage(object sender, RoutedEventArgs e)
-        {
-         
-           
-         
-        }
     }
 }

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SuperbetBeclean
+namespace SuperbetBeclean.Pages
 {
     /// <summary>
-    /// Interaction logic for RulesPageWindow.xaml
+    /// Interaction logic for LobbyPage.xaml
     /// </summary>
-    public partial class RulesPageWindow : Window
+    public partial class LobbyPage : Page
     {
-        public RulesPageWindow()
+        public LobbyPage()
         {
             InitializeComponent();
         }
