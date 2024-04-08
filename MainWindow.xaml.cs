@@ -23,6 +23,19 @@ namespace SuperbetBeclean
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void inputNameLoginFirstPage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void onClickOpenNewWindow(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            WelcomeToPokerWindow welcomeToPokerWindow = new WelcomeToPokerWindow();
+            welcomeToPokerWindow.Show();   
         }
     }
 }

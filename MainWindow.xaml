@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/greenbackgroundimg.jpg" />
+            </Grid.Background>
+            <TextBox x:Name="inputNameLoginFirstPage" HorizontalAlignment="Center" Margin="0,151,0,0" TextWrapping="Wrap" Text="Input your name" VerticalAlignment="Top" Width="176" Height="36" TextChanged="inputNameLoginFirstPage_TextChanged" TextAlignment="Center"/>
+            <Button x:Name="LoginButtonFirstPage" Content="LOGIN" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Height="35" Width="176" Background="#FFFF5E5E" Foreground="White" FontFamily="Franklin Gothic Book" Click="onClickOpenNewWindow" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
