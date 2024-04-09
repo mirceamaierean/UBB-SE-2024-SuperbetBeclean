@@ -45,7 +45,10 @@
         </Style>
 
     </Page.Resources>
-    <Grid Background="White">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/assets/RedBackground.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
@@ -63,19 +66,37 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="LeaderboardBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Background="White" Foreground="Black" HorizontalAlignment="Center" Grid.Column="0" Height="40"/>
-                <Button x:Name="RefferalBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Background="White" Foreground="Black" HorizontalAlignment="Center" Grid.Column="1" Height="40"/>
-                <Button x:Name="ShopBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Background="White" Foreground="Black" HorizontalAlignment="Center" Height="40" Grid.Column="2" />
-                <Button x:Name="BackBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Back" HorizontalAlignment="Center" Width="82" Height="24" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3"/>
+                <Button x:Name="LeaderboardBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="0" Height="40" Cursor="Hand">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/assets/leaderboard.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="RefferalBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Foreground="Black" HorizontalAlignment="Center" Grid.Column="1" Height="40" Cursor="Hand">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/assets/shopping-cart-white.png" TileMode="Tile"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="ShopBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Height="40" Grid.Column="2" Cursor="Hand" >
+                    <Button.Foreground>
+                        <ImageBrush Stretch="Fill"/>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/assets/output-onlinepngtools.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BackBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Back" HorizontalAlignment="Center" Width="82" Height="24" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand"/>
             </Grid>
             <Grid Grid.Column="0" Background="WhiteSmoke" Width="207" Height="38" HorizontalAlignment="Center" Margin="0,0,80,0">
                 <TextBlock x:Name="PlayerNameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="157"/>
                 <TextBlock x:Name="PlayerLvlTextBox" Text="lvlTemp" Margin="50,19,103,0"/>
                 <TextBlock x:Name="ChipsLevelTextBox" Text="chipsTemp" Margin="119,19,28,0"/>
-                <Image x:Name="PlayerIconImg"  HorizontalAlignment="Left" Height="36"  VerticalAlignment="Bottom" Width="36" Source="/Pages/WIN_20221124_11_19_01_Pro.jpg" Margin="4,0,0,1" Stretch="UniformToFill"/>
+                <Image x:Name="PlayerIconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="196"/>
@@ -92,10 +113,10 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="42"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Intern’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16"/>
+                    <Label Content="Intern’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16" Foreground="White"/>
                     <Border   Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="45,45,0,0">
                         <Border.Background>
-                            <ImageBrush ImageSource="/greenbackgroundimg.jpg"/>
+                            <ImageBrush ImageSource="/assets/interntable.png"/>
                         </Border.Background>
                     </Border>
                     <Grid Grid.Row="2" Background="#FFA7A5A5">
@@ -119,10 +140,10 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="42"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Junior’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16"/>
+                    <Label Content="Junior’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16" Foreground="White"/>
                     <Border   Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="45,45,0,0">
                         <Border.Background>
-                            <ImageBrush ImageSource="/greenbackgroundimg.jpg"/>
+                            <ImageBrush ImageSource="/assets/juniortable.jpg"/>
                         </Border.Background>
                     </Border>
                     <Grid Grid.Row="2" Background="#FFA7A5A5">
@@ -146,10 +167,10 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="42"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Intern’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16"/>
+                    <Label Content="Senior’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16" Foreground="White"/>
                     <Border   Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="45,45,0,0">
                         <Border.Background>
-                            <ImageBrush ImageSource="/greenbackgroundimg.jpg"/>
+                            <ImageBrush ImageSource="/assets/seniortable.jpg" Stretch="UniformToFill"/>
                         </Border.Background>
                     </Border>
                     <Grid Grid.Row="2" Background="#FFA7A5A5">

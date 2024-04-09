@@ -64,6 +64,9 @@
     <Compile Include="Pages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\RequestsWindow.xaml.cs">
+      <DependentUpon>RequestsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\RulesWindow.xaml.cs">
       <DependentUpon>RulesWindow.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
     <Page Include="Pages\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\RequestsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\RulesWindow.xaml">
       <SubType>Designer</SubType>
@@ -126,7 +133,17 @@
     <Resource Include="greenbackgroundimg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pages\WIN_20221124_11_19_01_Pro.jpg" />
+    <Resource Include="assets\greenbackgroundimg.jpg" />
+    <Resource Include="assets\interntable.png" />
+    <Resource Include="assets\juniortable.jpg" />
+    <Resource Include="assets\output-onlinepngtools.png" />
+    <Resource Include="assets\profilepict.png" />
+    <Resource Include="assets\RedBackground.jpg" />
+    <Resource Include="assets\seniortable.jpg" />
+    <Resource Include="assets\shopping-cart-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\leaderboard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
