@@ -8,10 +8,29 @@
              Height="200" Width="150">
     <Border CornerRadius="10" Background="White" Margin="10">
         <StackPanel>
-            <Image Height="100" Source="{Binding ImagePath}" Margin="10"/>
+            <Border Margin="0 0 0 10"
+                    Background="White" 
+                    CornerRadius="15" 
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" 
+                                      ShadowDepth="5" 
+                                      Direction="270" 
+                                      Color="Gray" 
+                                      Opacity="0.5"/>
+                </Border.Effect>
+                <Image Height="100" Source="{Binding ImagePath}" Stretch="Fill">
+                    <Image.Clip>
+                        <RectangleGeometry RadiusX="8" RadiusY="8" 
+                                           Rect="0,0,128,100"/>
+                    </Image.Clip>
+                </Image>
+            </Border>
+
+
             <TextBlock Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Left"/>
             <TextBlock Text="{Binding Description}" TextWrapping="Wrap" HorizontalAlignment="Left"/>
-            <Button Content="BUY for x Chips" Command="{Binding BuyCommand}" HorizontalAlignment="Left" Margin="10" Background="#00000000" BorderThickness="0"/>
+            <Button Content="BUY for x Chips" FontWeight="Bold" Command="{Binding BuyCommand}" HorizontalAlignment="Left" Background="#00000000" BorderThickness="0"/>
         </StackPanel>
     </Border>
 </UserControl>

@@ -19,6 +19,7 @@ namespace SuperbetBeclean.Components
     /// </summary>
     public partial class ShopItemComponent : UserControl
     {
+        // TODO: Add cost
         // Define dependency properties for data binding
         public static readonly DependencyProperty ImagePathProperty = DependencyProperty.Register(
             "ImagePath", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
