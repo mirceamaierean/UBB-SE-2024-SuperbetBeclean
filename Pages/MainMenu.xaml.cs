@@ -25,7 +25,7 @@ namespace SuperbetBeclean.Pages
 
         private void onClickPlayButton(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new LobbyPage());
+            _mainFrame.Navigate(new LobbyPage(_mainFrame));
         }
 
         private void onClickQuitButton(object sender, RoutedEventArgs e)

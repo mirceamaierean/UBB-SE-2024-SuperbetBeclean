@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\LeaderboardPage.xaml.cs">
+      <DependentUpon>LeaderboardPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
     </Compile>
@@ -63,6 +66,9 @@
     </Compile>
     <Compile Include="Pages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RequestsWindow.xaml.cs">
+      <DependentUpon>RequestsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\RulesWindow.xaml.cs">
       <DependentUpon>RulesWindow.xaml</DependentUpon>
@@ -79,6 +85,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\LeaderboardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LobbyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +100,10 @@
     <Page Include="Pages\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\RequestsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\RulesWindow.xaml">
       <SubType>Designer</SubType>
@@ -123,8 +137,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\greenbackgroundimg.jpg" />
-    <Content Include="Assets\index.html" />
+    <Content Include="assets\index.html" />
+    <Resource Include="assets\greenbackgroundimg.jpg" />
+    <Resource Include="assets\interntable.png" />
+    <Resource Include="assets\juniortable.jpg" />
+    <Resource Include="assets\output-onlinepngtools.png" />
+    <Resource Include="assets\profilepict.png" />
+    <Resource Include="assets\RedBackground.jpg" />
+    <Resource Include="assets\seniortable.jpg" />
+    <Resource Include="assets\shopping-cart-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\leaderboard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
