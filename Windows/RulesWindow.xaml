@@ -30,7 +30,7 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="/assets/greenbackgroundimg.jpg" />
+            <ImageBrush ImageSource="/Assets/greenbackgroundimg.jpg" />
         </Grid.Background>
 
         <!-- First Grid -->

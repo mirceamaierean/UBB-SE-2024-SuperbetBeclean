@@ -9,7 +9,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/assets/greenbackgroundimg.jpg" />
+            <ImageBrush ImageSource="/Assets/greenbackgroundimg.jpg" />
         </Grid.Background>
         <Button x:Name="QuitButtonFirstPage" Content="Quit" HorizontalAlignment="Center" Margin="0,306,0,0" VerticalAlignment="Top" Height="35" Width="176" Background="#FFFF5E5E" Foreground="White" FontFamily="Franklin Gothic Book" Click="onClickQuitButton" >
             <Button.Resources>

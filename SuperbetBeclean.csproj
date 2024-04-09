@@ -123,10 +123,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="assets\greenbackgroundimg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="assets\index.html" />
+    <Resource Include="Assets\greenbackgroundimg.jpg" />
+    <Content Include="Assets\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
