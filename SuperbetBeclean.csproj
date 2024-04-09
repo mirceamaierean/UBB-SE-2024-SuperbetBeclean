@@ -137,9 +137,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="greenbackgroundimg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="assets\greenbackgroundimg.jpg" />
     <Resource Include="assets\interntable.png" />
     <Resource Include="assets\juniortable.jpg" />
