@@ -19,5 +19,10 @@ namespace SuperbetBeclean.Pages
         {
 
         }
+
+        private void buttonLobbyBack(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new MainMenu(_mainFrame));
+        }
     }
 }
