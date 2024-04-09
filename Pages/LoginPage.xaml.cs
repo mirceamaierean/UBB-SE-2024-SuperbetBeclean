@@ -11,16 +11,20 @@ namespace SuperbetBeclean.Pages
     public partial class LoginPage : Page
     {
         private Frame _mainFrame;
+        private MainWindow _mainWindow;
 
-        public LoginPage(Frame mainFrame)
+        public LoginPage(Frame mainFrame, MainWindow mainWindow)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
+            _mainWindow = mainWindow;
         }
 
         private void onClickLoginButton(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new MainMenu(_mainFrame));
+
+            _mainWindow.openNewWindow(inputNameLoginFirstPage.Text);
+            inputNameLoginFirstPage.Text = "";
         }
     }
 }
