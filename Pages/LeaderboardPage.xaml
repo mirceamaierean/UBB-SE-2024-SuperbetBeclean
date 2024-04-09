@@ -47,5 +47,13 @@
             <TextBlock x:Name="leaderboardTitle" Foreground="#FFE33B0E"  TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="LEADERBOARD" VerticalAlignment="Center" FontSize="23" Height="32" Width="296" FontFamily="Yu Gothic UI Semibold"/>
         </Border>
 
+        <Button x:Name="buttonLeaderboardBack" Content="Back" HorizontalAlignment="Left" Margin="655,389,0,0" VerticalAlignment="Top" Width="104" Height="28" Foreground="White" Background="Black" Click="onClickLeaderboardBack">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
     </Grid>
 </Page>
