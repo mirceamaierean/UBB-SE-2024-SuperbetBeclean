@@ -7,9 +7,13 @@ namespace SuperbetBeclean.Pages
     /// </summary>
     public partial class LobbyPage : Page
     {
-        public LobbyPage()
+        private Frame _mainFrame;
+        public LobbyPage(Frame mainFrame)
         {
             InitializeComponent();
+            _mainFrame = mainFrame;
         }
+
+
     }
 }
