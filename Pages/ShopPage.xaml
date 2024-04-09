@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:SuperbetBeclean.Pages"
         xmlns:components="clr-namespace:SuperbetBeclean.Components"
         mc:Ignorable="d"
-        Title="ShopPage" Height="450" Width="800">
+        Title="ShopPage"
+        d:DesignHeight="450"
+        d:DesignWidth="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/assets/greenbackgroundimg.jpg"/>
@@ -51,22 +53,22 @@
                     </StackPanel>
                 </Grid>
             </Border>
-
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="White">
-                <ItemsControl Name="itemsControl" ItemsSource="{Binding ShopItems}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel IsItemsHost="True" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <components:ShopItemComponent/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-
-            </ScrollViewer>
+            <Border Grid.Row="1" Background="White" CornerRadius="0 0 8 8">
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl Name="itemsControl" ItemsSource="{Binding ShopItems}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <components:ShopItemComponent/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
         </Grid>
     </Grid>
 </Page>
