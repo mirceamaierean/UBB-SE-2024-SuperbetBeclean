@@ -125,5 +125,8 @@
   <ItemGroup>
     <Resource Include="greenbackgroundimg.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\WIN_20221124_11_19_01_Pro.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
