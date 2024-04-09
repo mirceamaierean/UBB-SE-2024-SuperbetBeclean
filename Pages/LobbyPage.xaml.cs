@@ -14,15 +14,14 @@ namespace SuperbetBeclean.Pages
             _mainFrame = mainFrame;
         }
 
-
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-
-        }
-
         private void buttonLobbyBack(object sender, System.Windows.RoutedEventArgs e)
         {
             _mainFrame.Navigate(new MainMenu(_mainFrame));
+        }
+
+        private void onClickLeaderboardButton(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new LeaderboardPage(_mainFrame));
         }
     }
 }

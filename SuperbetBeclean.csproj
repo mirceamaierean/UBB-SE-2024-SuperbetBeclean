@@ -149,5 +149,8 @@
   <ItemGroup>
     <Resource Include="assets\leaderboard.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\redchip.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
