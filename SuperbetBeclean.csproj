@@ -74,6 +74,9 @@
     </Compile>
     <Compile Include="Pages\ShopPage.xaml.cs">
       <DependentUpon>ShopPage.xaml</DependentUpon>
+    <Compile Include="Services\Subject.cs" />
+    <Compile Include="Windows\MenuWindow.xaml.cs">
+      <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\RequestsWindow.xaml.cs">
       <DependentUpon>RequestsWindow.xaml</DependentUpon>
@@ -114,6 +117,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ShopPage.xaml">
+    <Page Include="Windows\MenuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,6 +157,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\index.html" />
     <Resource Include="assets\greenbackgroundimg.jpg" />
     <Resource Include="assets\interntable.png" />
     <Resource Include="assets\juniortable.jpg" />

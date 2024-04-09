@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using SuperbetBeclean.Pages;
+using SuperbetBeclean.Services;
 
 namespace SuperbetBeclean
 {
@@ -8,11 +9,17 @@ namespace SuperbetBeclean
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Subject subject;
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new LoginPage(MainFrame));
+            subject = new Subject();
+            MainFrame.Navigate(new LoginPage(MainFrame, this));
         }
 
+        public void openNewWindow(string username)
+        {
+            subject.addWindow(username);
+        }
     }
 }

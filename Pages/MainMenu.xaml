@@ -35,7 +35,7 @@
 
 
 
-        <Label Content="Welcome To Poker" HorizontalAlignment="Center" Margin="0,104,0,0"  VerticalAlignment="Top" Foreground="#FFFF5E5E" FontSize="48" FontWeight="Medium">
+        <Label x:Name="WelcomeLabel" Content="Welcome To Poker" HorizontalAlignment="Center" Margin="0,104,0,0"  VerticalAlignment="Top" Foreground="#FFFF5E5E" FontSize="48" FontWeight="Medium">
             <Label.Effect>
                 <DropShadowEffect Color="White" ShadowDepth="0" BlurRadius="5"/>
             </Label.Effect>

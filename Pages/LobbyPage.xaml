@@ -66,7 +66,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="LeaderboardBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="0" Height="40" Cursor="Hand">
+                <Button x:Name="LeaderboardBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="0" Height="40" Cursor="Hand" Click="onClickLeaderboardButton">
                     <Button.Background>
                         <ImageBrush ImageSource="/assets/leaderboard.png" Stretch="Uniform"/>
                     </Button.Background>
@@ -84,7 +84,7 @@
                         <ImageBrush ImageSource="/assets/output-onlinepngtools.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="BackBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Back" HorizontalAlignment="Center" Width="82" Height="24" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand"/>
+                <Button x:Name="BackBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Back" HorizontalAlignment="Center" Width="82" Height="24" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand" Click="buttonLobbyBack"/>
             </Grid>
             <Grid Grid.Column="0" Background="WhiteSmoke" Width="207" Height="38" HorizontalAlignment="Center" Margin="0,0,80,0">
                 <TextBlock x:Name="PlayerNameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="157"/>
