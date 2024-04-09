@@ -66,6 +66,6 @@ public class PlaceholderCommand : ICommand
 
     public void Execute(object parameter)
     {
-        Debug.WriteLine("The BuyCommand was triggered.");
+        
     }
 }

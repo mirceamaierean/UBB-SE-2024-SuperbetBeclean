@@ -23,11 +23,31 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="←" FontSize="16" Background="#00000000" BorderThickness="0" Foreground="White"/>
+                    <Button Grid.Column="0" 
+                            Content="←" 
+                            FontSize="16" 
+                            Background="Transparent" 
+                            BorderThickness="0" 
+                            Foreground="White" 
+                            Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                     <TextBlock Grid.Column="1" Text="Shop" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24"/>
                     <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10">
                         <TextBlock Text="Balance:" Foreground="White" FontSize="20"/>
-                        <TextBlock Text="{Binding Balance}" Foreground="White" FontSize="20" Margin="10,0"><Image Width="47" Height="27" Source="/assets/redchip.png" /></TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="27" Height="27" Source="/assets/redchip.png" />
+                            <TextBlock Text="{Binding Balance}" Foreground="White" FontSize="20" Margin="10,0"></TextBlock>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </Border>

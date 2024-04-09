@@ -28,9 +28,17 @@
             </Border>
 
 
-            <TextBlock Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Left"/>
-            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" HorizontalAlignment="Left"/>
-            <Button Content="BUY for x Chips" FontWeight="Bold" Command="{Binding BuyCommand}" HorizontalAlignment="Left" Background="#00000000" BorderThickness="0"/>
+            <TextBlock Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Left" Margin="0 0 0 5"/>
+            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0 0 0 5"/>
+            <Button Content="BUY for x Chips" FontWeight="Bold" Command="{Binding BuyCommand}" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </StackPanel>
     </Border>
 </UserControl>
