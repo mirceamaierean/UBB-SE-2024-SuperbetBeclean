@@ -1,12 +1,12 @@
-﻿<Window x:Class="SuperbetBeclean.RulesPageWindow"
+﻿<Window x:Class="SuperbetBeclean.Windows.RulesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SuperbetBeclean"
+        xmlns:local="clr-namespace:SuperbetBeclean.Windows"
         mc:Ignorable="d"
-        Title="RulesPageWindow" Height="450" Width="800">
+        Title="RulesWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Center" Margin="0,217,0,0" TextWrapping="Wrap" Text="To design Rules (roby)" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

@@ -12,16 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SuperbetBeclean
+namespace SuperbetBeclean.Windows
 {
     /// <summary>
-    /// Interaction logic for RulesPageWindow.xaml
+    /// Interaction logic for RulesWindow.xaml
     /// </summary>
-    public partial class RulesPageWindow : Window
+    public partial class RulesWindow : Window
     {
-        public RulesPageWindow()
+        public RulesWindow()
         {
             InitializeComponent();
         }
+
     }
 }
