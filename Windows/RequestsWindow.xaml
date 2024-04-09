@@ -8,7 +8,7 @@
         Title="RequestsWindow" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/greenbackgroundimg.jpg" Opacity="0.595" />
+            <ImageBrush ImageSource="/assets/greenbackgroundimg.jpg" Opacity="0.595" />
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" MinHeight="50"/>
@@ -34,7 +34,7 @@
             <!-- Span all columns -->
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" HorizontalAlignment="Left" VerticalAlignment="Center"  >
-            <Image Width="47" Height="27" Source="/redchippng-removebg-preview.png" />
+            <Image Width="47" Height="27" Source="/assets/redchip.png" />
             <!-- Span all columns -->
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" HorizontalAlignment="Right" VerticalAlignment="Center"  >
