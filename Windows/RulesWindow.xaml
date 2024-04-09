@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="RulesWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/greenbackgroundimg.jpg" />
+            <WebBrowser x:Name="WebBrowser" />
+        </Grid.Background>
+        
         <TextBox HorizontalAlignment="Center" Margin="0,217,0,0" TextWrapping="Wrap" Text="To design Rules (roby)" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
