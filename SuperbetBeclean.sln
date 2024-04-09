@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets3", "assets3", "{4C7F
 		..\..\Lab 3\RedBackground.jpg = ..\..\Lab 3\RedBackground.jpg
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{F15EF561-9CA9-489D-8CD1-80B325186C82}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA39ABF0-30C4-4B8A-ADA1-046BC0051C5A}"
 EndProject
 Global
