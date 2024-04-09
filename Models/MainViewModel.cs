@@ -27,12 +27,12 @@ namespace SuperbetBeclean.Models
             }
         }
 
-        public ObservableCollection<ShopItem> ShopItems { get; set; }
+        public List<ShopItem> ShopItems { get; set; }
 
         public MainViewModel()
         {
             Balance = 12345; // TODO: Placeholder balance, be sure to change it once the backend is implemented
-            ShopItems = new ObservableCollection<ShopItem>();
+            ShopItems = new List<ShopItem>();
             LoadItems();
         }
 
