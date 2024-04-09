@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace SuperbetBeclean.Pages
 {
@@ -18,6 +19,11 @@ namespace SuperbetBeclean.Pages
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
 
+        }
+
+        private void onShopButtonClick(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new ShopPage(_mainFrame));
         }
     }
 }

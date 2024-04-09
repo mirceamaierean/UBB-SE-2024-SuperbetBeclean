@@ -11,17 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SuperbetBeclean.Models;
 
 namespace SuperbetBeclean.Pages
 {
     /// <summary>
     /// Interaction logic for ShopPage.xaml
     /// </summary>
-    public partial class ShopPage : Window
+    public partial class ShopPage : Page
     {
-        public ShopPage()
+        private Frame _mainframe;
+        public ShopPage(Frame mainframe)
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
+            _mainframe = mainframe;
         }
     }
 }

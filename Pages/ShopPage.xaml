@@ -1,4 +1,4 @@
-﻿<Window x:Class="SuperbetBeclean.Pages.ShopPage"
+﻿<Page x:Class="SuperbetBeclean.Pages.ShopPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,22 +16,24 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#FF242424">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="←" FontSize="16" Background="#00000000" BorderThickness="0" Foreground="White"/>
-                <TextBlock Grid.Column="1" Text="Shop" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24"/>
-                <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10">
-                    <TextBlock Text="Balance:" Foreground="White" FontSize="20"/>
-                    <TextBlock Text="{Binding Balance}" Foreground="White" FontSize="20" Margin="10,0"/>
-                </StackPanel>
-            </Grid>
+            <Border Grid.Row="0" Background="#FF242424" CornerRadius="8 8 0 0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="←" FontSize="16" Background="#00000000" BorderThickness="0" Foreground="White"/>
+                    <TextBlock Grid.Column="1" Text="Shop" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24"/>
+                    <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10">
+                        <TextBlock Text="Balance:" Foreground="White" FontSize="20"/>
+                        <TextBlock Text="{Binding Balance}" Foreground="White" FontSize="20" Margin="10,0"><Image Width="47" Height="27" Source="/assets/redchip.png" /></TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <ItemsControl Name="itemsControl">
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="White">
+                <ItemsControl Name="itemsControl" ItemsSource="{Binding ShopItems}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel IsItemsHost="True" />
@@ -43,7 +45,8 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+
             </ScrollViewer>
         </Grid>
     </Grid>
-</Window>
+</Page>
