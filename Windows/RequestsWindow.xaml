@@ -82,6 +82,5 @@
                 </StackPanel>
             </Border>
         </StackPanel>
-
     </Grid>
 </Window>

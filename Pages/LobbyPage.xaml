@@ -7,9 +7,187 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LobbyPage">
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="RoundedButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="80
+                       
+                            " Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="HorizontalButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="BottomRoundedButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0,0,10,10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-    <Grid Background="White">
-        <TextBox HorizontalAlignment="Center" Margin="0,225,0,0" TextWrapping="Wrap" Text="To design textbox (roby)" VerticalAlignment="Top" Width="120"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/assets/RedBackground.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
 
+        </Grid.RowDefinitions>
+        <Grid Background="#FF424242" Height="50" VerticalAlignment="Top" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="LeaderboardBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="0" Height="40" Cursor="Hand">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/assets/leaderboard.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="RefferalBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Foreground="Black" HorizontalAlignment="Center" Grid.Column="1" Height="40" Cursor="Hand">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/assets/shopping-cart-white.png" TileMode="Tile"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="ShopBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Height="40" Grid.Column="2" Cursor="Hand" >
+                    <Button.Foreground>
+                        <ImageBrush Stretch="Fill"/>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/assets/output-onlinepngtools.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BackBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Back" HorizontalAlignment="Center" Width="82" Height="24" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand"/>
+            </Grid>
+            <Grid Grid.Column="0" Background="WhiteSmoke" Width="207" Height="38" HorizontalAlignment="Center" Margin="0,0,80,0">
+                <TextBlock x:Name="PlayerNameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="157"/>
+                <TextBlock x:Name="PlayerLvlTextBox" Text="lvlTemp" Margin="50,19,103,0"/>
+                <TextBlock x:Name="ChipsLevelTextBox" Text="chipsTemp" Margin="119,19,28,0"/>
+                <Image x:Name="PlayerIconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="196"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="196"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="196" />
+
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="115"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="42"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Intern’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16" Foreground="White"/>
+                    <Border   Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="45,45,0,0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/assets/interntable.png"/>
+                        </Border.Background>
+                    </Border>
+                    <Grid Grid.Row="2" Background="#FFA7A5A5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition  Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Small Blind: 50 chips" FontSize="16"/>
+                        <Label Grid.Row="1" Content="Big Blind: 100 chips" FontSize="16"/>
+                        <Label Grid.Row="2" Content="Buy-in: 5000 chips" FontSize="16"/>
+                        <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
+                    </Grid>
+                    <Button Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="115"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="42"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Junior’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16" Foreground="White"/>
+                    <Border   Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="45,45,0,0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/assets/juniortable.jpg"/>
+                        </Border.Background>
+                    </Border>
+                    <Grid Grid.Row="2" Background="#FFA7A5A5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition  Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Small Blind: 500 chips" FontSize="16"/>
+                        <Label Grid.Row="1" Content="Big Blind: 1000 chips" FontSize="16"/>
+                        <Label Grid.Row="2" Content="Buy-in: 50000 chips" FontSize="16"/>
+                        <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
+                    </Grid>
+                    <Button Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42"/>
+                </Grid>
+                <Grid Grid.Column="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="115"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="42"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Senior’s Table" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="16" Foreground="White"/>
+                    <Border   Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="45,45,0,0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/assets/seniortable.jpg" Stretch="UniformToFill"/>
+                        </Border.Background>
+                    </Border>
+                    <Grid Grid.Row="2" Background="#FFA7A5A5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition  Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Small Blind: 5000 chips" FontSize="16"/>
+                        <Label Grid.Row="1" Content="Big Blind: 10000 chips" FontSize="16"/>
+                        <Label Grid.Row="2" Content="Buy-in: 500000 chips" FontSize="16"/>
+                        <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
+                    </Grid>
+                    <Button Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
