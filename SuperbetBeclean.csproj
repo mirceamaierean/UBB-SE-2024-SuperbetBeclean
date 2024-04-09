@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="Pages\ShopPage.xaml.cs">
       <DependentUpon>ShopPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\Subject.cs" />
     <Compile Include="Windows\MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
@@ -117,6 +118,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ShopPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MenuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
