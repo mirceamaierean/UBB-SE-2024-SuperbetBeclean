@@ -26,5 +26,10 @@ namespace SuperbetBeclean.Pages
             InitializeComponent();
             _mainFrame = mainFrame;
         }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _mainFrame.NavigationService.GoBack();
+        }
     }
 }

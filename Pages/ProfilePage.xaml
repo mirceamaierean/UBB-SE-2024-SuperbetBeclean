@@ -18,7 +18,7 @@
 
         </Grid.RowDefinitions>
         <Grid Background="#FF282828" Height="40" VerticalAlignment="Top" Grid.Row="0">
-            <Image Source="/assets/backarrow.png" HorizontalAlignment="Left" Margin="10 0 0 0" Cursor="Hand"/>
+            <Image Source="/assets/backarrow.png" HorizontalAlignment="Left" Margin="10 0 0 0" Cursor="Hand" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
             <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="PROFILE PAGE" Height="39" Width="250" TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="26"/>
         </Grid>
         <Grid Grid.Row="1">
@@ -110,31 +110,7 @@
                         </Border>
                         
                         <Grid Grid.Row="1">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                    <TextBlock Text="Test" FontSize="30"/>
-                                </StackPanel>
-                            </ScrollViewer>
+                            
                         </Grid>
                     </Grid>
                 </Border>
