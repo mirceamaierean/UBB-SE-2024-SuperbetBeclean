@@ -26,7 +26,7 @@ namespace SuperbetBeclean.Windows
         {
             InitializeComponent();
             this.username = username;
-            MenuFrame.Navigate(new MainMenu(MenuFrame));
+            MenuFrame.Navigate(new MainMenu(MenuFrame, username));
             this.Title = username;
         }
     }

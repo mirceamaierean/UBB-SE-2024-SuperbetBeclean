@@ -11,7 +11,7 @@ namespace SuperbetBeclean.Pages
     {
         private Frame _mainFrame;
 
-        public MainMenu(Frame mainFrame)
+        public MainMenu(Frame mainFrame, string username = "")
         {
             InitializeComponent();
             _mainFrame = mainFrame;
@@ -32,5 +32,6 @@ namespace SuperbetBeclean.Pages
         {
             System.Environment.Exit(0);
         }
+
     }
 }

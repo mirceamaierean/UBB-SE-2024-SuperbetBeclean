@@ -9,11 +9,11 @@ namespace SuperbetBeclean
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Subject subject;
+        private MainService subject;
         public MainWindow()
         {
             InitializeComponent();
-            subject = new Subject();
+            subject = new MainService();
             MainFrame.Navigate(new LoginPage(MainFrame, this));
         }
 
