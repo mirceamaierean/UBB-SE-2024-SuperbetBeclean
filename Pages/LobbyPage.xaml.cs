@@ -23,5 +23,10 @@ namespace SuperbetBeclean.Pages
         {
             _mainFrame.Navigate(new LeaderboardPage(_mainFrame));
         }
+
+        private void PlayerIconImg_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            _mainFrame.Navigate(new ProfilePage(_mainFrame));
+        }
     }
 }
