@@ -17,7 +17,7 @@ namespace SuperbetBeclean.Pages
 
         private void onClickLeaderboardBack(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new LobbyPage(_mainFrame));
+            _mainFrame.NavigationService.GoBack();
         }
     }
 }

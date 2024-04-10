@@ -1,5 +1,4 @@
-﻿using SuperbetBeclean.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SuperbetBeclean.Services;
 
-namespace SuperbetBeclean.Windows
+namespace SuperbetBeclean.Pages
 {
     /// <summary>
-    /// Interaction logic for MenuWindow.xaml
+    /// Interaction logic for ProfilePage.xaml
     /// </summary>
-    public partial class MenuWindow : Window
+    public partial class ProfilePage : Page
     {
-        private string username;
-        public MenuWindow(string username)
+        public ProfilePage()
         {
             InitializeComponent();
-            this.username = username;
-            MenuFrame.Navigate(new MainMenu(MenuFrame, this));
-            this.Title = username;
         }
     }
 }
