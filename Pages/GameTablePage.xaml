@@ -32,8 +32,35 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="CustomSliderStyle" TargetType="{x:Type Slider}">
+            <Setter Property="Maximum" Value="100" />
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Grid>
+                            <Rectangle Fill="{TemplateBinding Background}" Height="4" VerticalAlignment="Center" />
+                            <Track x:Name="PART_Track">
+                                <Track.Thumb>
+                                    <Thumb Width="15" Height="15">
+                                        <Thumb.Template>
+                                            <ControlTemplate>
+                                                <Ellipse Fill="{TemplateBinding Foreground}" />
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
-    <Grid Background="White">
+    <Grid Background="#232323">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="521"/>
@@ -58,12 +85,12 @@
                     <ColumnDefinition Width="51*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="RefferalBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Foreground="Black" HorizontalAlignment="Right" Grid.Column="1" Cursor="Hand" Margin="65,5,0,5">
+                <Button x:Name="ChallengesBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Foreground="Black" HorizontalAlignment="Right" Grid.Column="1" Cursor="Hand" Margin="65,5,0,5">
                     <Button.Background>
                         <ImageBrush ImageSource="/assets/challengesicon.png" TileMode="Tile" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="ShopBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="2" Cursor="Hand" Margin="0,5,0,5" >
+                <Button x:Name="MsgBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="2" Cursor="Hand" Margin="0,5,0,5" >
                     <Button.Foreground>
                         <ImageBrush Stretch="Fill"/>
                     </Button.Foreground>
@@ -71,15 +98,64 @@
                         <ImageBrush ImageSource="/assets/messageicons.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="QuitBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Quit" HorizontalAlignment="Center" Width="82" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand" Click="buttonLobbyBack" Margin="0,13,0,13"/>
+                <Button x:Name="QuitBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Quit" HorizontalAlignment="Center" Width="82" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand"  Margin="0,13,0,13"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.Background>
-                <ImageBrush ImageSource="/assets/gametableBG.jpg" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="/assets/gametableBG.jpg" Stretch="Fill"/>
             </Grid.Background>
 
         </Grid>
-        <Grid Grid.Row="2" Background="#232323"></Grid>
+        <Grid Grid.Row="2" Background="#232323">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="CurrentBetText" Grid.Column="0" Background="WhiteSmoke" Content="Your current bet" Width="125" Height="61" FontSize="16" Foreground="Red"/>
+            <Grid Grid.Column="1"
+                  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="Input Bet" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#00000000" FontSize="16" Height="31" Margin="0,20,0,0" Width="75" Foreground="White"/>
+                <TextBox x:Name="BetInput" Grid.Row="1" Text="input bet..." Height="29" Width="159" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
+                    <Slider Style="{StaticResource CustomSliderStyle}"    TickPlacement="BottomRight" TickFrequency="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="367" Foreground="Red" Background="White"/>
+                    <Label Content="MAX" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
+                </Grid>
+               
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button  Grid.Column="0" x:Name="RaiseBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Raise" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" />
+                    <Button  Grid.Column="1" x:Name="AllInBttn" Style="{StaticResource HorizontalButtonStyle}" Content="All In" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" />
+                    <Button  Grid.Column="2" x:Name="CallBtn" Style="{StaticResource HorizontalButtonStyle}" Content="Call" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" />
+                    <Button  Grid.Column="3" x:Name="FoldBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Fold" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" />
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

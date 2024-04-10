@@ -20,7 +20,7 @@ namespace SuperbetBeclean.Pages
     /// </summary>
     public partial class GameTablePage : Page
     {
-        public GameTablePage()
+        public GameTablePage(Frame mainFrame)
         {
             InitializeComponent();
         }

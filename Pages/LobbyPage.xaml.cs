@@ -23,5 +23,20 @@ namespace SuperbetBeclean.Pages
         {
             _mainFrame.Navigate(new LeaderboardPage(_mainFrame));
         }
+
+        private void onClickInternButton(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new GameTablePage(_mainFrame));
+        }
+
+        private void onClickJuniorBttn(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new GameTablePage(_mainFrame));
+        }
+
+        private void onClickSeniorButton(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new GameTablePage(_mainFrame));
+        }
     }
 }
