@@ -20,9 +20,16 @@ namespace SuperbetBeclean.Pages
     /// </summary>
     public partial class ProfilePage : Page
     {
-        public ProfilePage()
+        private Frame _mainFrame;
+        public ProfilePage(Frame mainFrame)
         {
             InitializeComponent();
+            _mainFrame = mainFrame;
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _mainFrame.NavigationService.GoBack();
         }
     }
 }
