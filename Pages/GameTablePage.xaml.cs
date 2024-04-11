@@ -23,6 +23,17 @@ namespace SuperbetBeclean.Pages
         public GameTablePage(Frame mainFrame)
         {
             InitializeComponent();
+            Loaded += GameTablePage_Loaded;
+        }
+
+        private void GameTablePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Window window = Window.GetWindow(this);
+            if (window != null)
+            {
+                window.Width = 920;
+                window.Height = 720;
+            }
         }
     }
 }

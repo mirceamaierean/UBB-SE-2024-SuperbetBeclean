@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SuperbetBeclean.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="676" d:DesignWidth="816"
-      Title="GameTablePage">
+      d:DesignHeight="676" d:DesignWidth="816" 
+      Title="GameTablePage"   MinHeight="676" MinWidth="816">
     <Page.Resources>
         <Style TargetType="Button" x:Key="RoundedButtonStyle">
             <Setter Property="Template">
@@ -101,10 +101,34 @@
                 <Button x:Name="QuitBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Quit" HorizontalAlignment="Center" Width="82" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand"  Margin="0,13,0,13"/>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <Grid.Background>
                 <ImageBrush ImageSource="/assets/gametableBG.jpg" Stretch="Fill"/>
             </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="254*"/>
+                <ColumnDefinition Width="105*"/>
+
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="125*"/>
+                <ColumnDefinition Width="235*"/>
+
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0" Grid.Column="2" CornerRadius="10"  Background="WhiteSmoke" Height="61" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="PotText" Grid.Row="0" Background="WhiteSmoke" Content="POT:" FontSize="16" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Label x:Name="PotValue" Grid.Row="1" Background="WhiteSmoke" Content="1234"  FontSize="16" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+            </Border>
 
         </Grid>
         <Grid Grid.Row="2" Background="#232323">
@@ -113,7 +137,19 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="CurrentBetText" Grid.Column="0" Background="WhiteSmoke" Content="Your current bet" Width="125" Height="61" FontSize="16" Foreground="Red"/>
+
+            <Border  CornerRadius="10" Background="WhiteSmoke" Height="61" Margin="0,5,0,6">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="CurrentBetText" Grid.Row="0" Background="WhiteSmoke" Content="Your current bet:" FontSize="16" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Label x:Name="CurrentBetValue" Grid.Row="1" Background="WhiteSmoke" Content="123" Width="125" FontSize="16" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+            </Border>
+
             <Grid Grid.Column="1"
                   >
                 <Grid.ColumnDefinitions>
@@ -125,7 +161,18 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Content="Input Bet" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#00000000" FontSize="16" Height="31" Margin="0,20,0,0" Width="75" Foreground="White"/>
-                <TextBox x:Name="BetInput" Grid.Row="1" Text="input bet..." Height="29" Width="159" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border Grid.Row="1"  CornerRadius="20" Background="White" Height="40" Margin="5,5,0,6" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="-0.197"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="0.263"/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <TextBox BorderBrush="Transparent" x:Name="BetInput" Grid.Row="1" Text="input bet..." Height="28" Width="143" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                </Border>
             </Grid>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -142,7 +189,7 @@
                     <Slider Style="{StaticResource CustomSliderStyle}"    TickPlacement="BottomRight" TickFrequency="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="367" Foreground="Red" Background="White"/>
                     <Label Content="MAX" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
                 </Grid>
-               
+
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
