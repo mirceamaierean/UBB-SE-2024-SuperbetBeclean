@@ -16,12 +16,17 @@ namespace SuperbetBeclean.Pages
 
         private void buttonLobbyBack(object sender, System.Windows.RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new MainMenu(_mainFrame));
+            _mainFrame.NavigationService.GoBack();
         }
 
         private void onClickLeaderboardButton(object sender, System.Windows.RoutedEventArgs e)
         {
             _mainFrame.Navigate(new LeaderboardPage(_mainFrame));
+        }
+
+        private void PlayerIconImg_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            _mainFrame.Navigate(new ProfilePage(_mainFrame));
         }
     }
 }
