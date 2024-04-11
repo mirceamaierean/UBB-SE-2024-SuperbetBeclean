@@ -160,6 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\index.html" />
+    <Resource Include="assets\money_bag.png" />
+    <Resource Include="assets\challengeCards.png" />
     <Resource Include="assets\greenbackgroundimg.jpg" />
     <Resource Include="assets\interntable.png" />
     <Resource Include="assets\juniortable.jpg" />

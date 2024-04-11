@@ -23,5 +23,24 @@ namespace SuperbetBeclean.Windows
         {
             InitializeComponent();
         }
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+
+                if (e.GetPosition(this).Y < 60) // Assuming the height of the upper part is 60 (adjust as needed)
+                {
+                    // Drag the window
+                    DragMove();
+                }
+            }
+            catch { };  
     }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close(); // Close the window when the button is clicked
+        }
+    }
+    
 }
