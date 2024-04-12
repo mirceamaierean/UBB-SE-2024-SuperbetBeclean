@@ -22,6 +22,34 @@ namespace SuperbetBeclean.Services
             sqlConnection.Open();
         }
 
+        public void newUserLogin(User newUser)
+        {
+            if (DateTime.Now.Date != newUser.UserLastLogin.Date)
+            {
+                var diffDates = DateTime.Now.Date - newUser.UserLastLogin.Date;
+                if (diffDates.Days == 1)
+                {
+                    newUser.UserStreak++;
+                }
+                else
+                {
+                    newUser.UserStreak = 1;
+                }
+                SqlCommand dailyBonusCmd = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
+                dailyBonusCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+                dailyBonusCmd.Parameters.AddWithValue("@userChips", newUser.UserStack + newUser.UserStreak * 5000);
+                dailyBonusCmd.ExecuteNonQuery();
+                SqlCommand newStreakCmd = new SqlCommand("EXEC updateUserStreak @userID , @userStreak", sqlConnection);
+                newStreakCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+                newStreakCmd.Parameters.AddWithValue("@userStreak", newUser.UserStreak);
+                newStreakCmd.ExecuteNonQuery();
+                MessageBox.Show("Congratulations, you got your daily bonus!\n" + "Streak: " + newUser.UserStreak + " Bonus: " + (5000 * newUser.UserStreak).ToString());
+            }
+            SqlCommand newLoginCmd = new SqlCommand("EXEC updateUserLastLogin @userID , @newLogin", sqlConnection);
+            newLoginCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+            newLoginCmd.Parameters.AddWithValue("@newLogin", DateTime.Now);
+            newLoginCmd.ExecuteNonQuery();
+        }
         public void addWindow(string username)
         {
             SqlCommand command = new SqlCommand("EXEC getUser @username", sqlConnection);
@@ -46,39 +74,16 @@ namespace SuperbetBeclean.Services
                     DateTime lastLogin = reader.IsDBNull(reader.GetOrdinal("user_handsPlayed")) ? default(DateTime) : reader.GetDateTime(reader.GetOrdinal("user_lastLogin"));
                     User newUser = new User(userID, userName, currentFont, currentTitle, currentIcon, currentTable, chips, stack, streak, handsPlayed, level, lastLogin);
                     MenuWindow menuWindow = new MenuWindow(newUser);
-                    if (DateTime.Now.Date != lastLogin.Date)
-                    {
-                        /// TODO: pop-up with daily bonus and update stack
-                        var diffDates = DateTime.Now.Date - lastLogin.Date;
-                        if (diffDates.Days == 1)
-                        {
-                            newUser.UserStreak++;
-                        }
-                        else
-                        {
-                            newUser.UserStreak = 1;
-                        }
-                        SqlCommand dailyBonusCmd = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
-                        dailyBonusCmd.Parameters.AddWithValue("@userID", newUser.UserID);
-                        dailyBonusCmd.Parameters.AddWithValue("@userStack", newUser.UserStack + newUser.UserStreak * 5000);
-                        dailyBonusCmd.ExecuteNonQuery();
-                        SqlCommand newStreakCmd = new SqlCommand("EXEC updateUserStreak @userID , @userStreak", sqlConnection);
-                        newStreakCmd.Parameters.AddWithValue("@userID", newUser.UserID);
-                        newStreakCmd.Parameters.AddWithValue("@userStreak", newUser.UserStreak);
-                        newStreakCmd.ExecuteNonQuery();
-                        MessageBox.Show("Congratulations, you got your daily bonus!\n" + "Streak: " + newUser.UserStreak + " Bonus: " + (5000 * newUser.UserStreak).ToString());
-                    }
-                    SqlCommand newLoginCmd = new SqlCommand("EXEC updateUserLastLogin @userID , @newLogin", sqlConnection);
-                    newLoginCmd.Parameters.AddWithValue("@userID", userID);
-                    newLoginCmd.Parameters.AddWithValue("@newLogin", DateTime.Now);
+                    reader.Close();
                     menuWindow.Show();
+                    newUserLogin(newUser);
                     openedUsersWindows.Add(menuWindow);
+                    activeUsers.Add(newUser);
                 }
                 else
                 {
                     MessageBox.Show("The username is not valid.");
                 }
-                reader.Close();
             }
             catch (Exception ex)
             {
