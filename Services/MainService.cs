@@ -10,13 +10,14 @@ namespace SuperbetBeclean.Services
 {
     public class MainService
     {
-        private List < Window > openedUsersWindows;
+        private List<Window> openedUsersWindows;
+        private List<User> activeUsers;
         private SqlConnection sqlConnection;
         string connectionString;
         public MainService()
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
-            openedUsersWindows = new List < Window >();
+            openedUsersWindows = new List<Window>();
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
         }
@@ -43,7 +44,33 @@ namespace SuperbetBeclean.Services
                     int handsPlayed = reader.IsDBNull(reader.GetOrdinal("user_handsPlayed")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_handsPlayed"));
                     int level = reader.IsDBNull(reader.GetOrdinal("user_level")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_level"));
                     DateTime lastLogin = reader.IsDBNull(reader.GetOrdinal("user_handsPlayed")) ? default(DateTime) : reader.GetDateTime(reader.GetOrdinal("user_lastLogin"));
-                    MenuWindow menuWindow = new MenuWindow(new User(userID, userName, currentFont, currentTitle, currentIcon, currentTable, chips, stack, streak, handsPlayed, level, lastLogin));
+                    User newUser = new User(userID, userName, currentFont, currentTitle, currentIcon, currentTable, chips, stack, streak, handsPlayed, level, lastLogin);
+                    MenuWindow menuWindow = new MenuWindow(newUser);
+                    if (DateTime.Now.Date != lastLogin.Date)
+                    {
+                        /// TODO: pop-up with daily bonus and update stack
+                        var diffDates = DateTime.Now.Date - lastLogin.Date;
+                        if (diffDates.Days == 1)
+                        {
+                            newUser.UserStreak++;
+                        }
+                        else
+                        {
+                            newUser.UserStreak = 1;
+                        }
+                        SqlCommand dailyBonusCmd = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
+                        dailyBonusCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+                        dailyBonusCmd.Parameters.AddWithValue("@userStack", newUser.UserStack + newUser.UserStreak * 5000);
+                        dailyBonusCmd.ExecuteNonQuery();
+                        SqlCommand newStreakCmd = new SqlCommand("EXEC updateUserStreak @userID , @userStreak", sqlConnection);
+                        newStreakCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+                        newStreakCmd.Parameters.AddWithValue("@userStreak", newUser.UserStreak);
+                        newStreakCmd.ExecuteNonQuery();
+                        MessageBox.Show("Congratulations, you got your daily bonus!\n" + "Streak: " + newUser.UserStreak + " Bonus: " + (5000 * newUser.UserStreak).ToString());
+                    }
+                    SqlCommand newLoginCmd = new SqlCommand("EXEC updateUserLastLogin @userID , @newLogin", sqlConnection);
+                    newLoginCmd.Parameters.AddWithValue("@userID", userID);
+                    newLoginCmd.Parameters.AddWithValue("@newLogin", DateTime.Now);
                     menuWindow.Show();
                     openedUsersWindows.Add(menuWindow);
                 }
