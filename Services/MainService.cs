@@ -10,17 +10,46 @@ namespace SuperbetBeclean.Services
 {
     public class MainService
     {
-        private List < Window > openedUsersWindows;
+        private List<Window> openedUsersWindows;
+        private List<User> activeUsers;
         private SqlConnection sqlConnection;
         string connectionString;
         public MainService()
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
-            openedUsersWindows = new List < Window >();
+            openedUsersWindows = new List<Window>();
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
         }
 
+        public void newUserLogin(User newUser)
+        {
+            if (DateTime.Now.Date != newUser.UserLastLogin.Date)
+            {
+                var diffDates = DateTime.Now.Date - newUser.UserLastLogin.Date;
+                if (diffDates.Days == 1)
+                {
+                    newUser.UserStreak++;
+                }
+                else
+                {
+                    newUser.UserStreak = 1;
+                }
+                SqlCommand dailyBonusCmd = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
+                dailyBonusCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+                dailyBonusCmd.Parameters.AddWithValue("@userChips", newUser.UserStack + newUser.UserStreak * 5000);
+                dailyBonusCmd.ExecuteNonQuery();
+                SqlCommand newStreakCmd = new SqlCommand("EXEC updateUserStreak @userID , @userStreak", sqlConnection);
+                newStreakCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+                newStreakCmd.Parameters.AddWithValue("@userStreak", newUser.UserStreak);
+                newStreakCmd.ExecuteNonQuery();
+                MessageBox.Show("Congratulations, you got your daily bonus!\n" + "Streak: " + newUser.UserStreak + " Bonus: " + (5000 * newUser.UserStreak).ToString());
+            }
+            SqlCommand newLoginCmd = new SqlCommand("EXEC updateUserLastLogin @userID , @newLogin", sqlConnection);
+            newLoginCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+            newLoginCmd.Parameters.AddWithValue("@newLogin", DateTime.Now);
+            newLoginCmd.ExecuteNonQuery();
+        }
         public void addWindow(string username)
         {
             SqlCommand command = new SqlCommand("EXEC getUser @username", sqlConnection);
@@ -43,15 +72,18 @@ namespace SuperbetBeclean.Services
                     int handsPlayed = reader.IsDBNull(reader.GetOrdinal("user_handsPlayed")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_handsPlayed"));
                     int level = reader.IsDBNull(reader.GetOrdinal("user_level")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_level"));
                     DateTime lastLogin = reader.IsDBNull(reader.GetOrdinal("user_handsPlayed")) ? default(DateTime) : reader.GetDateTime(reader.GetOrdinal("user_lastLogin"));
-                    MenuWindow menuWindow = new MenuWindow(new User(userID, userName, currentFont, currentTitle, currentIcon, currentTable, chips, stack, streak, handsPlayed, level, lastLogin));
+                    User newUser = new User(userID, userName, currentFont, currentTitle, currentIcon, currentTable, chips, stack, streak, handsPlayed, level, lastLogin);
+                    MenuWindow menuWindow = new MenuWindow(newUser);
+                    reader.Close();
                     menuWindow.Show();
+                    newUserLogin(newUser);
                     openedUsersWindows.Add(menuWindow);
+                    activeUsers.Add(newUser);
                 }
                 else
                 {
                     MessageBox.Show("The username is not valid.");
                 }
-                reader.Close();
             }
             catch (Exception ex)
             {
