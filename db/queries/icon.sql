@@ -2,13 +2,13 @@
 CREATE OR ALTER PROCEDURE createIcon
     @icon_name VARCHAR(255),
     @icon_price INT,
-    @icon_path VARCHAR(255)
+    @icon_image IMAGE
 AS
 BEGIN
     INSERT INTO Icon
-        (icon_name, icon_price, icon_path)
+        (icon_name, icon_price, icon_image)
     VALUES
-        (@icon_name, @icon_price, @icon_path)
+        (@icon_name, @icon_price, @icon_image)
 END
 GO
 
@@ -47,14 +47,14 @@ CREATE OR ALTER PROCEDURE updateIcon
     @icon_id INT,
     @icon_name VARCHAR(255),
     @icon_price INT,
-    @icon_path VARCHAR(255)
+    @icon_image IMAGE
 AS
 BEGIN
     UPDATE Icon
     SET 
         icon_name = @icon_name,
         icon_price = @icon_price,
-        icon_path = @icon_path
+        icon_image = @icon_image
     WHERE 
         icon_id = @icon_id
 END
