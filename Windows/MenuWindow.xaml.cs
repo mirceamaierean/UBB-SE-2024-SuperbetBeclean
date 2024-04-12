@@ -30,5 +30,20 @@ namespace SuperbetBeclean.Windows
             MenuFrame.Navigate(new MainMenu(MenuFrame, this));
             this.Title = user.UserName;
         }
+
+        public string userName()
+        {
+            return user.UserName;
+        }
+
+        public int userLevel()
+        {
+            return user.UserLevel;
+        }
+
+        public int userChips()
+        {
+            return user.UserChips;
+        }
     }
 }

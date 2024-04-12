@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using SuperbetBeclean.Windows;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace SuperbetBeclean.Pages
 {
@@ -8,10 +10,16 @@ namespace SuperbetBeclean.Pages
     public partial class LobbyPage : Page
     {
         private Frame _mainFrame;
-        public LobbyPage(Frame mainFrame)
+        private MenuWindow _mainWindow;
+        ///PlayerNameTextBoxPlayerLvlTextBoxChipsLevelTextBox
+        public LobbyPage(Frame mainFrame, MenuWindow menuWindow)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
+            _mainWindow = menuWindow;
+            PlayerNameTextBox.Text = menuWindow.userName();
+            PlayerLevelTextBox.Text = "Level: " + menuWindow.userLevel().ToString();
+            PlayerChipsTextBox.Text = "Chips: " + menuWindow.userChips().ToString();
         }
 
         private void buttonLobbyBack(object sender, System.Windows.RoutedEventArgs e)
