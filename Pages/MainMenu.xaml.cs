@@ -10,13 +10,13 @@ namespace SuperbetBeclean.Pages
     public partial class MainMenu : Page
     {
         private Frame _mainFrame;
-        private Window _mainWindow;
+        private MenuWindow _menuWindow;
 
-        public MainMenu(Frame mainFrame, Window mainWindow)
+        public MainMenu(Frame mainFrame, MenuWindow mainWindow)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
-            _mainWindow = mainWindow;
+            _menuWindow = mainWindow;
         }
 
         private void onClickRulesButton(object sender, RoutedEventArgs e)
@@ -27,12 +27,12 @@ namespace SuperbetBeclean.Pages
 
         private void onClickPlayButton(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new LobbyPage(_mainFrame));
+            _mainFrame.Navigate(new LobbyPage(_mainFrame, _menuWindow));
         }
 
         private void onClickQuitButton(object sender, RoutedEventArgs e)
         {
-            _mainWindow.Close();
+            _menuWindow.Close();
         }
 
     }
