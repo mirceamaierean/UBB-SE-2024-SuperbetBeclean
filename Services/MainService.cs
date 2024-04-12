@@ -8,11 +8,11 @@ using SuperbetBeclean.Windows;
 
 namespace SuperbetBeclean.Services
 {
-    public class Subject
+    public class MainService
     {
         private List < Window > openedUsersWindows;
 
-        public Subject()
+        public MainService()
         {
             openedUsersWindows = new List <Window>();
         }

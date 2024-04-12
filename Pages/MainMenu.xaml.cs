@@ -34,5 +34,6 @@ namespace SuperbetBeclean.Pages
         {
             _mainWindow.Close();
         }
+
     }
 }
