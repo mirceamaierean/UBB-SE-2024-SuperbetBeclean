@@ -1,45 +1,50 @@
-CREATE PROCEDURE CreateUserTitle
+CREATE OR ALTER PROCEDURE createUserTitle
     @user_id INT,
     @title_id INT
 AS
 BEGIN
-    INSERT INTO UserTitles (user_id, title_id)
-    VALUES (@user_id, @title_id)
+    INSERT INTO UserTitles
+        (user_id, title_id)
+    VALUES
+        (@user_id, @title_id)
 END
 GO
 
-CREATE PROCEDURE GetAllUserTitles
+CREATE OR ALTER PROCEDURE getAllUserTitles
 AS
 BEGIN
-    SELECT * FROM UserTitles
+    SELECT *
+    FROM UserTitles
 END
 GO
 
-CREATE PROCEDURE GetAllUserTitlesByUserID
+CREATE OR ALTER PROCEDURE getAllUserTitlesByUserID
     @user_id INT
 AS
 BEGIN
-    SELECT * FROM UserTitles WHERE user_id = @user_id
+    SELECT *
+    FROM UserTitles
+    WHERE user_id = @user_id
 END
 GO
 
-CREATE PROCEDURE GetAllTitleNamesByUserID
-	@user_id INT
+CREATE OR ALTER PROCEDURE getAllTitleNamesByUserID
+    @user_id INT
 AS
 BEGIN
     SELECT T.title_name
     FROM UserTitles UT
-    INNER JOIN Title T ON UT.title_id = T.title_id
+        INNER JOIN Title T ON UT.title_id = T.title_id
     WHERE UT.user_id = @user_id
 END
 GO
 
-CREATE PROCEDURE GetAllTitleIdsByUserID
-	@user_id INT
+CREATE OR ALTER PROCEDURE getAllTitleIdsByUserID
+    @user_id INT
 AS
 BEGIN
     SELECT T.title_id
     FROM UserTitles UT
-    INNER JOIN Title T ON UT.title_id = T.title_id
+        INNER JOIN Title T ON UT.title_id = T.title_id
     WHERE UT.user_id = @user_id
 END
