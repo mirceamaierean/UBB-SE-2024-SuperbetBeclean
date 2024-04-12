@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HandRankCalculator.cs" />
+    <Compile Include="Model\Challenge.cs" />
+    <Compile Include="Model\Font.cs" />
+    <Compile Include="Model\Icon.cs" />
+    <Compile Include="Model\Table.cs" />
+    <Compile Include="Model\Title.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Pages\GameTablePage.xaml.cs">
       <DependentUpon>GameTablePage.xaml</DependentUpon>
     </Compile>
@@ -150,6 +158,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.config.example" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -159,6 +168,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="db\models\Challenge.sql" />
+    <Content Include="db\models\Font.sql" />
+    <Content Include="db\models\Icon.sql" />
+    <Content Include="db\models\Request.sql" />
+    <Content Include="db\models\Table.sql" />
+    <Content Include="db\models\Title.sql" />
+    <Content Include="db\models\User.sql" />
+    <Content Include="db\models\UserFonts.sql" />
+    <Content Include="db\models\UserIcons.sql" />
+    <Content Include="db\models\UserTitles.sql" />
+    <Content Include="db\queries\challenge.sql" />
+    <Content Include="db\queries\font.sql" />
+    <Content Include="db\queries\icon.sql" />
+    <Content Include="db\queries\request.sql" />
+    <Content Include="db\queries\table.sql" />
+    <Content Include="db\queries\title.sql" />
+    <Content Include="db\queries\user.sql" />
+    <Content Include="db\queries\userfonts.sql" />
+    <Content Include="db\queries\usericons.sql" />
+    <Content Include="db\queries\usertitle.sql" />
     <Resource Include="assets\messageicons.png" />
     <Resource Include="assets\gametableBG.jpg" />
     <Resource Include="assets\challengesicon.png" />

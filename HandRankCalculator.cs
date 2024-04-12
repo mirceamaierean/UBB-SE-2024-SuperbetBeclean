@@ -1,4 +1,8 @@
-﻿class HandRankCalculator
+﻿
+using System;
+using System.Collections.Generic;
+
+class HandRankCalculator
 {
     private Dictionary<string, int> cardValues;
     /// Since our cards range in value from 2 to 14, we will use base 15 to hash a certain hand
