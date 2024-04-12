@@ -90,7 +90,7 @@
                 <TextBlock x:Name="PlayerNameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="157"/>
                 <TextBlock x:Name="PlayerLvlTextBox" Text="lvlTemp" Margin="50,19,103,0"/>
                 <TextBlock x:Name="ChipsLevelTextBox" Text="chipsTemp" Margin="119,19,28,0"/>
-                <Image x:Name="PlayerIconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
+                <Image x:Name="PlayerIconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand" MouseLeftButtonDown="PlayerIconImg_MouseLeftButtonDown"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
@@ -131,7 +131,7 @@
                         <Label Grid.Row="2" Content="Buy-in: 5000 chips" FontSize="16"/>
                         <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
                     </Grid>
-                    <Button Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42"/>
+                    <Button x:Name="InternBttn" Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Center" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42" Click="onClickInternButton"/>
                 </Grid>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
@@ -158,7 +158,7 @@
                         <Label Grid.Row="2" Content="Buy-in: 50000 chips" FontSize="16"/>
                         <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
                     </Grid>
-                    <Button Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42"/>
+                    <Button x:Name="JuniorBttn" Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42" Click="onClickJuniorBttn"/>
                 </Grid>
                 <Grid Grid.Column="5">
                     <Grid.RowDefinitions>
@@ -185,7 +185,7 @@
                         <Label Grid.Row="2" Content="Buy-in: 500000 chips" FontSize="16"/>
                         <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
                     </Grid>
-                    <Button Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42"/>
+                    <Button x:Name="SeniorBtn" Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42" Click="onClickSeniorButton"/>
                 </Grid>
             </Grid>
         </Grid>

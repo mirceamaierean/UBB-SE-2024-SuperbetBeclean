@@ -10,11 +10,13 @@ namespace SuperbetBeclean.Pages
     public partial class MainMenu : Page
     {
         private Frame _mainFrame;
+        private Window _mainWindow;
 
-        public MainMenu(Frame mainFrame, string username = "")
+        public MainMenu(Frame mainFrame, Window mainWindow)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
+            _mainWindow = mainWindow;
         }
 
         private void onClickRulesButton(object sender, RoutedEventArgs e)
@@ -30,7 +32,7 @@ namespace SuperbetBeclean.Pages
 
         private void onClickQuitButton(object sender, RoutedEventArgs e)
         {
-            System.Environment.Exit(0);
+            _mainWindow.Close();
         }
 
     }

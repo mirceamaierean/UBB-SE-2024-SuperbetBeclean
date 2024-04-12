@@ -1,31 +1,40 @@
-CREATE PROCEDURE CreateChallenge --CREATE
+CREATE OR ALTER PROCEDURE createChallenge
+    --CREATE
     @challenge_description VARCHAR(MAX),
     @challenge_rule VARCHAR(MAX),
     @challenge_amount INT,
     @challenge_reward INT
 AS
 BEGIN
-    INSERT INTO Challenge (challenge_description, challenge_rule, challenge_amount, challenge_reward)
-    VALUES (@challenge_description, @challenge_rule, @challenge_amount, @challenge_reward)
+    INSERT INTO Challenge
+        (challenge_description, challenge_rule, challenge_amount, challenge_reward)
+    VALUES
+        (@challenge_description, @challenge_rule, @challenge_amount, @challenge_reward)
 END
 GO
 
-CREATE PROCEDURE GetChallenge -- READ & READ ALL
+-- READ & READ ALL
+CREATE OR ALTER PROCEDURE getChallengeById
     @challenge_id INT
 AS
 BEGIN
-    SELECT * FROM Challenge WHERE challenge_id = @challenge_id
+    SELECT *
+    FROM Challenge
+    WHERE challenge_id = @challenge_id
 END
 GO
 
-CREATE PROCEDURE GetAllChallenges
+
+CREATE OR ALTER PROCEDURE GetAllChallenges
 AS
 BEGIN
-    SELECT * FROM Challenge
+    SELECT *
+    FROM Challenge
 END
 GO
 
-CREATE PROCEDURE UpdateChallenge --UPDATE
+CREATE OR ALTER PROCEDURE updateChallenge
+    --UPDATE
     @challenge_id INT,
     @challenge_description VARCHAR(MAX),
     @challenge_rule VARCHAR(MAX),
@@ -44,7 +53,8 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE DeleteChallenge --DELETE 
+CREATE OR ALTER PROCEDURE deleteChallenge
+    --DELETE 
     @challenge_id INT
 AS
 BEGIN
