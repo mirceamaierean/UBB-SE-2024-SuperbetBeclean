@@ -58,8 +58,6 @@
 
     <Compile Include="Pages\GameTablePage.xaml.cs">
       <DependentUpon>GameTablePage.xaml</DependentUpon>
-    <Compile Include="Components\InventoryItemComponent.xaml.cs">
-      <DependentUpon>InventoryItemComponent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LeaderboardPage.xaml.cs">
       <DependentUpon>LeaderboardPage.xaml</DependentUpon>
@@ -86,10 +84,6 @@
     <Compile Include="Windows\RulesWindow.xaml.cs">
       <DependentUpon>RulesWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Components\InventoryItemComponent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
