@@ -9,16 +9,17 @@ namespace SuperbetBeclean
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainService service;
+        private MainSubject subject;
         public MainWindow()
         {
             InitializeComponent();
-            service = new MainService();
+            subject = new MainSubject();
             MainFrame.Navigate(new LoginPage(MainFrame, this));
+            Title = "Superbet Beclean - Poker";
         }
         public void openNewWindow(string username)
         {
-            service.addWindow(username);
+            subject.addWindow(username);
         }
     }
 }

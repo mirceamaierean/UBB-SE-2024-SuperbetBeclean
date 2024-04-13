@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperbetBeclean.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,12 @@ namespace SuperbetBeclean.Pages
     /// </summary>
     public partial class GameTablePage : Page
     {
-        public GameTablePage(Frame mainFrame)
+        private MenuWindow _mainWindow; 
+        public GameTablePage(Frame mainFrame, MenuWindow mainWindow)
         {
             InitializeComponent();
             Loaded += GameTablePage_Loaded;
+            _mainWindow = mainWindow;
         }
 
         private void GameTablePage_Loaded(object sender, RoutedEventArgs e)

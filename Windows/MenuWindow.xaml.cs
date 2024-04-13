@@ -23,12 +23,20 @@ namespace SuperbetBeclean.Windows
     public partial class MenuWindow : Window
     {
         private User user;
-        public MenuWindow(User u)
+        private GameService service;
+        public MenuWindow(User u, GameService serv)
         {
             InitializeComponent();
+            this.service = serv;
             this.user = u;
-            MenuFrame.Navigate(new MainMenu(MenuFrame, this));
             this.Title = user.UserName;
+            MenuFrame.Navigate(new MainMenu(MenuFrame, this, service, user));
+            Closed += disconnectUser;
+        }
+
+        private void disconnectUser(object sender, System.EventArgs e)
+        {
+            service.disconnectUser(user);
         }
 
         public string userName()
@@ -44,6 +52,11 @@ namespace SuperbetBeclean.Windows
         public int userChips()
         {
             return user.UserChips;
+        }
+
+        public int userStreak()
+        {
+            return user.UserStreak;
         }
     }
 }

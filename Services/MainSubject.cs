@@ -8,16 +8,17 @@ using SuperbetBeclean.Windows;
 
 namespace SuperbetBeclean.Services
 {
-    public class MainService
+    public class MainSubject
     {
         private List<Window> openedUsersWindows;
         private List<User> activeUsers;
         private SqlConnection sqlConnection;
         string connectionString;
-        public MainService()
+        public MainSubject()
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
             openedUsersWindows = new List<Window>();
+            activeUsers = new List<User>();
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
         }
@@ -29,15 +30,16 @@ namespace SuperbetBeclean.Services
                 var diffDates = DateTime.Now.Date - newUser.UserLastLogin.Date;
                 if (diffDates.Days == 1)
                 {
-                    newUser.UserStreak++;
+                    newUser.UserStreak++; 
                 }
                 else
                 {
                     newUser.UserStreak = 1;
                 }
+                newUser.UserChips += newUser.UserStreak * 5000;
                 SqlCommand dailyBonusCmd = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
                 dailyBonusCmd.Parameters.AddWithValue("@userID", newUser.UserID);
-                dailyBonusCmd.Parameters.AddWithValue("@userChips", newUser.UserStack + newUser.UserStreak * 5000);
+                dailyBonusCmd.Parameters.AddWithValue("@userChips", newUser.UserChips);
                 dailyBonusCmd.ExecuteNonQuery();
                 SqlCommand newStreakCmd = new SqlCommand("EXEC updateUserStreak @userID , @userStreak", sqlConnection);
                 newStreakCmd.Parameters.AddWithValue("@userID", newUser.UserID);
@@ -73,7 +75,7 @@ namespace SuperbetBeclean.Services
                     int level = reader.IsDBNull(reader.GetOrdinal("user_level")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_level"));
                     DateTime lastLogin = reader.IsDBNull(reader.GetOrdinal("user_handsPlayed")) ? default(DateTime) : reader.GetDateTime(reader.GetOrdinal("user_lastLogin"));
                     User newUser = new User(userID, userName, currentFont, currentTitle, currentIcon, currentTable, chips, stack, streak, handsPlayed, level, lastLogin);
-                    MenuWindow menuWindow = new MenuWindow(newUser);
+                    MenuWindow menuWindow = new MenuWindow(newUser, new GameService());
                     reader.Close();
                     menuWindow.Show();
                     newUserLogin(newUser);

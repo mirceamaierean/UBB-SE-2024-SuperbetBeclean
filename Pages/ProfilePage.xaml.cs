@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperbetBeclean.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,16 @@ namespace SuperbetBeclean.Pages
     public partial class ProfilePage : Page
     {
         private Frame _mainFrame;
-        public ProfilePage(Frame mainFrame)
+        private MenuWindow _mainWindow;
+        public ProfilePage(Frame mainFrame, MenuWindow mainWindow)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
+            _mainWindow = mainWindow;
+            profilePageUsernameTextBlock.Text = mainWindow.userName();
+            profilePageChipsTextBlock.Text = mainWindow.userChips().ToString();
+            profilePageDailyStreakTextBlock.Text = mainWindow.userStreak().ToString();
+            profilePageLevelTextBlock.Text = mainWindow.userLevel().ToString() + ": ";
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

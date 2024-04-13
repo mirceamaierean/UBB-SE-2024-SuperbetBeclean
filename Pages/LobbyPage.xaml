@@ -128,8 +128,9 @@
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Content="Small Blind: 50 chips" FontSize="16"/>
                         <Label Grid.Row="1" Content="Big Blind: 100 chips" FontSize="16"/>
-                        <Label Grid.Row="2" Content="Buy-in: 5000 chips" FontSize="16"/>
-                        <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
+                        <Label  Grid.Row="2" Content="Buy-in: 5000 chips" FontSize="16"/>
+                        <Label Grid.Row="3" Content="Seats: " FontSize="16"/>
+                        <TextBlock x:Name="InternPlayerCount" Text="..." FontSize="16" Margin="59,5,88,5" Grid.Row="3"/>
                     </Grid>
                     <Button x:Name="InternBttn" Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Center" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42" Click="onClickInternButton"/>
                 </Grid>
@@ -156,7 +157,9 @@
                         <Label Grid.Row="0" Content="Small Blind: 500 chips" FontSize="16"/>
                         <Label Grid.Row="1" Content="Big Blind: 1000 chips" FontSize="16"/>
                         <Label Grid.Row="2" Content="Buy-in: 50000 chips" FontSize="16"/>
-                        <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
+                        <Label Grid.Row="3" Content="Seats:" FontSize="16"/>
+                        <TextBlock x:Name="JuniorPlayerCount" Text="..." FontSize="16" Margin="59,5,88,5" Grid.Row="3"/>
+
                     </Grid>
                     <Button x:Name="JuniorBttn" Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42" Click="onClickJuniorBttn"/>
                 </Grid>
@@ -183,7 +186,9 @@
                         <Label Grid.Row="0" Content="Small Blind: 5000 chips" FontSize="16"/>
                         <Label Grid.Row="1" Content="Big Blind: 10000 chips" FontSize="16"/>
                         <Label Grid.Row="2" Content="Buy-in: 500000 chips" FontSize="16"/>
-                        <Label Grid.Row="3" Content="Seats: x/8" FontSize="16"/>
+                        <Label Grid.Row="3" Content="Seats:" FontSize="16"/>
+                        <TextBlock x:Name="SeniorPlayerCount" Text="..." FontSize="16" Margin="59,5,88,5" Grid.Row="3"/>
+
                     </Grid>
                     <Button x:Name="SeniorBtn" Style="{StaticResource BottomRoundedButtonStyle}"  Grid.Row="3"  Content="Join Table" VerticalAlignment="Top" FontSize="16" BorderBrush="Black" Background="Black" Foreground="White" Cursor="Hand" Padding="1,1,1,7" ScrollViewer.CanContentScroll="True" Height="42" Click="onClickSeniorButton"/>
                 </Grid>

@@ -69,8 +69,9 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Label Content="Level "/>
-                                <TextBlock x:Name="profilePageLevelTextBlock" Text="X: NN/MM" VerticalAlignment="Center" Margin="35 0 0 0"/>
+                                <Label Content="Level " Margin="0,0,164,0"/>
+                                <TextBlock x:Name="profilePageLevelTextBlock" Text="X:" VerticalAlignment="Center" Margin="35 0 0 0"/>
+                                <TextBlock x:Name="profilePageMoreHandsTextBlock" Text="NN/MM" VerticalAlignment="Center" Margin="50,0,-15,0"/>
                                 <Label Content="Hands until next level" Margin="90 0 0 0"/>
                             </Grid>
                             <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -82,15 +83,7 @@
                                 <TextBlock x:Name="profilePageLeaderboardTextBlock" Text="X/NNN" VerticalAlignment="Center" Margin="78 0 0 0"/>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="3" VerticalAlignment="Top">
-                            <Button x:Name="profilePageGetDailyBonusButton" Content="Get Daily Bonus" Height="30" Margin="25 5 25 0" MaxWidth="250" VerticalAlignment="Top" Background="#FFFF5E5E" Foreground="White" FontFamily="Franklin Gothic Book" >
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="5"/>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-                        </Grid>
+                        <Grid Grid.Row="3" VerticalAlignment="Top"/>
                     </Grid>
                 </Border>
             </Grid>
