@@ -13,21 +13,21 @@ namespace SuperbetBeclean.Pages
     {
         private Frame _mainFrame;
         private MenuWindow _mainWindow;
-        private GameService _gameService;
+        private Service _service;
         private User _user;
-        public LobbyPage(Frame mainFrame, MenuWindow menuWindow, GameService gameService, User u)
+        public LobbyPage(Frame mainFrame, MenuWindow menuWindow, Service service, User u)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
             _mainWindow = menuWindow;
-            _gameService = gameService;
+            _service = service;
             _user = u;
             PlayerNameTextBox.Text = menuWindow.userName();
             PlayerLevelTextBox.Text = "Level: " + menuWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = "Chips: " + menuWindow.userChips().ToString();
-            InternPlayerCount.Text = _gameService.occupiedIntern().ToString() + "/8";
-            JuniorPlayerCount.Text = _gameService.occupiedJunior().ToString() + "/8";
-            SeniorPlayerCount.Text = _gameService.occupiedSenior().ToString() + "/8";
+            InternPlayerCount.Text = _service.occupiedIntern().ToString() + "/8";
+            JuniorPlayerCount.Text = _service.occupiedJunior().ToString() + "/8";
+            SeniorPlayerCount.Text = _service.occupiedSenior().ToString() + "/8";
         }
 
         private void buttonLobbyBack(object sender, System.Windows.RoutedEventArgs e)
@@ -43,24 +43,24 @@ namespace SuperbetBeclean.Pages
 
         private void onClickInternButton(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (_gameService.joinInternTable(_user))
-                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow));
+            if (_service.joinInternTable(_user))
+                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow, _service));
             else
                 MessageBox.Show("Sorry, this table is full.");
         }
 
         private void onClickJuniorBttn(object sender, System.Windows.RoutedEventArgs e)
         {
-            if ( _gameService.joinJuniorTable(_user))
-                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow));
+            if ( _service.joinJuniorTable(_user))
+                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow, _service));
             else
                 MessageBox.Show("Sorry, this table is full.j");
         }
 
         private void onClickSeniorButton(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (_gameService.joinSeniorTable(_user))
-                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow));
+            if (_service.joinSeniorTable(_user))
+                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow, _service));
             else
                 MessageBox.Show("Sorry, this table is full.");
         }

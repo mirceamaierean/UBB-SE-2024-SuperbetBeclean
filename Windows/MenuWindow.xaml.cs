@@ -23,14 +23,14 @@ namespace SuperbetBeclean.Windows
     public partial class MenuWindow : Window
     {
         private User user;
-        private GameService service;
-        public MenuWindow(User u, GameService serv)
+        private Service service;
+        public MenuWindow(User u, Service serv)
         {
             InitializeComponent();
             this.service = serv;
             this.user = u;
             this.Title = user.UserName;
-            MenuFrame.Navigate(new MainMenu(MenuFrame, this, service, user));
+            MenuFrame.Navigate(new MainMenu(MenuFrame, this, serv, user));
             Closed += disconnectUser;
         }
 
