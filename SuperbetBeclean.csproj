@@ -81,7 +81,8 @@
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\MainService.cs" />
+    <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\MainSubject.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Windows\MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
