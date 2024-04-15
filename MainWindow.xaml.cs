@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using SuperbetBeclean.Model;
 using SuperbetBeclean.Pages;
 using SuperbetBeclean.Services;
 
@@ -9,17 +10,23 @@ namespace SuperbetBeclean
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainSubject subject;
+        private Service service;
         public MainWindow()
         {
             InitializeComponent();
-            subject = new MainSubject();
+            service = new Service();
             MainFrame.Navigate(new LoginPage(MainFrame, this));
             Title = "Superbet Beclean - Poker";
+            Closed += endGames;
         }
         public void openNewWindow(string username)
         {
-            subject.addWindow(username);
+            service.addWindow(username);
+        }
+
+        private void endGames(object sender, System.EventArgs e)
+        {
+            service.endGames();
         }
     }
 }

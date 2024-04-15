@@ -14,13 +14,13 @@ namespace SuperbetBeclean.Pages
         private Frame _mainFrame;
         private MenuWindow _menuWindow;
         private User _user;
-        private GameService _gameService;
-        public MainMenu(Frame mainFrame, MenuWindow mainWindow, GameService serv, User user)
+        private Service _service;
+        public MainMenu(Frame mainFrame, MenuWindow mainWindow, Service serv, User user)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
             _menuWindow = mainWindow;
-            _gameService = serv;
+            _service = serv;
             _user = user;
         }
 
@@ -32,7 +32,7 @@ namespace SuperbetBeclean.Pages
 
         private void onClickPlayButton(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new LobbyPage(_mainFrame, _menuWindow, _gameService, _user));
+            _mainFrame.Navigate(new LobbyPage(_mainFrame, _menuWindow, _service, _user));
         }
 
         private void onClickQuitButton(object sender, RoutedEventArgs e)
