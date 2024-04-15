@@ -71,7 +71,7 @@
                         <ImageBrush ImageSource="/assets/leaderboard.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="RefferalBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Foreground="Black" HorizontalAlignment="Center" Grid.Column="1" Height="40" Cursor="Hand">
+                <Button x:Name="RefferalBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Foreground="Black" HorizontalAlignment="Center" Grid.Column="1" Height="40" Cursor="Hand" Click="onShopButtonClick">
                     <Button.Background>
                         <ImageBrush ImageSource="/assets/shopping-cart-white.png" TileMode="Tile"/>
                     </Button.Background>
