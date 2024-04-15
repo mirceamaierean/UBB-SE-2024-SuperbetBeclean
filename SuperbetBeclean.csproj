@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Components\ChallengePanelSymbols.xaml.cs">
       <DependentUpon>ChallengePanelSymbols.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\ShopItemComponent.xaml.cs">
       <DependentUpon>ShopItemComponent.xaml</DependentUpon>
     </Compile>
@@ -94,7 +95,6 @@
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\Subject.cs" />
     <Compile Include="Windows\ChallengesWindow.xaml.cs">
       <DependentUpon>ChallengesWindow.xaml</DependentUpon>
     </Compile>
@@ -112,7 +112,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\ChallengePanelSymbols.xaml">
+    <Page Include="Components\ChallengePanelSymbols.xaml" />
     <Page Include="Components\ShopItemComponent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
