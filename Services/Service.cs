@@ -25,6 +25,7 @@ namespace SuperbetBeclean.Services
         string connectionString;
         Thread internThread, juniorThread, seniorThread;
 
+        const int DEFAULT_ICON_ID = 21;
         public Service()
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
@@ -160,7 +161,7 @@ namespace SuperbetBeclean.Services
                     string userName = reader.IsDBNull(reader.GetOrdinal("user_username")) ? "" : reader.GetString(reader.GetOrdinal("user_username"));
                     int currentFont = reader.IsDBNull(reader.GetOrdinal("user_currentFont")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_currentFont"));
                     int currentTitle = reader.IsDBNull(reader.GetOrdinal("user_currentTitle")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_currentTitle"));
-                    int currentIcon = reader.IsDBNull(reader.GetOrdinal("user_currentIcon")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_currentIcon"));
+                    int currentIcon = reader.IsDBNull(reader.GetOrdinal("user_currentIcon")) ? DEFAULT_ICON_ID : reader.GetInt32(reader.GetOrdinal("user_currentIcon"));
                     int currentTable = reader.IsDBNull(reader.GetOrdinal("user_currentTable")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_currentTable"));
                     int chips = reader.IsDBNull(reader.GetOrdinal("user_chips")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_chips"));
                     int stack = reader.IsDBNull(reader.GetOrdinal("user_stack")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_stack"));

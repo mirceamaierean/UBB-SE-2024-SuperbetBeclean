@@ -21,7 +21,7 @@ namespace SuperbetBeclean.Model
         private int _userLevel;
         private DateTime _userLastLogin;
 
-        public User(int userID = 0, string userName = "", int userCurrentFont = 0, int userCurrentTitle = 0, int userCurrentIcon = 0, int userCurrentTable = 0, int userChips = 0, int userStack = 0, int userStreak = 0, int userHandsPlayed = 0, int userLevel = 0, DateTime userLastLogin = default(DateTime))
+        public User(int userID = 0, string userName = "", int userCurrentFont = 0, int userCurrentTitle = 0, int userCurrentIcon = 4, int userCurrentTable = 0, int userChips = 0, int userStack = 0, int userStreak = 0, int userHandsPlayed = 0, int userLevel = 0, DateTime userLastLogin = default(DateTime))
         {
             _userID = userID;
             _userName = userName;
