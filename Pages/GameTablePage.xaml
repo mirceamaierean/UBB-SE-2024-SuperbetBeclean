@@ -125,84 +125,84 @@
             </Grid.ColumnDefinitions>
 
 
-            <Image x:Name="CardTable1" Grid.Column="1" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center" Margin="0,12,0,13" Visibility="Visible"/>
-            <Image x:Name="CardTable2" Grid.Column="1" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45"  Grid.ColumnSpan="2" Margin="102,12,83,13" Visibility="Visible"/>
-            <Image x:Name="CardTable3" Grid.Column="2" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center"  Visibility="Visible" />
-            <Image x:Name="CardTable4" Grid.Column="2" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="81,12,0,13" Visibility="Visible"/>
-            <Image x:Name="CardTable5" Grid.Column="3" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Margin="37,12,0,13" Visibility="Visible"/>
+            <Image x:Name="CardTable1" Grid.Column="1" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center" Margin="0,12,0,13" Visibility="Hidden"/>
+            <Image x:Name="CardTable2" Grid.Column="1" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45"  Grid.ColumnSpan="2" Margin="102,12,83,13" Visibility="Hidden"/>
+            <Image x:Name="CardTable3" Grid.Column="2" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center"  Visibility="Hidden" />
+            <Image x:Name="CardTable4" Grid.Column="2" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="81,12,0,13" Visibility="Hidden"/>
+            <Image x:Name="CardTable5" Grid.Column="3" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Margin="37,12,0,13" Visibility="Hidden"/>
 
 
             <!--DOWN PROFILES  UP TABLE CARDS-->
-            <Border Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" Width="131" HorizontalAlignment="Center" Visibility="Visible" CornerRadius="10,10,10,10" Margin="0,10,0,150">
+            <Border Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" Width="131" HorizontalAlignment="Center" Visibility="Hidden" CornerRadius="10,10,10,10" Margin="0,10,0,150">
 
 
-                <Grid   Background="WhiteSmoke" Width="131" Height="38" HorizontalAlignment="Center" Visibility="Visible" >
+                <Grid   Background="WhiteSmoke" Width="131" Height="38" HorizontalAlignment="Center" Visibility="Hidden" >
                     <TextBlock x:Name="Player1NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
                     <TextBlock x:Name="Player1LvlTextBox" Text="lvlTemp" Margin="49,19,48,0" FontSize="9"/>
                     <TextBlock x:Name="Player1ChipsTextBox" Text="chipsTemp" Margin="94,19,0,0" FontSize="10" TextAlignment="Center" TextWrapping="Wrap"/>
                     <Image x:Name="Player1IconImg"  HorizontalAlignment="Left" Height="38" Width="38" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" Width="170" Height="48" HorizontalAlignment="Left" Visibility="Visible" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="10,30,0,0">
+            <Border Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" Width="170" Height="48" HorizontalAlignment="Left" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="10,30,0,0">
 
 
-                <Grid   Background="WhiteSmoke" Width="160" Height="38" HorizontalAlignment="Center" Visibility="Visible" >
+                <Grid   Background="WhiteSmoke" Width="160" Height="38" HorizontalAlignment="Center" Visibility="Hidden" >
                     <TextBlock x:Name="Player2NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
                     <TextBlock x:Name="Player2LvlTextBox" Text="lvlTemp" Margin="49,19,80,0"/>
                     <TextBlock x:Name="Player2ChipsTextBox" Text="chipsTemp" Margin="104,19,0,0"/>
                     <Image x:Name="Player2IconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="0" Background="WhiteSmoke" Width="170" Height="48" HorizontalAlignment="Left" Visibility="Visible" CornerRadius="10,10,10,10" VerticalAlignment="Bottom" Margin="10,0,0,30">
+            <Border Grid.Row="2" Grid.Column="0" Background="WhiteSmoke" Width="170" Height="48" HorizontalAlignment="Left" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Bottom" Margin="10,0,0,30">
 
 
-                <Grid   Background="WhiteSmoke" Width="160" Height="38" HorizontalAlignment="Center" Visibility="Visible" >
+                <Grid   Background="WhiteSmoke" Width="160" Height="38" HorizontalAlignment="Center" Visibility="Hidden" >
                     <TextBlock x:Name="Player3NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
                     <TextBlock x:Name="Player3LvlTextBox" Text="lvlTemp" Margin="49,19,80,0"/>
                     <TextBlock x:Name="Player3ChipsTextBox" Text="chipsTemp" Margin="104,19,0,0"/>
                     <Image x:Name="Player3IconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="1" Background="WhiteSmoke" Width="131" Visibility="Visible" CornerRadius="10,10,10,10" Margin="0,150,0,10" HorizontalAlignment="Center">
+            <Border Grid.Row="2" Grid.Column="1" Background="WhiteSmoke" Width="131" Visibility="Hidden" CornerRadius="10,10,10,10" Margin="0,150,0,10" HorizontalAlignment="Center">
 
 
-                <Grid   Background="WhiteSmoke" Width="131" Height="38" HorizontalAlignment="Center" Visibility="Visible" >
+                <Grid   Background="WhiteSmoke" Width="131" Height="38" HorizontalAlignment="Center" Visibility="Hidden" >
                     <TextBlock x:Name="Player4NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
                     <TextBlock x:Name="Player4LvlTextBox" Text="lvlTemp" Margin="49,19,48,0" FontSize="9"/>
                     <TextBlock x:Name="Player4ChipsTextBox" Text="chipsTemp" Margin="94,19,0,0" FontSize="10" TextWrapping="Wrap" TextAlignment="Center"/>
                     <Image x:Name="Player4IconImg"  HorizontalAlignment="Left" Height="38" Width="38" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="3" Background="WhiteSmoke" Width="131" HorizontalAlignment="Center" Visibility="Visible" CornerRadius="10,10,10,10" Margin="0,150,0,10">
+            <Border Grid.Row="2" Grid.Column="3" Background="WhiteSmoke" Width="131" HorizontalAlignment="Center" Visibility="Hidden" CornerRadius="10,10,10,10" Margin="0,150,0,10">
 
 
-                <Grid   Background="WhiteSmoke" Width="131" Height="38" HorizontalAlignment="Center" Visibility="Visible" >
+                <Grid   Background="WhiteSmoke" Width="131" Height="38" HorizontalAlignment="Center" Visibility="Hidden" >
                     <TextBlock x:Name="Player5NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
                     <TextBlock x:Name="Player5LvlTextBox" Text="lvlTemp" Margin="49,19,48,0" FontSize="9"/>
                     <TextBlock x:Name="Player5ChipsTextBox" Text="chipsTemp" Margin="94,19,0,0" FontSize="10" TextAlignment="Center" TextWrapping="Wrap"/>
                     <Image x:Name="Player5IconImg"  HorizontalAlignment="Left" Height="38" Width="38" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="4" Background="WhiteSmoke" Width="170" Height="48" HorizontalAlignment="Right" Visibility="Visible" CornerRadius="10,10,10,10" VerticalAlignment="Bottom" Margin="0,0,10,30">
-                <Grid   Background="WhiteSmoke" Width="160" Height="38" HorizontalAlignment="Center" Visibility="Visible" >
+            <Border Grid.Row="2" Grid.Column="4" Background="WhiteSmoke" Width="170" Height="48" HorizontalAlignment="Right" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Bottom" Margin="0,0,10,30">
+                <Grid   Background="WhiteSmoke" Width="160" Height="38" HorizontalAlignment="Center" Visibility="Hidden" >
                     <TextBlock x:Name="Player6NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
                     <TextBlock x:Name="Player6LvlTextBox" Text="lvlTemp" Margin="49,19,80,0"/>
                     <TextBlock x:Name="Player6ChipsTextBox" Text="chipsTemp" Margin="104,19,0,0"/>
                     <Image x:Name="Player6IconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="4" Background="WhiteSmoke" Width="170" Height="48" HorizontalAlignment="Right" Visibility="Visible" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="0,30,10,0">
-                <Grid   Background="WhiteSmoke" Width="160" Height="38" HorizontalAlignment="Center" Visibility="Visible" >
+            <Border Grid.Row="0" Grid.Column="4" Background="WhiteSmoke" Width="170" Height="48" HorizontalAlignment="Right" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="0,30,10,0">
+                <Grid   Background="WhiteSmoke" Width="160" Height="38" HorizontalAlignment="Center" Visibility="Hidden" >
                     <TextBlock x:Name="Player7NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
                     <TextBlock x:Name="Player7LvlTextBox" Text="lvlTemp" Margin="49,19,80,0"/>
                     <TextBlock x:Name="Player7ChipsTextBox" Text="chipsTemp" Margin="104,19,0,0"/>
                     <Image x:Name="Player7IconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="3" Background="WhiteSmoke" Width="131" HorizontalAlignment="Center" Visibility="Visible" CornerRadius="10,10,10,10" Margin="0,10,0,150">
+            <Border Grid.Row="0" Grid.Column="3" Background="WhiteSmoke" Width="131" HorizontalAlignment="Center" Visibility="Hidden" CornerRadius="10,10,10,10" Margin="0,10,0,150">
 
 
-                <Grid   Background="WhiteSmoke" Width="131" Height="38" HorizontalAlignment="Center" Visibility="Visible" >
+                <Grid   Background="WhiteSmoke" Width="131" Height="38" HorizontalAlignment="Center" Visibility="Hidden" >
                     <TextBlock x:Name="Player8NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
                     <TextBlock x:Name="Player8LvlTextBox" Text="lvlTemp" Margin="49,19,48,0" FontSize="9"/>
                     <TextBlock x:Name="Player8ChipsTextBox" Text="chipsTemp" Margin="94,19,0,0" FontSize="10" TextAlignment="Center" TextWrapping="Wrap"/>
@@ -222,7 +222,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Visibility="Visible" Margin="25,136,25,32" >
+            <Border Grid.Row="0" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,136,25,32" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -233,7 +233,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="0" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="55" Visibility="Visible" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <Border Grid.Row="0" Grid.Column="0" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="55" Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -244,7 +244,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="0" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="55" Visibility="Visible" VerticalAlignment="Top" HorizontalAlignment="Right" >
+            <Border Grid.Row="2" Grid.Column="0" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="55" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -255,7 +255,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Height="40" Visibility="Visible" VerticalAlignment="Top" Margin="25,0,25,0"  >
+            <Border Grid.Row="2" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Height="40" Visibility="Hidden" VerticalAlignment="Top" Margin="25,0,25,0"  >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -266,7 +266,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Height="40" Visibility="Visible" VerticalAlignment="Top" Margin="26,0,26,0"  >
+            <Border Grid.Row="2" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Height="40" Visibility="Hidden" VerticalAlignment="Top" Margin="26,0,26,0"  >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -277,7 +277,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="4" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="55" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <Border Grid.Row="2" Grid.Column="4" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="55" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -288,7 +288,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="4" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="55" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Bottom"   >
+            <Border Grid.Row="0" Grid.Column="4" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="55" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Bottom"   >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -299,7 +299,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Visibility="Visible" Margin="26,139,26,29" >
+            <Border Grid.Row="0" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="26,139,26,29" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
