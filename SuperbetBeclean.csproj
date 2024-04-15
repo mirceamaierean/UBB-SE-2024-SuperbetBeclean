@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\ChallengePanel.xaml.cs">
+      <DependentUpon>ChallengePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ChallengePanelSymbols.xaml.cs">
+      <DependentUpon>ChallengePanelSymbols.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LeaderboardPage.xaml.cs">
       <DependentUpon>LeaderboardPage.xaml</DependentUpon>
     </Compile>
@@ -83,6 +89,14 @@
     <Compile Include="Windows\RulesWindow.xaml.cs">
       <DependentUpon>RulesWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Components\ChallengePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\ChallengePanelSymbols.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
