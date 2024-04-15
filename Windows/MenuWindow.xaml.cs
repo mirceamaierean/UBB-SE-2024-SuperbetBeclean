@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SuperbetBeclean.Services;
 using SuperbetBeclean.Model;
+using System.Threading;
 
 namespace SuperbetBeclean.Windows
 {
@@ -24,6 +25,8 @@ namespace SuperbetBeclean.Windows
     {
         private User user;
         private Service service;
+        public GameTablePage gamePage;
+
         public MenuWindow(User u, Service serv)
         {
             InitializeComponent();
@@ -31,12 +34,22 @@ namespace SuperbetBeclean.Windows
             this.user = u;
             this.Title = user.UserName;
             MenuFrame.Navigate(new MainMenu(MenuFrame, this, serv, user));
+            gamePage = new GameTablePage(MenuFrame, this, service);
             Closed += disconnectUser;
         }
-
-        private void disconnectUser(object sender, System.EventArgs e)
+        public void disconnectUser(object sender, System.EventArgs e)
         {
-            service.disconnectUser(user);
+            service.disconnectUser(this);
+        }
+
+        async public Task startTime()
+        {
+            await gamePage.runTimer();
+        }
+
+        public User Player()
+        {
+            return user;
         }
 
         public string userName()
