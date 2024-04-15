@@ -26,7 +26,6 @@ namespace SuperbetBeclean.Pages
         private MenuWindow _mainWindow;
         private Frame _mainFrame;
         private Service _service;
-        private Frame _mainFrame;
         int timer = 0;
         int playerBet = 0;
         int tableBet = 0;
@@ -36,7 +35,6 @@ namespace SuperbetBeclean.Pages
         {
             InitializeComponent();
             Loaded += GameTablePage_Loaded;
-            _mainFrame = mainFrame;
             _mainWindow = mainWindow;
             _service = service;
             _mainFrame = mainFrame;
