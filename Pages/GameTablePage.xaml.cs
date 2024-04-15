@@ -27,6 +27,9 @@ namespace SuperbetBeclean.Pages
         private Service _service;
         private Frame _mainFrame;
         int timer = 0;
+        int playerBet = 0;
+        int tableBet = 0;
+        string action = "";
 
         public GameTablePage(Frame mainFrame, MenuWindow mainWindow, Service service)
         {
@@ -63,9 +66,19 @@ namespace SuperbetBeclean.Pages
             PlayerTimer.Foreground = Brushes.White;
         }
 
+        public void endTurn()
+        {
+            tableBet = 0;
+            Application.Current.Dispatcher.Invoke(() => {
+                PotValue.Content = tableBet.ToString();
+            });
+        }
+
         public void resetTimer()
         {
             timer = 15;
+            action = "";
+            playerBet = 0;
             PlayerTimer.Text = "Time: " + timer.ToString();
             PlayerTimer.Foreground = Brushes.White;
         }
@@ -77,7 +90,7 @@ namespace SuperbetBeclean.Pages
             PlayerTimer.Text = "Time: " + timer.ToString();
         }
 
-        async public Task runTimer()
+        async public Task < int > runTimer()
         {
             Console.WriteLine("hey i start timer!");
             Application.Current.Dispatcher.Invoke(() => {
@@ -85,6 +98,7 @@ namespace SuperbetBeclean.Pages
             });
             while (timer != 0)
             {
+                if (action != "") break;
                 await Task.Delay(1000);
                 Application.Current.Dispatcher.Invoke(() => {
                     decrementTimer();
@@ -93,6 +107,31 @@ namespace SuperbetBeclean.Pages
             }
             Application.Current.Dispatcher.Invoke(() => { 
                 endTimer(); 
+            });
+            Application.Current.Dispatcher.Invoke(() => {
+                PotValue.Content = tableBet.ToString();
+            });
+            return playerBet;
+        }
+
+        private void CallBtn_Click(object sender, RoutedEventArgs e)
+        {
+            action = "Call";
+            playerBet = tableBet;
+        }
+
+        private void RaiseBttn_Click(object sender, RoutedEventArgs e)
+        {
+            action = "Raise";
+            tableBet = Int32.Parse(BetInput.Text);
+            playerBet = tableBet;
+        }
+
+        public void updatePot(int pot)
+        {
+            tableBet = pot;
+            Application.Current.Dispatcher.Invoke(() => {
+                PotValue.Content = tableBet.ToString();
             });
         }
     }

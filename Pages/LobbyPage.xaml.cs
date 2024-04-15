@@ -48,7 +48,7 @@ namespace SuperbetBeclean.Pages
         private void onClickInternButton(object sender, System.Windows.RoutedEventArgs e)
         {
             if (_service.joinInternTable(_mainWindow))
-                _mainFrame.Navigate(_mainWindow.gamePage);
+                _mainFrame.Navigate(_mainWindow.internPage);
             else
                 MessageBox.Show("Sorry, this table is full.");
         }
@@ -56,7 +56,7 @@ namespace SuperbetBeclean.Pages
         private void onClickJuniorBttn(object sender, System.Windows.RoutedEventArgs e)
         {
             if ( _service.joinJuniorTable(_mainWindow))
-                _mainFrame.Navigate(_mainWindow.gamePage);
+                _mainFrame.Navigate(_mainWindow.juniorPage);
             else
                 MessageBox.Show("Sorry, this table is full.");
         }
@@ -64,7 +64,7 @@ namespace SuperbetBeclean.Pages
         private void onClickSeniorButton(object sender, System.Windows.RoutedEventArgs e)
         {
             if (_service.joinSeniorTable(_mainWindow))
-                _mainFrame.Navigate(_mainWindow.gamePage);
+                _mainFrame.Navigate(_mainWindow.seniorPage);
             else
                 MessageBox.Show("Sorry, this table is full.");
         }

@@ -55,19 +55,39 @@ namespace SuperbetBeclean.Services
                 if (isInternEmpty())
                 {
                     await Task.Delay(3000);
-                    Console.WriteLine("we have no players :(");
+                    Console.WriteLine("intern has no players :(");
                     continue;
                 }
                 internMutex.WaitOne();
                 Queue<MenuWindow> activePlayers = new Queue<MenuWindow>(internTableUsers);
                 internMutex.ReleaseMutex();
-                for (int i=1;i<=3; i++)
+                for (int i = 1; i <= 3; i++)
                 {
-                    foreach(MenuWindow menuWindow in activePlayers)
+                    Console.WriteLine("We are in turn " + i + "!");
+                    bool turnEnded = false;
+                    int currentBet = -1;
+                    int currentBetPlayer = -1;
+
+                    while (!turnEnded)
                     {
-                        await menuWindow.startTime();
+                        if (activePlayers.Count == 0) { break; }
+                        MenuWindow currentWindow = activePlayers.Dequeue();
+                        User player = currentWindow.Player();
+                        if (player.UserStatus == 0) continue;
+                        activePlayers.Enqueue(currentWindow);
+                        if (player.UserID == currentBetPlayer) break;
+                        int playerBet = await currentWindow.startTime("intern");
+                        if (playerBet > currentBet)
+                        {
+                            currentBet = playerBet;
+                            currentBetPlayer = player.UserID;
+                        }
+                        foreach (MenuWindow window in activePlayers) { window.notify("intern", currentBet); }
                     }
+                    foreach (MenuWindow currentWindow in activePlayers) { currentWindow.endTurn("intern"); }
+
                 }
+                // internTableUsers.Clear();
                 // Console.WriteLine("we have a player!!!");
                 // Thread.Sleep(3000);
             }
@@ -81,7 +101,7 @@ namespace SuperbetBeclean.Services
                 if (isJuniorEmpty())
                 {
                     await Task.Delay(3000);
-                    Console.WriteLine("we have no players :(");
+                    Console.WriteLine("junior has no players :(");
                     continue;
                 }
                 juniorMutex.WaitOne();
@@ -89,39 +109,87 @@ namespace SuperbetBeclean.Services
                 juniorMutex.ReleaseMutex();
                 for (int i = 1; i <= 3; i++)
                 {
+                    Console.WriteLine("We are in turn " + i + "!");
                     bool turnEnded = false;
+                    int currentBet = -1;
+                    int currentBetPlayer = -1;
+
+                    while (!turnEnded)
                     {
-                        while (!turnEnded)
+                        if (activePlayers.Count == 0) { break; }
+                        MenuWindow currentWindow = activePlayers.Dequeue();
+                        User player = currentWindow.Player();
+                        if (player.UserStatus == 0) continue;
+                        int playerBet = await currentWindow.startTime("junior");
+                        if (playerBet > currentBet)
                         {
-                            if (activePlayers.Count == 0) turnEnded = true;
-                            MenuWindow currentWindow = activePlayers.Dequeue();
-                            User player = currentWindow.Player();
-                            if (player.UserStatus == 0) continue;
-                            await currentWindow.startTime();
+                            currentBet = playerBet;
+                            currentBetPlayer = player.UserID;
                             activePlayers.Enqueue(currentWindow);
                         }
+                        else if (currentBetPlayer == player.UserID) turnEnded = true;
+                        else
+                        {
+                            activePlayers.Enqueue(currentWindow);
+                        }
+                        foreach (MenuWindow window in activePlayers) { window.notify("junior", currentBet); }
                     }
+                    foreach (MenuWindow currentWindow in activePlayers) { currentWindow.endTurn("junior"); }
+
                 }
+                juniorTableUsers.Clear();
                 // Console.WriteLine("we have a player!!!");
                 // Thread.Sleep(3000);
             }
         }
 
-        private void runSeniorTable()
+        private async Task runSeniorTable()
         {
             while (true)
             {
                 if (ended) break;
+                if (isSeniorEmpty())
+                {
+                    await Task.Delay(3000);
+                    Console.WriteLine("senior has no players :(");
+                    continue;
+                }
                 seniorMutex.WaitOne();
                 Queue<MenuWindow> activePlayers = new Queue<MenuWindow>(seniorTableUsers);
                 seniorMutex.ReleaseMutex();
-                if (isSeniorEmpty())
+                for (int i = 1; i <= 3; i++)
                 {
-                    Thread.Sleep(3000);
-                    continue;
+                    Console.WriteLine("We are in turn " + i + "!");
+                    bool turnEnded = false;
+                    int currentBet = -1;
+                    int currentBetPlayer = -1;
+
+                    while (!turnEnded)
+                    {
+                        if (activePlayers.Count == 0) { break; }
+                        MenuWindow currentWindow = activePlayers.Dequeue();
+                        User player = currentWindow.Player();
+                        if (player.UserStatus == 0) continue;
+                        int playerBet = await currentWindow.startTime("senior");
+                        if (playerBet > currentBet)
+                        {
+                            currentBet = playerBet;
+                            currentBetPlayer = player.UserID;
+                            activePlayers.Enqueue(currentWindow);
+                        }
+                        else if (currentBetPlayer == player.UserID) turnEnded = true;
+                        else
+                        {
+                            activePlayers.Enqueue(currentWindow);
+                        }
+                        foreach (MenuWindow window in activePlayers) { window.notify("senior", currentBet); }
+                    }
+                    foreach (MenuWindow currentWindow in activePlayers) { currentWindow.endTurn("senior"); }
+
                 }
-                /// TO DO : play a round
-                /// at the end of round, add players standing in a queue to the table 
+                seniorTableUsers.Clear();
+                // Console.WriteLine("we have a player!!!");
+                // Thread.Sleep(3000);
             }
         }
 
@@ -132,7 +200,7 @@ namespace SuperbetBeclean.Services
                 var diffDates = DateTime.Now.Date - newUser.UserLastLogin.Date;
                 if (diffDates.Days == 1)
                 {
-                    newUser.UserStreak++; 
+                    newUser.UserStreak++;
                 }
                 else
                 {
