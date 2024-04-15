@@ -86,7 +86,6 @@
     <Compile Include="Pages\ShopPage.xaml.cs">
       <DependentUpon>ShopPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\Subject.cs" />
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -138,7 +137,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ShopPage.xaml">
+    <Page Include="Pages\ShopPage.xaml" />
     <Page Include="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

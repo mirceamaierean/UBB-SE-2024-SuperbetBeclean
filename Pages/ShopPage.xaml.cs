@@ -20,12 +20,17 @@ namespace SuperbetBeclean.Pages
     /// </summary>
     public partial class ShopPage : Page
     {
-        private Frame _mainframe;
-        public ShopPage(Frame mainframe)
+        private Frame _mainFrame;
+        public ShopPage(Frame mainFrame)
         {
             InitializeComponent();
             DataContext = new MainViewModel();
-            _mainframe = mainframe;
+            _mainFrame = mainFrame;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.GoBack();
         }
     }
 }

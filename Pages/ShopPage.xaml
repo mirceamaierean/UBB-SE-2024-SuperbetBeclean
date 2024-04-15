@@ -31,7 +31,7 @@
                             Background="Transparent" 
                             BorderThickness="0" 
                             Foreground="White" 
-                            Cursor="Hand">
+                            Cursor="Hand" Click="Button_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}" 
