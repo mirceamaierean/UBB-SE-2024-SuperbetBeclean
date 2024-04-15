@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SuperbetBeclean.Services;
 using SuperbetBeclean.Model;
+using System.Threading;
 
 namespace SuperbetBeclean.Windows
 {
@@ -24,6 +25,8 @@ namespace SuperbetBeclean.Windows
     {
         private User user;
         private Service service;
+        public GameTablePage internPage, juniorPage, seniorPage;
+
         public MenuWindow(User u, Service serv)
         {
             InitializeComponent();
@@ -31,12 +34,57 @@ namespace SuperbetBeclean.Windows
             this.user = u;
             this.Title = user.UserName;
             MenuFrame.Navigate(new MainMenu(MenuFrame, this, serv, user));
+            internPage = new GameTablePage(MenuFrame, this, service);
+            juniorPage = new GameTablePage(MenuFrame, this, service);
+            seniorPage = new GameTablePage(MenuFrame, this, service);
             Closed += disconnectUser;
         }
-
-        private void disconnectUser(object sender, System.EventArgs e)
+        public void disconnectUser(object sender, System.EventArgs e)
         {
-            service.disconnectUser(user);
+            service.disconnectUser(this);
+        }
+
+        async public Task < int > startTime(string table)
+        {
+            int bet = 0;
+            if (table == "intern")
+                bet = await internPage.runTimer();
+            if (table == "junior")
+                bet = await juniorPage.runTimer();
+            if (table == "senior")
+                bet = await seniorPage.runTimer();
+            return bet;
+        }
+
+        public void notify(string table, int currentPot)
+        {
+            if (table == "intern")
+            {
+                internPage.updatePot(currentPot);
+            }
+            if (table == "junior")
+            {
+                juniorPage.updatePot(currentPot);
+            }
+            if (table == "senior")
+            {
+                seniorPage.updatePot(currentPot);
+            }
+        }
+
+        public void endTurn(string table)
+        {
+            if (table == "intern")
+                internPage.endTurn();
+            if (table == "junior")
+                juniorPage.endTurn();
+            if (table == "senior")
+                seniorPage.endTurn();
+        }
+
+        public User Player()
+        {
+            return user;
         }
 
         public string userName()
