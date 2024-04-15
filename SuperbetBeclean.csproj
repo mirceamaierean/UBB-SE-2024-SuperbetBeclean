@@ -207,6 +207,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="assets\downCard.jpg" />
     <Content Include="db\models\Challenge.sql" />
     <Content Include="db\models\Font.sql" />
     <Content Include="db\models\Icon.sql" />
