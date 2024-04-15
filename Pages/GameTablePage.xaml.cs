@@ -23,6 +23,7 @@ namespace SuperbetBeclean.Pages
     public partial class GameTablePage : Page
     {
         private MenuWindow _mainWindow;
+        private Frame _mainFrame;
         private Service _service;
         public GameTablePage(Frame mainFrame, MenuWindow mainWindow, Service service)
         {
@@ -30,6 +31,7 @@ namespace SuperbetBeclean.Pages
             Loaded += GameTablePage_Loaded;
             _mainWindow = mainWindow;
             _service = service;
+            _mainFrame = mainFrame;
             PlayerNameTextBox.Text = _mainWindow.userName();
             PlayerLvlTextBox.Text = _mainWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = _mainWindow.userChips().ToString();
@@ -43,6 +45,11 @@ namespace SuperbetBeclean.Pages
                 window.Width = 920;
                 window.Height = 720;
             }
+        }
+
+        private void QuitBttn_Click(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.GoBack();
         }
     }
 }
