@@ -44,5 +44,17 @@ namespace SuperbetBeclean.Pages
                 window.Height = 720;
             }
         }
+
+        private void ChallengesBttn_Click(object sender, RoutedEventArgs e)
+        {
+            ChallengesWindow challengesWindow= new ChallengesWindow();
+            challengesWindow.Show();
+        }
+
+        private void MsgBttn_Click(object sender, RoutedEventArgs e)
+        {
+            ChatWindow chatWindow= new ChatWindow();
+            chatWindow.Show();
+        }
     }
 }
