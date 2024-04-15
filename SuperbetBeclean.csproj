@@ -56,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\ChallengePanel.xaml.cs">
+      <DependentUpon>ChallengePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ChallengePanelSymbols.xaml.cs">
+      <DependentUpon>ChallengePanelSymbols.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\ShopItemComponent.xaml.cs">
       <DependentUpon>ShopItemComponent.xaml</DependentUpon>
     </Compile>
@@ -90,6 +96,9 @@
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DBService.cs" />
+    <Compile Include="Windows\ChallengesWindow.xaml.cs">
+      <DependentUpon>ChallengesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\Service.cs" />
     <Compile Include="Windows\MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
@@ -100,6 +109,11 @@
     <Compile Include="Windows\RulesWindow.xaml.cs">
       <DependentUpon>RulesWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Components\ChallengePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\ChallengePanelSymbols.xaml" />
     <Page Include="Components\ShopItemComponent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +152,10 @@
     </Page>
     <Page Include="Pages\ShopPage.xaml" />
     <Page Include="Pages\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ChallengesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,6 +227,8 @@
     <Resource Include="assets\greenchip.png" />
     <Resource Include="assets\backarrow.png" />
     <Content Include="assets\index.html" />
+    <Resource Include="assets\money_bag.png" />
+    <Resource Include="assets\challengeCards.png" />
     <Resource Include="assets\lightgreenbackgroundimg.png" />
     <Resource Include="assets\greenbackgroundimg.jpg" />
     <Resource Include="assets\interntable.png" />
