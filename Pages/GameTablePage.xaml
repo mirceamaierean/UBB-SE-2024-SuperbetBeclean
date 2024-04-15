@@ -125,11 +125,11 @@
             </Grid.ColumnDefinitions>
 
 
-            <Image x:Name="CardTable1" Grid.Column="1" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center" Margin="0,12,0,13" Visibility="Hidden"/>
-            <Image x:Name="CardTable2" Grid.Column="1" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45"  Grid.ColumnSpan="2" Margin="102,12,83,13" Visibility="Hidden"/>
-            <Image x:Name="CardTable3" Grid.Column="2" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center"  Visibility="Hidden" />
-            <Image x:Name="CardTable4" Grid.Column="2" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="81,12,0,13" Visibility="Hidden"/>
-            <Image x:Name="CardTable5" Grid.Column="3" Grid.Row="1" Source="/assets/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Margin="37,12,0,13" Visibility="Hidden"/>
+            <Image x:Name="CardTable1" Grid.Column="1" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center" Margin="0,12,0,13" Visibility="Visible"/>
+            <Image x:Name="CardTable2" Grid.Column="1" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45"  Grid.ColumnSpan="2" Margin="102,12,83,13" Visibility="Visible"/>
+            <Image x:Name="CardTable3" Grid.Column="2" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center"  Visibility="Visible" />
+            <Image x:Name="CardTable4" Grid.Column="2" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="81,12,0,13" Visibility="Visible"/>
+            <Image x:Name="CardTable5" Grid.Column="3" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Margin="37,12,0,13" Visibility="Visible"/>
 
 
             <!--DOWN PROFILES  UP TABLE CARDS-->
