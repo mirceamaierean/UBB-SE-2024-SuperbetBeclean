@@ -98,7 +98,7 @@
                         <ImageBrush ImageSource="/assets/messageicons.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="QuitBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Quit" HorizontalAlignment="Center" Width="82" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand"  Margin="0,13,0,13"/>
+                <Button x:Name="QuitBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Quit" HorizontalAlignment="Center" Width="82" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand"  Margin="0,13,0,13" Click="QuitBttn_Click"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="1" >
