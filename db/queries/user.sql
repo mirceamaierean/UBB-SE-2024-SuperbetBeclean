@@ -33,7 +33,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE gerUserById
+CREATE OR ALTER PROCEDURE getUserById
     @id INT
 AS
 BEGIN
@@ -80,6 +80,126 @@ BEGIN
         user_streak = @streak,
         user_handsPlayed = @handsPlayed,
         user_level = @level,
+        user_lastLogin = @lastLogin
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserFont
+    @id INT,
+    @font INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_currentFont = @font
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserTitle
+    @id INT,
+    @title INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_currentTitle = @title
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserIcon
+    @id INT,
+    @icon INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_currentIcon = @icon
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserTable
+    @id INT,
+    @table INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_currentTable = @table
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserChips
+    @id INT,
+    @chips INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_chips = @chips
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserStack
+    @id INT,
+    @stack INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_stack = @stack
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserStreak
+    @id INT,
+    @streak INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_streak = @streak
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserHandsPlayed
+    @id INT,
+    @handsPlayed INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_handsPlayed = @handsPlayed
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserLevel
+    @id INT,
+    @level INT
+AS
+BEGIN
+    UPDATE Users
+    SET
+        user_level = @level
+    WHERE user_id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE updateUserLastLogin
+    @id INT,
+    @lastLogin DATETIME
+AS
+BEGIN
+    UPDATE Users
+    SET
         user_lastLogin = @lastLogin
     WHERE user_id = @id
 END

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SuperbetBeclean.Services;
+using SuperbetBeclean.Model;
 
 namespace SuperbetBeclean.Windows
 {
@@ -21,13 +22,41 @@ namespace SuperbetBeclean.Windows
     /// </summary>
     public partial class MenuWindow : Window
     {
-        private string username;
-        public MenuWindow(string username)
+        private User user;
+        private Service service;
+        public MenuWindow(User u, Service serv)
         {
             InitializeComponent();
-            this.username = username;
-            MenuFrame.Navigate(new MainMenu(MenuFrame, this));
-            this.Title = username;
+            this.service = serv;
+            this.user = u;
+            this.Title = user.UserName;
+            MenuFrame.Navigate(new MainMenu(MenuFrame, this, serv, user));
+            Closed += disconnectUser;
+        }
+
+        private void disconnectUser(object sender, System.EventArgs e)
+        {
+            service.disconnectUser(user);
+        }
+
+        public string userName()
+        {
+            return user.UserName;
+        }
+
+        public int userLevel()
+        {
+            return user.UserLevel;
+        }
+
+        public int userChips()
+        {
+            return user.UserChips;
+        }
+
+        public int userStreak()
+        {
+            return user.UserStreak;
         }
     }
 }

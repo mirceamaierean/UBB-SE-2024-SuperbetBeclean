@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,20 @@
     </Compile>
     <Compile Include="Components\ChallengePanelSymbols.xaml.cs">
       <DependentUpon>ChallengePanelSymbols.xaml</DependentUpon>
+    <Compile Include="Components\ShopItemComponent.xaml.cs">
+      <DependentUpon>ShopItemComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MainViewModel.cs" />
+    <Compile Include="Models\ShopItem.cs" />
+    <Compile Include="HandRankCalculator.cs" />
+    <Compile Include="Model\Challenge.cs" />
+    <Compile Include="Model\Font.cs" />
+    <Compile Include="Model\Icon.cs" />
+    <Compile Include="Model\Table.cs" />
+    <Compile Include="Model\Title.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Pages\GameTablePage.xaml.cs">
+      <DependentUpon>GameTablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LeaderboardPage.xaml.cs">
       <DependentUpon>LeaderboardPage.xaml</DependentUpon>
@@ -73,6 +88,9 @@
     <Compile Include="Pages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ShopPage.xaml.cs">
+      <DependentUpon>ShopPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -80,6 +98,7 @@
     <Compile Include="Windows\ChallengesWindow.xaml.cs">
       <DependentUpon>ChallengesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\Service.cs" />
     <Compile Include="Windows\MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
@@ -94,6 +113,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\ChallengePanelSymbols.xaml">
+    <Page Include="Components\ShopItemComponent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,6 +129,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\GameTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LeaderboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +149,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ShopPage.xaml" />
     <Page Include="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +189,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.config.example" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -173,6 +199,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="db\models\Challenge.sql" />
+    <Content Include="db\models\Font.sql" />
+    <Content Include="db\models\Icon.sql" />
+    <Content Include="db\models\Request.sql" />
+    <Content Include="db\models\Table.sql" />
+    <Content Include="db\models\Title.sql" />
+    <Content Include="db\models\User.sql" />
+    <Content Include="db\models\UserFonts.sql" />
+    <Content Include="db\models\UserIcons.sql" />
+    <Content Include="db\models\UserTitles.sql" />
+    <Content Include="db\queries\challenge.sql" />
+    <Content Include="db\queries\font.sql" />
+    <Content Include="db\queries\icon.sql" />
+    <Content Include="db\queries\request.sql" />
+    <Content Include="db\queries\table.sql" />
+    <Content Include="db\queries\title.sql" />
+    <Content Include="db\queries\user.sql" />
+    <Content Include="db\queries\userfonts.sql" />
+    <Content Include="db\queries\usericons.sql" />
+    <Content Include="db\queries\usertitle.sql" />
+    <Resource Include="assets\messageicons.png" />
+    <Resource Include="assets\gametableBG.jpg" />
+    <Resource Include="assets\challengesicon.png" />
     <Resource Include="assets\demo_avatar.jpg" />
     <Resource Include="assets\greenchip.png" />
     <Resource Include="assets\backarrow.png" />
@@ -193,6 +242,7 @@
     <Resource Include="assets\leaderboard.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="assets\pear.jpeg" />
     <Resource Include="assets\redchip.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,46 +1,55 @@
-CREATE PROCEDURE CreateRequest
+CREATE OR ALTER PROCEDURE createRequest
     @fromUser INT,
     @toUser INT,
     @date DATE
 AS
 BEGIN
-    INSERT INTO Request (request_fromUser, request_toUser, request_date)
-    VALUES (@fromUser, @toUser, @date)
+    INSERT INTO Request
+        (request_fromUser, request_toUser, request_date)
+    VALUES
+        (@fromUser, @toUser, @date)
 END
 GO
 
-CREATE PROCEDURE GetRequestByID
+CREATE OR ALTER PROCEDURE getRequestByID
     @request_id INT
 AS
 BEGIN
-    SELECT * FROM Request WHERE request_id = @request_id
+    SELECT *
+    FROM Request
+    WHERE request_id = @request_id
 END
 GO
 
-CREATE PROCEDURE GetAllRequests
+CREATE OR ALTER PROCEDURE getAllRequests
 AS
 BEGIN
-    SELECT * FROM Request
+    SELECT *
+    FROM Request
 END
 GO
 
-CREATE PROCEDURE GetAllRequestsByFromUserID
+CREATE OR ALTER PROCEDURE getAllRequestsByFromUserID
     @fromUser INT
 AS
 BEGIN
-    SELECT * FROM Request WHERE request_fromUser = @fromUser
+    SELECT *
+    FROM Request
+    WHERE request_fromUser = @fromUser
 END
 GO
 
-CREATE PROCEDURE GetAllRequestsByToUserID
+CREATE OR ALTER PROCEDURE getAllRequestsByToUserID
     @toUser INT
 AS
 BEGIN
-    SELECT * FROM Request WHERE request_toUser = @toUser
+    SELECT *
+    FROM Request
+    WHERE request_toUser = @toUser
 END
 GO
 
-CREATE PROCEDURE DeleteOldRequests
+CREATE OR ALTER PROCEDURE deleteOldRequests
 AS
 BEGIN
     DELETE FROM Request WHERE request_date < DATEADD(YEAR, -1, GETDATE())

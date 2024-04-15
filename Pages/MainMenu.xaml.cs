@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using SuperbetBeclean.Model;
+using SuperbetBeclean.Services;
 using SuperbetBeclean.Windows;
 
 namespace SuperbetBeclean.Pages
@@ -10,13 +12,16 @@ namespace SuperbetBeclean.Pages
     public partial class MainMenu : Page
     {
         private Frame _mainFrame;
-        private Window _mainWindow;
-
-        public MainMenu(Frame mainFrame, Window mainWindow)
+        private MenuWindow _menuWindow;
+        private User _user;
+        private Service _service;
+        public MainMenu(Frame mainFrame, MenuWindow mainWindow, Service serv, User user)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
-            _mainWindow = mainWindow;
+            _menuWindow = mainWindow;
+            _service = serv;
+            _user = user;
         }
 
         private void onClickRulesButton(object sender, RoutedEventArgs e)
@@ -27,12 +32,13 @@ namespace SuperbetBeclean.Pages
 
         private void onClickPlayButton(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new LobbyPage(_mainFrame));
+            _mainFrame.Navigate(new LobbyPage(_mainFrame, _menuWindow, _service, _user));
         }
 
         private void onClickQuitButton(object sender, RoutedEventArgs e)
         {
-            _mainWindow.Close();
+            _menuWindow.Close();
         }
+
     }
 }
