@@ -55,7 +55,7 @@ namespace SuperbetBeclean.Pages
 
         private void onClickJuniorBttn(object sender, System.Windows.RoutedEventArgs e)
         {
-            if ( _service.joinJuniorTable(_mainWindow))
+            if (_service.joinJuniorTable(_mainWindow))
                 _mainFrame.Navigate(_mainWindow.juniorPage);
             else
                 MessageBox.Show("Sorry, this table is full.");

@@ -18,179 +18,38 @@ namespace SuperbetBeclean.Services
         const int FULL = 8, EMPTY = 0;
         bool ended = false;
         const int INACTIVE = 0, WAITING = 1, PLAYING = 2;
-        private Dictionary<string, int> buyIn, smallBlind, bigBlind;
-        private List<MenuWindow> internTableUsers;
-        private List<MenuWindow> juniorTableUsers;
-        private List<MenuWindow> seniorTableUsers;
+
+        private TableService internTable, juniorTable, seniorTable;
         string connectionString;
         // Task internTask, juniorTask, seniorTask;
 
         public Service()
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
-            openedUsersWindows = new List<MenuWindow>();
-            internTableUsers = new List<MenuWindow>();
-            juniorTableUsers = new List<MenuWindow>();
-            seniorTableUsers = new List<MenuWindow>();
+
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
-            buyIn = new Dictionary<string, int>();
-            smallBlind = new Dictionary<string, int>();
-            bigBlind = new Dictionary<string, int>();
-            buyIn["Intern"] = 5000; buyIn["Junior"] = 50000; buyIn["Senior"] = 500000;
-            smallBlind["Intern"] = 50; smallBlind["Junior"] = 500; smallBlind["Senior"] = 5000;
-            bigBlind["Intern"] = 100; bigBlind["Junior"] = 1000; bigBlind["Senior"] = 10000;
-            Task.Run(() => runInternTable());
-            Task.Run(() => runJuniorTable());
-            Task.Run(() => runSeniorTable());
-            internMutex = new Mutex(); juniorMutex = new Mutex(); seniorMutex = new Mutex();
+
+            openedUsersWindows = new List<MenuWindow>();
+            internTable = new TableService(5000, 50, 100, "intern");
+            juniorTable = new TableService(50000, 500, 1000, "junior");
+            seniorTable = new TableService(500000, 5000, 10000, "senior");
         }
 
 
         private async void runInternTable()
         {
-            while (true)
-            {
-                if (ended) break;
-                if (isInternEmpty())
-                {
-                    await Task.Delay(3000);
-                    Console.WriteLine("intern has no players :(");
-                    continue;
-                }
-                internMutex.WaitOne();
-                Queue<MenuWindow> activePlayers = new Queue<MenuWindow>(internTableUsers);
-                internMutex.ReleaseMutex();
-                for (int i = 1; i <= 3; i++)
-                {
-                    Console.WriteLine("We are in turn " + i + "!");
-                    bool turnEnded = false;
-                    int currentBet = -1;
-                    int currentBetPlayer = -1;
-
-                    while (!turnEnded)
-                    {
-                        if (activePlayers.Count == 0) { break; }
-                        MenuWindow currentWindow = activePlayers.Dequeue();
-                        User player = currentWindow.Player();
-                        if (player.UserStatus == 0) continue;
-                        activePlayers.Enqueue(currentWindow);
-                        if (player.UserID == currentBetPlayer) break;
-                        int playerBet = await currentWindow.startTime("intern");
-                        if (playerBet > currentBet)
-                        {
-                            currentBet = playerBet;
-                            currentBetPlayer = player.UserID;
-                        }
-                        foreach (MenuWindow window in activePlayers) { window.notify("intern", currentBet); }
-                    }
-                    foreach (MenuWindow currentWindow in activePlayers) { currentWindow.endTurn("intern"); }
-
-                }
-                // internTableUsers.Clear();
-                // Console.WriteLine("we have a player!!!");
-                // Thread.Sleep(3000);
-            }
+            internTable.runTable();
         }
 
         private async void runJuniorTable()
         {
-            while (true)
-            {
-                if (ended) break;
-                if (isJuniorEmpty())
-                {
-                    await Task.Delay(3000);
-                    Console.WriteLine("junior has no players :(");
-                    continue;
-                }
-                juniorMutex.WaitOne();
-                Queue<MenuWindow> activePlayers = new Queue<MenuWindow>(juniorTableUsers);
-                juniorMutex.ReleaseMutex();
-                for (int i = 1; i <= 3; i++)
-                {
-                    Console.WriteLine("We are in turn " + i + "!");
-                    bool turnEnded = false;
-                    int currentBet = -1;
-                    int currentBetPlayer = -1;
-
-                    while (!turnEnded)
-                    {
-                        if (activePlayers.Count == 0) { break; }
-                        MenuWindow currentWindow = activePlayers.Dequeue();
-                        User player = currentWindow.Player();
-                        if (player.UserStatus == 0) continue;
-                        int playerBet = await currentWindow.startTime("junior");
-                        if (playerBet > currentBet)
-                        {
-                            currentBet = playerBet;
-                            currentBetPlayer = player.UserID;
-                            activePlayers.Enqueue(currentWindow);
-                        }
-                        else if (currentBetPlayer == player.UserID) turnEnded = true;
-                        else
-                        {
-                            activePlayers.Enqueue(currentWindow);
-                        }
-                        foreach (MenuWindow window in activePlayers) { window.notify("junior", currentBet); }
-                    }
-                    foreach (MenuWindow currentWindow in activePlayers) { currentWindow.endTurn("junior"); }
-
-                }
-                juniorTableUsers.Clear();
-                // Console.WriteLine("we have a player!!!");
-                // Thread.Sleep(3000);
-            }
+            juniorTable.runTable();
         }
 
-        private async Task runSeniorTable()
+        private async void runSeniorTable()
         {
-            while (true)
-            {
-                if (ended) break;
-                if (isSeniorEmpty())
-                {
-                    await Task.Delay(3000);
-                    Console.WriteLine("senior has no players :(");
-                    continue;
-                }
-                seniorMutex.WaitOne();
-                Queue<MenuWindow> activePlayers = new Queue<MenuWindow>(seniorTableUsers);
-                seniorMutex.ReleaseMutex();
-                for (int i = 1; i <= 3; i++)
-                {
-                    Console.WriteLine("We are in turn " + i + "!");
-                    bool turnEnded = false;
-                    int currentBet = -1;
-                    int currentBetPlayer = -1;
-
-                    while (!turnEnded)
-                    {
-                        if (activePlayers.Count == 0) { break; }
-                        MenuWindow currentWindow = activePlayers.Dequeue();
-                        User player = currentWindow.Player();
-                        if (player.UserStatus == 0) continue;
-                        int playerBet = await currentWindow.startTime("senior");
-                        if (playerBet > currentBet)
-                        {
-                            currentBet = playerBet;
-                            currentBetPlayer = player.UserID;
-                            activePlayers.Enqueue(currentWindow);
-                        }
-                        else if (currentBetPlayer == player.UserID) turnEnded = true;
-                        else
-                        {
-                            activePlayers.Enqueue(currentWindow);
-                        }
-                        foreach (MenuWindow window in activePlayers) { window.notify("senior", currentBet); }
-                    }
-                    foreach (MenuWindow currentWindow in activePlayers) { currentWindow.endTurn("senior"); }
-
-                }
-                seniorTableUsers.Clear();
-                // Console.WriteLine("we have a player!!!");
-                // Thread.Sleep(3000);
-            }
+            seniorTable.runTable();
         }
 
         public void newUserLogin(User newUser)
@@ -265,15 +124,11 @@ namespace SuperbetBeclean.Services
         {
             User player = window.Player();
             player.UserStatus = INACTIVE;
-            internMutex.WaitOne();
-            internTableUsers.Remove(window);
-            internMutex.ReleaseMutex();
-            juniorMutex.WaitOne();
-            juniorTableUsers.Remove(window);
-            juniorMutex.ReleaseMutex();
-            seniorMutex.WaitOne();
-            seniorTableUsers.Remove(window);
-            seniorMutex.ReleaseMutex();
+
+            internTable.disconnectUser(window);
+            juniorTable.disconnectUser(window);
+            seniorTable.disconnectUser(window);
+
             SqlCommand updateChips = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
             updateChips.Parameters.AddWithValue("@userID", player.UserID);
             updateChips.Parameters.AddWithValue("@userChips", player.UserChips + player.UserStack);
@@ -287,115 +142,18 @@ namespace SuperbetBeclean.Services
         }
         public bool joinInternTable(MenuWindow window)
         {
-            if (isInternFull()) return false;
-            User player = window.Player();
-            if (player.UserChips < buyIn["Intern"]) return false; /// also return different values to differentiate full from no money
-            SqlCommand updateChips = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
-            updateChips.Parameters.AddWithValue("@userID", player.UserID);
-            updateChips.Parameters.AddWithValue("@userChips", player.UserChips - buyIn["Intern"]);
-            updateChips.ExecuteNonQuery();
-            SqlCommand resetStack = new SqlCommand("EXEC updateUserStack @userID , @userStack", sqlConnection);
-            resetStack.Parameters.AddWithValue("@userID", player.UserID);
-            resetStack.Parameters.AddWithValue("@userStack", buyIn["Intern"]);
-            resetStack.ExecuteNonQuery();
-            player.UserChips -= buyIn["Intern"];
-            player.UserStack = buyIn["Intern"];
-            player.UserStatus = WAITING;
-            internMutex.WaitOne();
-            internTableUsers.Add(window);
-            internMutex.ReleaseMutex();
-            return true;
+            return internTable.joinInternTable(window);
         }
 
         public bool joinJuniorTable(MenuWindow window)
         {
-            if (isJuniorFull()) return false;
-            User player = window.Player();
-            if (player.UserChips < buyIn["Junior"]) return false;
-            SqlCommand updateChips = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
-            updateChips.Parameters.AddWithValue("@userID", player.UserID);
-            updateChips.Parameters.AddWithValue("@userChips", player.UserChips - buyIn["Junior"]);
-            updateChips.ExecuteNonQuery();
-            SqlCommand resetStack = new SqlCommand("EXEC updateUserStack @userID , @userStack", sqlConnection);
-            resetStack.Parameters.AddWithValue("@userID", player.UserID);
-            resetStack.Parameters.AddWithValue("@userStack", buyIn["Junior"]);
-            resetStack.ExecuteNonQuery();
-            player.UserChips -= buyIn["Junior"];
-            player.UserStack = buyIn["Junior"];
-            player.UserStatus = WAITING;
-            juniorMutex.WaitOne();
-            juniorTableUsers.Add(window);
-            juniorMutex.ReleaseMutex();
-            return true;
+            return juniorTable.joinJuniorTable(window);
         }
 
         public bool joinSeniorTable(MenuWindow window)
         {
-            if (isSeniorFull()) return false;
-            User player = window.Player();
-            if (player.UserChips < buyIn["Senior"]) return false;
-            SqlCommand updateChips = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
-            updateChips.Parameters.AddWithValue("@userID", player.UserID);
-            updateChips.Parameters.AddWithValue("@userChips", player.UserChips - buyIn["Senior"]);
-            updateChips.ExecuteNonQuery();
-            SqlCommand resetStack = new SqlCommand("EXEC updateUserStack @userID , @userStack", sqlConnection);
-            resetStack.Parameters.AddWithValue("@userID", player.UserID);
-            resetStack.Parameters.AddWithValue("@userStack", buyIn["Senior"]);
-            resetStack.ExecuteNonQuery();
-            player.UserChips -= buyIn["Senior"];
-            player.UserStack = buyIn["Senior"];
-            player.UserStatus = WAITING;
-            seniorMutex.WaitOne();
-            seniorTableUsers.Add(window);
-            seniorMutex.ReleaseMutex();
-            return true;
+            return seniorTable.joinSeniorTable(window);
         }
-
-        public bool isInternFull()
-        {
-            return internTableUsers.Count == FULL;
-        }
-
-        public bool isJuniorFull()
-        {
-            return juniorTableUsers.Count == FULL;
-        }
-
-        public bool isSeniorFull()
-        {
-            return seniorTableUsers.Count == FULL;
-        }
-
-        public bool isInternEmpty()
-        {
-            return internTableUsers.Count == EMPTY;
-        }
-
-        public bool isJuniorEmpty()
-        {
-            return juniorTableUsers.Count == EMPTY;
-        }
-
-        public bool isSeniorEmpty()
-        {
-            return seniorTableUsers.Count == EMPTY;
-        }
-
-        public int occupiedIntern()
-        {
-            return internTableUsers.Count;
-        }
-
-        public int occupiedJunior()
-        {
-            return juniorTableUsers.Count;
-        }
-
-        public int occupiedSenior()
-        {
-            return seniorTableUsers.Count;
-        }
-
         public void endGames()
         {
             ended = true;
