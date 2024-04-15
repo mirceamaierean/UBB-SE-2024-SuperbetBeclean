@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 
 
@@ -18,6 +19,23 @@ namespace SuperbetBeclean.Pages
             InitializeComponent();
             _mainFrame = mainFrame;
             _mainWindow = mainWindow;
+        }
+        private void OnTextBoxGotFocus(object sender, RoutedEventArgs e)
+        {
+            // Clear the text when the TextBox gets focus
+            TextBox textBox = sender as TextBox;
+            textBox.Text = "";
+            
+        }
+
+        private void OnTextBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            // Restore the placeholder text if the TextBox loses focus and is empty
+            TextBox textBox = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "Input your name";
+            }
         }
 
         private void onClickLoginButton(object sender, RoutedEventArgs e)
