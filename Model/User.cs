@@ -19,8 +19,6 @@ namespace SuperbetBeclean.Model
         private int _userStreak;
         private int _userHandsPlayed;
         private int _userLevel;
-        private int _userStatus; /// Inactive, Waiting, Playing
-        private int _userBet;
         private DateTime _userLastLogin;
 
         public User(int userID = 0, string userName = "", int userCurrentFont = 0, int userCurrentTitle = 0, int userCurrentIcon = 0, int userCurrentTable = 0, int userChips = 0, int userStack = 0, int userStreak = 0, int userHandsPlayed = 0, int userLevel = 0, DateTime userLastLogin = default(DateTime))
@@ -37,8 +35,6 @@ namespace SuperbetBeclean.Model
             _userHandsPlayed = userHandsPlayed;
             _userLevel = userLevel;
             _userLastLogin = userLastLogin;
-            _userStatus = 0;
-            _userBet = 0;
         }
 
         public int UserID { get { return _userID; } set { _userID = value; } }
@@ -53,6 +49,5 @@ namespace SuperbetBeclean.Model
         public int UserHandsPlayed { get {  return _userHandsPlayed; } set { _userHandsPlayed = value;} }
         public int UserLevel { get { return _userLevel; } set { _userLevel = value; } }
         public DateTime UserLastLogin {  get { return _userLastLogin; } set { _userLastLogin = value; } }
-        public int UserStatus { get { return _userStatus; } set { _userStatus = value; } }
     }
 }
