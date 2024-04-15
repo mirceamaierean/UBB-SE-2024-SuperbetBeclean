@@ -85,12 +85,12 @@
                     <ColumnDefinition Width="51*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="ChallengesBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Foreground="Black" HorizontalAlignment="Right" Grid.Column="1" Cursor="Hand" Margin="65,5,0,5">
+                <Button x:Name="ChallengesBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" Foreground="Black" HorizontalAlignment="Right" Grid.Column="1" Cursor="Hand" Margin="65,5,0,5" Click="ChallengesBttn_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/assets/challengesicon.png" TileMode="Tile" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="MsgBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="2" Cursor="Hand" Margin="0,5,0,5" >
+                <Button x:Name="MsgBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="2" Cursor="Hand" Margin="0,5,0,5" Click="MsgBttn_Click" >
                     <Button.Foreground>
                         <ImageBrush Stretch="Fill"/>
                     </Button.Foreground>
