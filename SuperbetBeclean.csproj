@@ -173,9 +173,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="assets\demo_avatar.jpg" />
+    <Resource Include="assets\greenchip.png" />
+    <Resource Include="assets\backarrow.png" />
     <Content Include="assets\index.html" />
     <Resource Include="assets\money_bag.png" />
     <Resource Include="assets\challengeCards.png" />
+    <Resource Include="assets\lightgreenbackgroundimg.png" />
     <Resource Include="assets\greenbackgroundimg.jpg" />
     <Resource Include="assets\interntable.png" />
     <Resource Include="assets\juniortable.jpg" />

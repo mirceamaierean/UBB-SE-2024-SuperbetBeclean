@@ -22,7 +22,7 @@ namespace SuperbetBeclean.Components
     {
         public ChallengePanel()
         {
-            InitializeComponent();
+           InitializeComponent();
         }
     }
 }

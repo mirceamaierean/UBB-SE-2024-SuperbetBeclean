@@ -21,7 +21,7 @@ namespace SuperbetBeclean.Pages
 
         private void onClickRulesButton(object sender, RoutedEventArgs e)
         {
-            ChallengesWindow rulesWindow = new ChallengesWindow();
+            RulesWindow rulesWindow = new RulesWindow();
             rulesWindow.Show();
         }
 
