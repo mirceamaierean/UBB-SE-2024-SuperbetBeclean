@@ -9,14 +9,14 @@ namespace SuperbetBeclean
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Subject subject;
+        private MainSubject subject;
         public MainWindow()
         {
             InitializeComponent();
-            subject = new Subject();
+            subject = new MainSubject();
             MainFrame.Navigate(new LoginPage(MainFrame, this));
+            Title = "Superbet Beclean - Poker";
         }
-
         public void openNewWindow(string username)
         {
             subject.addWindow(username);
