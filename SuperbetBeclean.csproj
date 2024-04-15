@@ -56,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\ChallengePanel.xaml.cs">
+      <DependentUpon>ChallengePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ChallengePanelSymbols.xaml.cs">
+      <DependentUpon>ChallengePanelSymbols.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\ShopItemComponent.xaml.cs">
       <DependentUpon>ShopItemComponent.xaml</DependentUpon>
     </Compile>
@@ -89,7 +95,14 @@
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\DBService.cs" />
+    <Compile Include="Windows\ChallengesWindow.xaml.cs">
+      <DependentUpon>ChallengesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\Service.cs" />
+    <Compile Include="Windows\ChatWindow.xaml.cs">
+      <DependentUpon>ChatWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
@@ -99,6 +112,11 @@
     <Compile Include="Windows\RulesWindow.xaml.cs">
       <DependentUpon>RulesWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Components\ChallengePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\ChallengePanelSymbols.xaml" />
     <Page Include="Components\ShopItemComponent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +155,14 @@
     </Page>
     <Page Include="Pages\ShopPage.xaml" />
     <Page Include="Pages\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ChallengesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ChatWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,6 +207,60 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="assets\cards\10C.png" />
+    <Resource Include="assets\cards\10D.png" />
+    <Resource Include="assets\cards\10H.png" />
+    <Resource Include="assets\cards\10S.png" />
+    <Resource Include="assets\cards\2C.png" />
+    <Resource Include="assets\cards\2D.png" />
+    <Resource Include="assets\cards\2H.png" />
+    <Resource Include="assets\cards\2S.png" />
+    <Resource Include="assets\cards\3C.png" />
+    <Resource Include="assets\cards\3D.png" />
+    <Resource Include="assets\cards\3H.png" />
+    <Resource Include="assets\cards\3S.png" />
+    <Resource Include="assets\cards\4C.png" />
+    <Resource Include="assets\cards\4D.png" />
+    <Resource Include="assets\cards\4H.png" />
+    <Resource Include="assets\cards\4S.png" />
+    <Resource Include="assets\cards\5C.png" />
+    <Resource Include="assets\cards\5D.png" />
+    <Resource Include="assets\cards\5H.png" />
+    <Resource Include="assets\cards\5S.png" />
+    <Resource Include="assets\cards\6C.png" />
+    <Resource Include="assets\cards\6D.png" />
+    <Resource Include="assets\cards\6H.png" />
+    <Resource Include="assets\cards\6S.png" />
+    <Resource Include="assets\cards\7C.png" />
+    <Resource Include="assets\cards\7D.png" />
+    <Resource Include="assets\cards\7H.png" />
+    <Resource Include="assets\cards\7S.png" />
+    <Resource Include="assets\cards\8C.png" />
+    <Resource Include="assets\cards\8D.png" />
+    <Resource Include="assets\cards\8H.png" />
+    <Resource Include="assets\cards\8S.png" />
+    <Resource Include="assets\cards\9C.png" />
+    <Resource Include="assets\cards\9D.png" />
+    <Resource Include="assets\cards\9H.png" />
+    <Resource Include="assets\cards\9S.png" />
+    <Resource Include="assets\cards\AC.png" />
+    <Resource Include="assets\cards\AD.png" />
+    <Resource Include="assets\cards\AH.png" />
+    <Resource Include="assets\cards\AS.png" />
+    <Resource Include="assets\cards\back.jpg" />
+    <Resource Include="assets\cards\downCard.jpg" />
+    <Resource Include="assets\cards\JC.png" />
+    <Resource Include="assets\cards\JD.png" />
+    <Resource Include="assets\cards\JH.png" />
+    <Resource Include="assets\cards\JS.png" />
+    <Resource Include="assets\cards\KC.png" />
+    <Resource Include="assets\cards\KD.png" />
+    <Resource Include="assets\cards\KH.png" />
+    <Resource Include="assets\cards\KS.png" />
+    <Resource Include="assets\cards\QC.png" />
+    <Resource Include="assets\cards\QD.png" />
+    <Resource Include="assets\cards\QH.png" />
+    <Resource Include="assets\cards\QS.png" />
     <Content Include="db\models\Challenge.sql" />
     <Content Include="db\models\Font.sql" />
     <Content Include="db\models\Icon.sql" />
@@ -208,6 +288,8 @@
     <Resource Include="assets\greenchip.png" />
     <Resource Include="assets\backarrow.png" />
     <Content Include="assets\index.html" />
+    <Resource Include="assets\money_bag.png" />
+    <Resource Include="assets\challengeCards.png" />
     <Resource Include="assets\lightgreenbackgroundimg.png" />
     <Resource Include="assets\greenbackgroundimg.jpg" />
     <Resource Include="assets\interntable.png" />

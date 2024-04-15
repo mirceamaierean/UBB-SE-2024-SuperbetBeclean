@@ -24,6 +24,7 @@ namespace SuperbetBeclean.Pages
     public partial class GameTablePage : Page
     {
         private MenuWindow _mainWindow;
+        private Frame _mainFrame;
         private Service _service;
         private Frame _mainFrame;
         int timer = 0;
@@ -38,6 +39,7 @@ namespace SuperbetBeclean.Pages
             _mainFrame = mainFrame;
             _mainWindow = mainWindow;
             _service = service;
+            _mainFrame = mainFrame;
             PlayerNameTextBox.Text = _mainWindow.userName();
             PlayerLvlTextBox.Text = "Level: " + _mainWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = "Chips: " + _mainWindow.userChips().ToString();
@@ -52,7 +54,7 @@ namespace SuperbetBeclean.Pages
                 window.Height = 720;
             }
         }
-
+        
         private void QuitBttn_Click(object sender, RoutedEventArgs e)
         {
             _mainFrame.NavigationService.GoBack();
@@ -133,6 +135,17 @@ namespace SuperbetBeclean.Pages
             Application.Current.Dispatcher.Invoke(() => {
                 PotValue.Content = tableBet.ToString();
             });
+        }
+        private void ChallengesBttn_Click(object sender, RoutedEventArgs e)
+        {
+            ChallengesWindow challengesWindow= new ChallengesWindow();
+            challengesWindow.Show();
+        }
+
+        private void MsgBttn_Click(object sender, RoutedEventArgs e)
+        {
+            ChatWindow chatWindow = new ChatWindow();
+            chatWindow.Show();
         }
     }
 }
