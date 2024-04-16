@@ -68,6 +68,7 @@
     <Compile Include="Models\MainViewModel.cs" />
     <Compile Include="Models\ShopItem.cs" />
     <Compile Include="HandRankCalculator.cs" />
+    <Compile Include="Model\Card.cs" />
     <Compile Include="Model\Challenge.cs" />
     <Compile Include="Model\Font.cs" />
     <Compile Include="Model\Icon.cs" />
