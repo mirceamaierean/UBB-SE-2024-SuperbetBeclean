@@ -71,6 +71,11 @@ namespace SuperbetBeclean.Services
             }
             dbService.UpdateUserLastLogin(newUser.UserID, DateTime.Now);
         }
+
+        public string getIconPath(int iconID)
+        {
+            return dbService.getIconPath(iconID);
+        }
         public void addWindow(string username)
         {
             SqlCommand command = new SqlCommand("EXEC getUser @username", sqlConnection);
@@ -85,7 +90,7 @@ namespace SuperbetBeclean.Services
                     string userName = reader.IsDBNull(reader.GetOrdinal("user_username")) ? "" : reader.GetString(reader.GetOrdinal("user_username"));
                     int currentFont = reader.IsDBNull(reader.GetOrdinal("user_currentFont")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_currentFont"));
                     int currentTitle = reader.IsDBNull(reader.GetOrdinal("user_currentTitle")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_currentTitle"));
-                    int currentIcon = reader.IsDBNull(reader.GetOrdinal("user_currentIcon")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_currentIcon"));
+                    string currentIconPath = reader.IsDBNull(reader.GetOrdinal("user_currentIcon")) ? ConfigurationManager.AppSettings["DEFAULT_ICON__PATH"]; : dbService.getIconPath(reader.GetInt32(reader.GetOrdinal("user_currentIcon")));
                     int currentTable = reader.IsDBNull(reader.GetOrdinal("user_currentTable")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_currentTable"));
                     int chips = reader.IsDBNull(reader.GetOrdinal("user_chips")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_chips"));
                     int stack = reader.IsDBNull(reader.GetOrdinal("user_stack")) ? 0 : reader.GetInt32(reader.GetOrdinal("user_stack"));

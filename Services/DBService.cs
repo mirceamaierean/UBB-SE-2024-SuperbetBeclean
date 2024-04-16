@@ -199,5 +199,11 @@ namespace SuperbetBeclean.Services
             };
             ExecuteNonQuery("updateTitle", parameters);
         }
+
+        public string GetIconPath(int iconId)
+        {
+            SqlParameter[] parameters = { new SqlParameter("@icon_id", SqlDbType.Int) { Value = iconId } };
+            return (string)ExecuteScalar("getIconByID", parameters);
+        }
     }
 }
