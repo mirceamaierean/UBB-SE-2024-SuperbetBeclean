@@ -3,6 +3,7 @@ using SuperbetBeclean.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -88,6 +89,39 @@ namespace SuperbetBeclean.Pages
             if (timer == 5) 
                 PlayerTimer.Foreground = Brushes.Red;
             PlayerTimer.Text = "Time: " + timer.ToString();
+        }
+
+        public void resetCards()
+        {
+            for (int i=1;i<=8;i++)
+            {
+                for (int j=1;j<=2;j++)
+                {
+                    Application.Current.Dispatcher.Invoke(() => {
+                        Image playerCard = FindName("Player" + i + "Card" + j) as Image;
+                        playerCard.Visibility = Visibility.Hidden;
+                    });
+                }
+            }
+            
+        }
+
+        public void addCard(bool visible, int player, int card, string cardValue)
+        {
+            Application.Current.Dispatcher.Invoke(() => {
+                Image playerCard = FindName("Player" + player + "Card" + card) as Image;
+                if (visible == false)
+                {
+                    Uri uri = new Uri("/assets/cards/downCard.jpg", UriKind.Relative);
+                    playerCard.Source = new BitmapImage(uri);
+                }
+                else
+                {
+                    Uri uri = new Uri("/assets/cards/" + cardValue + ".png", UriKind.Relative);
+                    playerCard.Source = new BitmapImage(uri);
+                }
+                playerCard.Visibility = Visibility.Visible;
+            });
         }
 
         async public Task < int > runTimer()

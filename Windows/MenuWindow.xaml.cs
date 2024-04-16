@@ -56,6 +56,38 @@ namespace SuperbetBeclean.Windows
             return bet;
         }
 
+        public void resetCards(string table)
+        {
+            if (table == "intern")
+            {
+                internPage.resetCards();
+            }
+            if (table == "junior")
+            {
+                juniorPage.resetCards();
+            }
+            if (table == "senior")
+            {
+                seniorPage.resetCards();
+            }
+        }
+
+        public void notify_card(string table, User u, int card, string cardValue)
+        {
+            if (table == "intern")
+            {
+                internPage.addCard(u == user, u.UserTablePlace, card, cardValue);
+            }
+            if (table == "junior")
+            {
+                juniorPage.addCard(u == user, u.UserTablePlace, card, cardValue);
+            }
+            if (table == "senior")
+            {
+                seniorPage.addCard(u == user, u.UserTablePlace, card, cardValue);
+            }
+        }
+
         public void notify(string table, int currentPot)
         {
             if (table == "intern")

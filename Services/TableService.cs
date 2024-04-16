@@ -16,6 +16,7 @@ namespace SuperbetBeclean.Services
         private string tableType;
         private static Mutex mutex;
         const int FULL = 8, EMPTY = 0, WAITING = 1;
+        const int FLOP = 1, TURN = 2, RIVER = 3;
         bool ended = false;
         private int buyIn, smallBlind, bigBlind;
         private List<MenuWindow> users;
@@ -23,7 +24,7 @@ namespace SuperbetBeclean.Services
         DBService dbService;
         Random random;
 
-        private List<Card> communityCards;
+        private Card[] communityCards;
         public TableService(int buyIn, int smallBlind, int bigBlind, string tableType , DBService dbService)
         {
             this.dbService = dbService;
@@ -33,6 +34,8 @@ namespace SuperbetBeclean.Services
             this.buyIn = buyIn;
             this.smallBlind = smallBlind;
             this.bigBlind = bigBlind;
+
+            communityCards = new Card[5];
 
             Task.Run(() => runTable());
 
@@ -50,19 +53,10 @@ namespace SuperbetBeclean.Services
             return card;
         }
 
-        public void generateCommunityCards()
+        public Card generateCard()
         {
-            communityCards = new List<Card>();
-            for (int i = 0; i < 5; i++)
-                communityCards.Add(getRandomCardAndRemoveIt());
-        }
-
-        public Card[] generateUserCards()
-        {
-            Card[] userCards = new Card[2];
-            userCards[0] = getRandomCardAndRemoveIt();
-            userCards[1] = getRandomCardAndRemoveIt();
-            return userCards;
+            return getRandomCardAndRemoveIt();
+            // notify_all();
         }
 
         public async void runTable()
@@ -78,50 +72,59 @@ namespace SuperbetBeclean.Services
                 mutex.WaitOne();
                 // start new round with all players
                 Queue<MenuWindow> activePlayers = new Queue<MenuWindow>(users);
+                mutex.ReleaseMutex();
                 if (activePlayers.Count == 0)
                 {
-                    mutex.ReleaseMutex();
-                    await Task.Delay(3000);
+                    await Task.Delay(5000);
                     continue;
                 }
                 deck = new Deck();
-                // generate community cards
-                generateCommunityCards();
-                // add cards to players
-                foreach (MenuWindow window in activePlayers)
+                foreach (MenuWindow window in activePlayers) { window.resetCards(tableType); }
+                await Task.Delay(1000);
+                /// give first card
+                foreach (MenuWindow playerWindow in activePlayers)
                 {
-                    Card[] userCards = generateUserCards();
-                    User player = window.Player();
-                    player.UserCurrentHand = userCards;
+                    User player = playerWindow.Player();
+                    Card card = generateCard();
+                    player.UserCurrentHand[0] = card; 
+                    foreach (MenuWindow window in activePlayers) { window.notify_card(tableType, player, 1, card.Value + card.Suit); }
+                    await Task.Delay(400);
+                }
+                /// give second card
+                foreach (MenuWindow playerWindow in activePlayers)
+                {
+                    User player = playerWindow.Player();
+                    Card card = generateCard();
+                    player.UserCurrentHand[1] = card;
+                    foreach (MenuWindow window in activePlayers) { window.notify_card(tableType, player, 2, card.Value + card.Suit); }
+                    await Task.Delay(400);
                 }
 
-                mutex.ReleaseMutex();
-                for (int i = 1; i <= 3; i++)
+                for (int turn = 1; turn <= 3; turn++)
                 {
-                    Console.WriteLine("We are in turn " + i + "!");
-                    // display community cards
-                    Console.WriteLine("Community cards are:");
-                    for (int cardValue = 0; cardValue < 5; ++cardValue)
+                    
+                    if (turn == FLOP)
                     {
-                        Console.WriteLine(communityCards[cardValue].Value + " " + communityCards[cardValue].Suit);
+                        for (int cardNumber = 0; cardNumber < 3; cardNumber++)
+                        {
+                            communityCards[cardNumber] = generateCard();
+                        }
                     }
+                    else if (turn == TURN)
+                        communityCards[3] = generateCard();
+                    else if (turn == RIVER)
+                        communityCards[4] = generateCard();
+
                     bool turnEnded = false;
                     int currentBet = -1;
                     int currentBetPlayer = -1;
 
                     while (!turnEnded)
                     {
-                        if (activePlayers.Count == 0) { break; }
+                        if (activePlayers.Count == 0) break;
                         MenuWindow currentWindow = activePlayers.Dequeue();
 
                         User player = currentWindow.Player();
-
-                        // display player cards
-                        Console.WriteLine("Player cards are:");
-                        for (int index = 0; index < 2; ++index)
-                        {
-                            Console.WriteLine(player.UserCurrentHand[index].Value + " " + player.UserCurrentHand[index].Suit);
-                        }
 
                         if (player.UserStatus == 0) continue;
                         activePlayers.Enqueue(currentWindow);
@@ -164,6 +167,7 @@ namespace SuperbetBeclean.Services
 
             mutex.WaitOne();
             users.Add(window);
+            player.UserTablePlace = users.Count;
             mutex.ReleaseMutex();
 
             return true;
