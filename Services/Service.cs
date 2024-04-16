@@ -36,6 +36,21 @@ namespace SuperbetBeclean.Services
             seniorTable = new TableService(500000, 5000, 10000, "senior");
         }
 
+        public int occupiedIntern()
+        {
+            return internTable.occupied();
+        }
+
+        public int occupiedJunior()
+        {
+            return juniorTable.occupied();
+        }
+
+        public int occupiedSenior()
+        {
+            return seniorTable.occupied();
+        }
+
 
         private async void runInternTable()
         {
