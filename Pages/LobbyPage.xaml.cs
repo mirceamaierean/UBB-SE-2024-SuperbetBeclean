@@ -13,9 +13,9 @@ namespace SuperbetBeclean.Pages
     {
         private Frame _mainFrame;
         private MenuWindow _mainWindow;
-        private Service _service;
+        private MainService _service;
         private User _user;
-        public LobbyPage(Frame mainFrame, MenuWindow menuWindow, Service service, User u)
+        public LobbyPage(Frame mainFrame, MenuWindow menuWindow, MainService service, User u)
         {
             InitializeComponent();
             _mainFrame = mainFrame;
@@ -55,7 +55,7 @@ namespace SuperbetBeclean.Pages
 
         private void onClickJuniorBttn(object sender, System.Windows.RoutedEventArgs e)
         {
-            if ( _service.joinJuniorTable(_mainWindow))
+            if (_service.joinJuniorTable(_mainWindow))
                 _mainFrame.Navigate(_mainWindow.juniorPage);
             else
                 MessageBox.Show("Sorry, this table is full.");

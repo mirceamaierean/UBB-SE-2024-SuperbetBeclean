@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/greenbackgroundimg.jpg" />
+            <ImageBrush ImageSource="/assets/greenbackgroundimg.jpg" />
         </Grid.Background>
         <TextBox x:Name="inputNameLoginFirstPage" 
          HorizontalAlignment="Center" 
