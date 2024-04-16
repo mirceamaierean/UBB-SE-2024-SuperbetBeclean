@@ -2,10 +2,9 @@
 using SuperbetBeclean.Services;
 using SuperbetBeclean.Windows;
 using System;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace SuperbetBeclean.Pages
 {
@@ -20,9 +19,6 @@ namespace SuperbetBeclean.Pages
         private User _user;
         public LobbyPage(Frame mainFrame, MenuWindow menuWindow, MainService service, User u)
         {
-            connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
-            sqlConnection = new SqlConnection(connectionString);
-            sqlConnection.Open();
             InitializeComponent();
             _mainFrame = mainFrame;
             _mainWindow = menuWindow;
@@ -31,26 +27,14 @@ namespace SuperbetBeclean.Pages
             PlayerNameTextBox.Text = menuWindow.userName();
             PlayerLevelTextBox.Text = "Level: " + menuWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = "Chips: " + menuWindow.userChips().ToString();
+            MessageBox.Show(u.UserCurrentIconPath);
+            if (!string.IsNullOrEmpty(u.UserCurrentIconPath))
+            {
+                PlayerIconImg.Source = new BitmapImage(new Uri(u.UserCurrentIconPath, UriKind.Absolute));
+            }
             InternPlayerCount.Text = _service.occupiedIntern().ToString() + "/8";
             JuniorPlayerCount.Text = _service.occupiedJunior().ToString() + "/8";
             SeniorPlayerCount.Text = _service.occupiedSenior().ToString() + "/8";
-            SqlCommand command = new SqlCommand("EXEC getIconById @id", sqlConnection);
-            command.Parameters.AddWithValue("@id", _user.UserCurrentIcon);
-            Console.WriteLine(_user.UserCurrentIcon.ToString());
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
-            {
-                reader.Read();
-                var crtRow = reader.GetOrdinal("icon_path");
-                Console.WriteLine(crtRow.ToString());
-                string imagePath = reader.IsDBNull(crtRow) ? "" : reader.GetString(crtRow);
-                Console.WriteLine(imagePath);
-                if (!string.IsNullOrEmpty(imagePath))
-                {
-                    PlayerIconImg.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(imagePath));
-                }
-            }
-
         }
 
         private void buttonLobbyBack(object sender, System.Windows.RoutedEventArgs e)
