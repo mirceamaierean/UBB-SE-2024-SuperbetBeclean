@@ -1,8 +1,11 @@
-﻿using System;
+﻿using SuperbetBeclean.Models;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +14,11 @@ namespace SuperbetBeclean.Services
     public class DBService
     {
         private SqlConnection _connection;
+
+        public DBService()
+        {
+            _connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cn"].ConnectionString);
+        }
 
         public DBService(SqlConnection connection)
         {
@@ -216,8 +224,60 @@ namespace SuperbetBeclean.Services
                         else
                             throw new Exception("No icon found with the provided ID.");
                     }
-              
             }
+        }
+
+        public List<string> GetLeaderboard()
+        {
+            List<string> leaderboard = new List<string>();
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getLeaderboard", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    int rank = 1; // Initialize rank counter
+                    while (reader.Read())
+                    {
+                        string username = reader["user_username"] as string;
+                        int chips = Convert.ToInt32(reader["user_chips"]);
+                        int level = Convert.ToInt32(reader["user_level"]);
+                        leaderboard.Add($"{rank}. {username} - Lvl: {level} - Chips: {chips}");
+                        rank++; // Increment rank counter for the next entry
+                    }
+                }
+            }
+            return leaderboard;
+        }
+
+
+        public List<ShopItem> GetShopItems()
+        {
+            List<ShopItem> shopItems = new List<ShopItem>();
+
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getAllIcons", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int iconId = Convert.ToInt32(reader["icon_id"]);
+                        string iconName = reader["icon_name"] as string;
+                        int iconPrice = Convert.ToInt32(reader["icon_price"]);
+                        string iconPath = reader["icon_path"] as string;
+
+                        // Assuming ShopItem is a class with appropriate properties
+                        ShopItem shopItem = new ShopItem(iconId, iconPath, iconName, iconPrice);
+                        shopItems.Add(shopItem);
+                    }
+                }
+            }
+
+            return shopItems;
         }
     }
 }

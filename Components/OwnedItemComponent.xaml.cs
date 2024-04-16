@@ -15,12 +15,11 @@ using System.Windows.Shapes;
 namespace SuperbetBeclean.Components
 {
     /// <summary>
-    /// Interaction logic for ShopItemComponent.xaml
+    /// Interaction logic for OwnedItemComponent.xaml
     /// </summary>
-    public partial class ShopItemComponent : UserControl
+    public partial class OwnedItemComponent : UserControl
     {
-        // TODO: Add cost
-        // Define dependency properties for data binding
+
         public static readonly DependencyProperty ImagePathProperty = DependencyProperty.Register(
             "ImagePath", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
@@ -28,8 +27,8 @@ namespace SuperbetBeclean.Components
             "ItemName", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
 
-        public static readonly DependencyProperty BuyCommandProperty = DependencyProperty.Register(
-            "BuyCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
+        public static readonly DependencyProperty EquipCommandProperty = DependencyProperty.Register(
+            "EqipCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
 
         // Properties for data binding
         public string ImagePath
@@ -44,14 +43,13 @@ namespace SuperbetBeclean.Components
             set { SetValue(NameProperty, value); }
         }
 
-
-        public ICommand BuyCommand
+        public ICommand EquipCommand
         {
-            get { return (ICommand)GetValue(BuyCommandProperty); }
-            set { SetValue(BuyCommandProperty, value); }
+            get { return (ICommand)GetValue(EquipCommandProperty); }
+            set { SetValue(EquipCommandProperty, value); }
         }
 
-        public ShopItemComponent()
+        public OwnedItemComponent()
         {
             InitializeComponent();
         }
