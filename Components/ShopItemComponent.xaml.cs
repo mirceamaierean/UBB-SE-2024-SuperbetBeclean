@@ -24,11 +24,9 @@ namespace SuperbetBeclean.Components
         public static readonly DependencyProperty ImagePathProperty = DependencyProperty.Register(
             "ImagePath", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
-        public static readonly DependencyProperty NameProperty = DependencyProperty.Register(
-            "Name", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty ItemNameProperty = DependencyProperty.Register(
+            "ItemName", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
-        public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register(
-            "Description", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
         public static readonly DependencyProperty BuyCommandProperty = DependencyProperty.Register(
             "BuyCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
@@ -40,17 +38,12 @@ namespace SuperbetBeclean.Components
             set { SetValue(ImagePathProperty, value); }
         }
 
-        public string Name
+        public string ItemName
         {
-            get { return (string)GetValue(NameProperty); }
+            get { return (string)GetValue(ItemNameProperty); }
             set { SetValue(NameProperty, value); }
         }
 
-        public string Description
-        {
-            get { return (string)GetValue(DescriptionProperty); }
-            set { SetValue(DescriptionProperty, value); }
-        }
 
         public ICommand BuyCommand
         {
