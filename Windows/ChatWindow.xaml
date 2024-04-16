@@ -54,9 +54,9 @@
 
             <!-- Challenge 1 and Challenge 2 -->
 
-            <TextBox TextWrapping="Wrap" Text="Player1: Message" Margin="27,0,27,10" Grid.Row="1" Grid.Column="1" FontSize="25"/>
+            <TextBox x:Name="messagingBox" TextWrapping="Wrap" Text="{Binding Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="27,0,27,10" Grid.Row="1" Grid.Column="1" FontSize="25" TextChanged="messagingBox_TextChanged" IsReadOnly="True"/>
             <TextBox x:Name="chatInputTextBox" TextWrapping="Wrap" Margin="27,10,27,10" Grid.Row="2" Grid.Column="1" TextChanged="TextBox_TextChanged" FontSize="25"/>
-            <Button Content="Send Message" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Grid.Column="1" Width="126" Height="24" Background="Black" Foreground="White"/>
+            <Button Content="Send Message" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Grid.Column="1" Width="126" Height="24" Background="Black" Foreground="White" Click="Button_Click_1"/>
 
 
 

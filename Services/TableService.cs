@@ -40,7 +40,9 @@ namespace SuperbetBeclean.Services
 
             random = new Random();
             this.dbService = dbService;
+            ;
         }
+        
 
         public Card getRandomCardAndRemoveIt()
         {
