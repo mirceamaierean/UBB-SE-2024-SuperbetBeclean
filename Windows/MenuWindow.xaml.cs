@@ -24,10 +24,10 @@ namespace SuperbetBeclean.Windows
     public partial class MenuWindow : Window
     {
         private User user;
-        private Service service;
+        private MainService service;
         public GameTablePage internPage, juniorPage, seniorPage;
 
-        public MenuWindow(User u, Service serv)
+        public MenuWindow(User u, MainService serv)
         {
             InitializeComponent();
             this.service = serv;

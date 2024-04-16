@@ -51,22 +51,6 @@ namespace SuperbetBeclean.Services
             return seniorTable.occupied();
         }
 
-
-        private async void runInternTable()
-        {
-            internTable.runTable();
-        }
-
-        private async void runJuniorTable()
-        {
-            juniorTable.runTable();
-        }
-
-        private async void runSeniorTable()
-        {
-            seniorTable.runTable();
-        }
-
         public void newUserLogin(User newUser)
         {
             if (DateTime.Now.Date != newUser.UserLastLogin.Date)
