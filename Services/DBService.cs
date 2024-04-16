@@ -236,17 +236,20 @@ namespace SuperbetBeclean.Services
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
+                    int rank = 1; // Initialize rank counter
                     while (reader.Read())
                     {
                         string username = reader["user_username"] as string;
                         int chips = Convert.ToInt32(reader["user_chips"]);
                         int level = Convert.ToInt32(reader["user_level"]);
-                        leaderboard.Add($"{username} - Lvl: {level} - Chips: {chips}");
+                        leaderboard.Add($"{rank}. {username} - Lvl: {level} - Chips: {chips}");
+                        rank++; // Increment rank counter for the next entry
                     }
                 }
             }
             return leaderboard;
         }
+
 
         public List<ShopItem> GetShopItems()
         {

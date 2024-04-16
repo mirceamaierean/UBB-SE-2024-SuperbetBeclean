@@ -23,24 +23,6 @@
                         <Setter Property="Foreground" Value="Black"/>
                     </Style>
                 </ListView.ItemContainerStyle>
-                <ListViewItem>
-                    <TextBlock Text="1. Player 1, Level 8, Chips 120k"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="2. Player 2, Level 6, Chips 100k"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="3. Player 3, Level 5, Chips 80k"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="4. Player 4, Level 4, Chips 70k"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="5. Player 5, Level 3, Chips 40k"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="6. Player 6, Level 2, Chips 20k"/>
-                </ListViewItem>
             </ListView>
         </Grid>
         <!-- Leaderboard Header -->
