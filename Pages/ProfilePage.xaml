@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SuperbetBeclean.Pages"
+      xmlns:components="clr-namespace:SuperbetBeclean.Components"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
@@ -89,7 +90,6 @@
             </Grid>
             <Grid Grid.Column="1">
                 <Border Margin="15 20 15 20" Background="#FFD5D3D3" BorderBrush="#FF494949" BorderThickness="2" CornerRadius="30">
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
@@ -101,10 +101,22 @@
                                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="INVENTORY" Height="40" Width="250" TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="26"/>
                             </Grid>
                         </Border>
-                        
-                        <Grid Grid.Row="1">
-                            
-                        </Grid>
+
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl Name="itemsControl" ItemsSource="{Binding OwnedItems}" Margin="24 0 0 0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <components:OwnedItemComponent/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+
                     </Grid>
                 </Border>
             </Grid>

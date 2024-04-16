@@ -62,11 +62,15 @@
     <Compile Include="Components\ChallengePanelSymbols.xaml.cs">
       <DependentUpon>ChallengePanelSymbols.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\OwnedItemComponent.xaml.cs">
+      <DependentUpon>OwnedItemComponent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\ShopItemComponent.xaml.cs">
       <DependentUpon>ShopItemComponent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\MainViewModel.cs" />
-    <Compile Include="Models\ShopItem.cs" />
+    <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Model\ShopItem.cs" />
     <Compile Include="HandRankCalculator.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\Challenge.cs" />
@@ -120,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\ChallengePanelSymbols.xaml" />
+    <Page Include="Components\OwnedItemComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\ShopItemComponent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
