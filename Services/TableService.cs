@@ -14,7 +14,7 @@ namespace SuperbetBeclean.Services
     {
         private string tableType;
         private static Mutex mutex;
-        const int FULL = 8, EMPTY = 0;
+        const int FULL = 8, EMPTY = 0, WAITING = 1;
         bool ended = false;
 
         private int buyIn, smallBlind, bigBlind;
@@ -35,7 +35,7 @@ namespace SuperbetBeclean.Services
         }
 
 
-        private async void runTable()
+        public async void runTable()
         {
             while (true)
             {
@@ -83,7 +83,7 @@ namespace SuperbetBeclean.Services
             mutex.ReleaseMutex();
         }
 
-        public bool joinTable(MenuWindow window)
+        public bool joinTable(MenuWindow window, ref SqlConnection sqlConnection)
         {
             if (isFull()) return false;
             User player = window.Player();

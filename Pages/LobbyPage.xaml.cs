@@ -25,9 +25,9 @@ namespace SuperbetBeclean.Pages
             PlayerNameTextBox.Text = menuWindow.userName();
             PlayerLevelTextBox.Text = "Level: " + menuWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = "Chips: " + menuWindow.userChips().ToString();
-            InternPlayerCount.Text = _service.occupiedIntern().ToString() + "/8";
-            JuniorPlayerCount.Text = _service.occupiedJunior().ToString() + "/8";
-            SeniorPlayerCount.Text = _service.occupiedSenior().ToString() + "/8";
+            //InternPlayerCount.Text = _service.occupiedIntern().ToString() + "/8";
+            //JuniorPlayerCount.Text = _service.occupiedJunior().ToString() + "/8";
+            //SeniorPlayerCount.Text = _service.occupiedSenior().ToString() + "/8";
         }
 
         private void buttonLobbyBack(object sender, System.Windows.RoutedEventArgs e)

@@ -96,6 +96,7 @@
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DBService.cs" />
+    <Compile Include="Services\TableService.cs" />
     <Compile Include="Windows\ChallengesWindow.xaml.cs">
       <DependentUpon>ChallengesWindow.xaml</DependentUpon>
     </Compile>

@@ -142,17 +142,17 @@ namespace SuperbetBeclean.Services
         }
         public bool joinInternTable(MenuWindow window)
         {
-            return internTable.joinInternTable(window);
+            return internTable.joinTable(window, ref sqlConnection);
         }
 
         public bool joinJuniorTable(MenuWindow window)
         {
-            return juniorTable.joinJuniorTable(window);
+            return juniorTable.joinTable(window, ref sqlConnection);
         }
 
         public bool joinSeniorTable(MenuWindow window)
         {
-            return seniorTable.joinSeniorTable(window);
+            return seniorTable.joinTable(window, ref sqlConnection);
         }
         public void endGames()
         {
