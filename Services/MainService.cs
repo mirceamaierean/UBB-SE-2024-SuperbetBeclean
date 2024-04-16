@@ -10,7 +10,7 @@ using SuperbetBeclean.Windows;
 
 namespace SuperbetBeclean.Services
 {
-    public class Service
+    public class MainService
     {
         private static Mutex internMutex, juniorMutex, seniorMutex;
         private List<MenuWindow> openedUsersWindows;
@@ -23,7 +23,7 @@ namespace SuperbetBeclean.Services
         string connectionString;
         // Task internTask, juniorTask, seniorTask;
 
-        public Service()
+        public MainService()
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
 
