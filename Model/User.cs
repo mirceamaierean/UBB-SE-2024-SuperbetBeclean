@@ -25,7 +25,7 @@ namespace SuperbetBeclean.Model
 
         private Card[] _userCurrentHand;
 
-        public User(int userID = 0, string userName = "", int userCurrentFont = 0, int userCurrentTitle = 0, string userCurrentIconPath = 0, int userCurrentTable = 0, int userChips = 0, int userStack = 0, int userStreak = 0, int userHandsPlayed = 0, int userLevel = 0, DateTime userLastLogin = default(DateTime))
+        public User(int userID = 0, string userName = "", int userCurrentFont = 0, int userCurrentTitle = 0, string userCurrentIconPath = "", int userCurrentTable = 0, int userChips = 0, int userStack = 0, int userStreak = 0, int userHandsPlayed = 0, int userLevel = 0, DateTime userLastLogin = default(DateTime))
         {
             _userID = userID;
             _userName = userName;
