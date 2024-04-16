@@ -2,6 +2,9 @@
 using SuperbetBeclean.Services;
 using SuperbetBeclean.Windows;
 using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -16,9 +19,16 @@ namespace SuperbetBeclean.Pages
         private Frame _mainFrame;
         private MenuWindow _mainWindow;
         private MainService _service;
+        private SqlConnection sqlConnection;
+        DBService dbService;
+        string connectionString;
         private User _user;
         public LobbyPage(Frame mainFrame, MenuWindow menuWindow, MainService service, User u)
         {
+            connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
+            sqlConnection = new SqlConnection(connectionString);
+            sqlConnection.Open();
+            dbService = new DBService(new SqlConnection(connectionString));
             InitializeComponent();
             _mainFrame = mainFrame;
             _mainWindow = menuWindow;
@@ -43,11 +53,13 @@ namespace SuperbetBeclean.Pages
 
         private void onClickLeaderboardButton(object sender, System.Windows.RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new LeaderboardPage(_mainFrame));
+            List<string> strings;
+            strings = dbService.GetLeaderboard();
+            _mainFrame.Navigate(new LeaderboardPage(_mainFrame,strings));
         }
 
         private void onShopButtonClick(object sender, RoutedEventArgs e)
-        {
+        {   
             _mainFrame.Navigate(new ShopPage(_mainFrame));
         }
 
