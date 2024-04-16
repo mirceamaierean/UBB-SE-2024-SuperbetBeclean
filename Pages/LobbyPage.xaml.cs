@@ -1,8 +1,10 @@
 ﻿using SuperbetBeclean.Model;
 using SuperbetBeclean.Services;
 using SuperbetBeclean.Windows;
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace SuperbetBeclean.Pages
 {
@@ -25,6 +27,10 @@ namespace SuperbetBeclean.Pages
             PlayerNameTextBox.Text = menuWindow.userName();
             PlayerLevelTextBox.Text = "Level: " + menuWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = "Chips: " + menuWindow.userChips().ToString();
+            if (!string.IsNullOrEmpty(u.UserCurrentIconPath))
+            {
+                PlayerIconImg.Source = new BitmapImage(new Uri(u.UserCurrentIconPath, UriKind.Absolute));
+            }
             InternPlayerCount.Text = _service.occupiedIntern().ToString() + "/8";
             JuniorPlayerCount.Text = _service.occupiedJunior().ToString() + "/8";
             SeniorPlayerCount.Text = _service.occupiedSenior().ToString() + "/8";
