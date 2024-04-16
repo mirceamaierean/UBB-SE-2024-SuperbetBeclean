@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SuperbetBeclean.Services;
 
 namespace SuperbetBeclean.Components
 {
@@ -31,6 +32,8 @@ namespace SuperbetBeclean.Components
         public static readonly DependencyProperty BuyCommandProperty = DependencyProperty.Register(
             "BuyCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
 
+        public static readonly DependencyProperty ShopUserIdProperty = DependencyProperty.Register(
+                       "ShopUserId", typeof(int), typeof(ShopItemComponent), new PropertyMetadata(default(int)));
         // Properties for data binding
         public string ImagePath
         {
@@ -44,6 +47,11 @@ namespace SuperbetBeclean.Components
             set { SetValue(NameProperty, value); }
         }
 
+        public int ShopUserId
+        {
+            get { return (int)GetValue(ShopUserIdProperty); }
+            set { SetValue(ShopUserIdProperty, value); }
+        }
 
         public ICommand BuyCommand
         {
@@ -59,7 +67,9 @@ namespace SuperbetBeclean.Components
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var itemName = ItemName; // Access the ItemName property directly
-            MessageBox.Show($"BUY BUTTON CLICKED\nItem Name: {(itemName == null ? "NULL" : itemName)}");
+            DBService _dbService = new DBService();
+            var itemId = _dbService.GetIconIDByIconName(itemName);
+            _dbService.CreateUserIcon(ShopUserId, itemId);
 
         }
     }

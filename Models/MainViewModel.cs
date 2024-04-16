@@ -63,6 +63,7 @@ namespace SuperbetBeclean.Models
             {
                 if (!ownedItemNames.Contains(item.Name))
                 {
+                    item.UserId = userId;
                     purchasableItems.Add(item);
                 }
             }

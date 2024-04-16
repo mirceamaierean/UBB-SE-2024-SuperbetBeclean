@@ -63,7 +63,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <components:ShopItemComponent ItemName="{Binding Name}" ImagePath="{Binding ImagePath}" />
+                                <components:ShopItemComponent ItemName="{Binding Name}" ImagePath="{Binding ImagePath}" ShopUserId="{Binding UserId}"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

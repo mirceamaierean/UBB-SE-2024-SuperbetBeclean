@@ -309,5 +309,39 @@ namespace SuperbetBeclean.Services
             return userIcons;
         }
 
+        public void CreateUserIcon(int userId, int iconId)
+        {
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("createUserIcon", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@user_id", SqlDbType.Int) { Value = userId });
+                command.Parameters.Add(new SqlParameter("@icon_id", SqlDbType.Int) { Value = iconId });
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public int GetIconIDByIconName(string iconName)
+        {
+            int iconId = -1;
+
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getIconIDByIconName", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@icon_name", SqlDbType.VarChar, 255) { Value = iconName });
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        iconId = Convert.ToInt32(reader["icon_id"]);
+                    }
+                }
+            }
+
+            return iconId;
+        }
     }
 }
