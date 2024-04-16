@@ -25,13 +25,13 @@ namespace SuperbetBeclean.Pages
     {
         private MenuWindow _mainWindow;
         private Frame _mainFrame;
-        private Service _service;
+        private MainService _service;
         int timer = 0;
         int playerBet = 0;
         int tableBet = 0;
         string action = "";
 
-        public GameTablePage(Frame mainFrame, MenuWindow mainWindow, Service service)
+        public GameTablePage(Frame mainFrame, MenuWindow mainWindow, MainService service)
         {
             InitializeComponent();
             Loaded += GameTablePage_Loaded;
