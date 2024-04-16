@@ -51,7 +51,7 @@ namespace SuperbetBeclean.Services
             tableDeck = new List<Card>();
 
             for (int cardValue = 2; cardValue <= 10; cardValue++)
-                addCardsForValue(i.ToString());
+                addCardsForValue(cardValue.ToString());
 
             addCardsForValue("J");
             addCardsForValue("Q");
@@ -118,9 +118,9 @@ namespace SuperbetBeclean.Services
                     Console.WriteLine("We are in turn " + i + "!");
                     // display community cards
                     Console.WriteLine("Community cards are:");
-                    for (int i = 0; i < 5; ++i)
+                    for (int cardValue = 0; cardValue < 5; ++cardValue)
                     {
-                        Console.WriteLine(communityCards[i].Value + " " + communityCards[i].Suit);
+                        Console.WriteLine(communityCards[cardValue].Value + " " + communityCards[cardValue].Suit);
                     }
                     bool turnEnded = false;
                     int currentBet = -1;
@@ -135,9 +135,9 @@ namespace SuperbetBeclean.Services
 
                         // display player cards
                         Console.WriteLine("Player cards are:");
-                        for (int i = 0; i < 2; ++i)
+                        for (int index = 0; index < 2; ++index)
                         {
-                            Console.WriteLine(player.UserCurrentHand[i].Value + " " + player.UserCurrentHand[i].Suit);
+                            Console.WriteLine(player.UserCurrentHand[index].Value + " " + player.UserCurrentHand[index].Suit);
                         }
 
                         if (player.UserStatus == 0) continue;

@@ -58,6 +58,6 @@ namespace SuperbetBeclean.Model
         public DateTime UserLastLogin { get { return _userLastLogin; } set { _userLastLogin = value; } }
         public int UserStatus { get { return _userStatus; } set { _userStatus = value; } }
 
-        public int _userCurrentHand { get { return _userCurrentHand; } set { _userCurrentHand = value; } }
+        public Card[] UserCurrentHand { get { return _userCurrentHand; } set { _userCurrentHand = value; } }
     }
 }

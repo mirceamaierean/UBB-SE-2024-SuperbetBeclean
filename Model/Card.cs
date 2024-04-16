@@ -10,7 +10,7 @@ namespace SuperbetBeclean.Model
     {
         private string value, suit;
 
-        public Card(d value, string suit)
+        public Card(string value, string suit)
         {
             this.value = value;
             this.suit = suit;
