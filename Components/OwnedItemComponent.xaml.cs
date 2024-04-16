@@ -27,9 +27,6 @@ namespace SuperbetBeclean.Components
             "OwnedItemName", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
 
-        public static readonly DependencyProperty EquipCommandProperty = DependencyProperty.Register(
-            "OwnedEquipCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
-
         // Properties for data binding
         public string OwnedImagePath
         {
@@ -42,12 +39,7 @@ namespace SuperbetBeclean.Components
             get { return (string)GetValue(OwnedItemNameProperty); }
             set { SetValue(OwnedItemNameProperty, value); }
         }
-
-        public ICommand EquipCommand
-        {
-            get { return (ICommand)GetValue(EquipCommandProperty); }
-            set { SetValue(EquipCommandProperty, value); }
-        }
+        
 
         public OwnedItemComponent()
         {

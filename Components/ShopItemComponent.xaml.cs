@@ -29,9 +29,6 @@ namespace SuperbetBeclean.Components
             "ItemName", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
 
-        public static readonly DependencyProperty BuyCommandProperty = DependencyProperty.Register(
-            "BuyCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
-
         public static readonly DependencyProperty ShopUserIdProperty = DependencyProperty.Register(
                        "ShopUserId", typeof(int), typeof(ShopItemComponent), new PropertyMetadata(default(int)));
         // Properties for data binding
@@ -51,12 +48,6 @@ namespace SuperbetBeclean.Components
         {
             get { return (int)GetValue(ShopUserIdProperty); }
             set { SetValue(ShopUserIdProperty, value); }
-        }
-
-        public ICommand BuyCommand
-        {
-            get { return (ICommand)GetValue(BuyCommandProperty); }
-            set { SetValue(BuyCommandProperty, value); }
         }
 
         public ShopItemComponent()
