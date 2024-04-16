@@ -21,17 +21,11 @@ namespace SuperbetBeclean.Windows
     public partial class ChatWindow : Window
     {
         ChatService _chatService;
-       
-        public ChatMessages Messages { get; set; } = new ChatMessages();
-
-
+    
         public ChatWindow(ChatService chatService)
         {
             InitializeComponent();
             _chatService = chatService;
-            
-            DataContext = Messages;
-
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -57,8 +51,7 @@ namespace SuperbetBeclean.Windows
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //messagingBox.AppendText(chatInputTextBox.Text + "\n");
-            _chatService.newMessage(chatInputTextBox.Text + "\n");
+            _chatService.newMessage(chatInputTextBox.Text + "\n",this);
         }
 
         private void messagingBox_TextChanged(object sender, TextChangedEventArgs e)

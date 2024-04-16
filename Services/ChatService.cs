@@ -1,60 +1,83 @@
 ﻿using SuperbetBeclean.Windows;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
-namespace SuperbetBeclean.Services
-{   /// <summary>
-    /// 3 vectori pt fiecare table
-    /// new chat window sa populezi cu mesajele alea
-    /// 3 vectori pt fiecare table cu window urile ca sa le parsezi pe alea deschise sa repopulezi cu mesaje
-    /// </summary>
-    public class ChatService
+public class ChatService
+{
+    private static Dictionary<(MenuWindow, string), ChatWindow> menuWindowChatWindowMap;
+
+    public ChatService()
     {
-        private Dictionary<MenuWindow, ChatWindow> menuWindowChatWindowMap;
-
-        public ChatService()
+        menuWindowChatWindowMap = new Dictionary<(MenuWindow, string), ChatWindow>();
+    }
+    public void closeChat(MenuWindow _mainWindow)
+    {
+        foreach (var entry in menuWindowChatWindowMap)
         {
-            menuWindowChatWindowMap = new Dictionary<MenuWindow, ChatWindow>();
-        }
-        
-        public void newChat(MenuWindow _mainWindow)
-        {
-
-            foreach (Window window in Application.Current.Windows)
+            var key = entry.Key;
+            if (key.Item1 == _mainWindow)
             {
-                if (window.GetType() == typeof(MenuWindow) && window == _mainWindow)
+                entry.Value.Close();
+                break;
+            }
+        }
+    }
+    public void newChat(MenuWindow _mainWindow, string _tableType)
+    {
+        foreach (Window window in Application.Current.Windows)
+        {
+            if (window.GetType() == typeof(MenuWindow) && window == _mainWindow)
+            {
+                MenuWindow menuWindow = (MenuWindow)window;
+                var key = (menuWindow, _tableType);
+
+                // Check if a ChatWindow is already open for this MenuWindow and tableType
+                if (!menuWindowChatWindowMap.ContainsKey(key))
                 {
-                    MenuWindow menuWindow = (MenuWindow)window;
-                    // Check if a ChatWindow is already open for this MenuWindow
-                    if (!menuWindowChatWindowMap.ContainsKey(menuWindow))
-                    {
-                        ChatWindow chatWindow = new ChatWindow(this);
-                        chatWindow.Owner = menuWindow;
-                        chatWindow.Closed += (s, args) => menuWindowChatWindowMap.Remove(menuWindow); // Remove from dictionary when closed
-                        menuWindowChatWindowMap.Add(menuWindow, chatWindow); // Add to dictionary
-                        chatWindow.messagingBox.Text = _mainWindow.userName();
-                        chatWindow.Show();
-                    }
-                    else
-                    {
-                        // Bring existing ChatWindow to the front
-                        ChatWindow existingChatWindow = menuWindowChatWindowMap[menuWindow];
-                        existingChatWindow.Activate();
-                    }
+                    ChatWindow chatWindow = new ChatWindow(this);
+                    chatWindow.Owner = menuWindow;
+                    chatWindow.Closed += (s, args) => menuWindowChatWindowMap.Remove(key); // Remove from dictionary when closed
+                    menuWindowChatWindowMap.Add(key, chatWindow); // Add to dictionary
+                    chatWindow.messagingBox.Text = _mainWindow.userName();
+                    chatWindow.Show();
+                }
+                else
+                {
+                    // Bring existing ChatWindow to the front
+                    ChatWindow existingChatWindow = menuWindowChatWindowMap[key];
+                    existingChatWindow.Activate();
                 }
             }
         }
-        public void newMessage(string _message)
-        {
-            foreach (var chatWindow in menuWindowChatWindowMap.Values)
-            {
-                //chatWindow.messagingBox.AppendText(_message + "\n");
-                chatWindow.Messages.Message += _message + "\n";
+    }
 
+    public void newMessage(string _message, ChatWindow thisWindow)
+    {
+        string userName = "";
+        string tableType = "";
+        
+        // Find the userName and tableType corresponding to this window
+        foreach (var entry in menuWindowChatWindowMap)
+        {
+            if (entry.Value == thisWindow)
+            {
+                userName = entry.Key.Item1.userName();
+                tableType = entry.Key.Item2;
+                break;
+            }
+        }
+
+        // Update all messagingBoxes with the new message
+        foreach (var entry in menuWindowChatWindowMap)
+        {
+            var key = entry.Key;
+            var chatWindow = entry.Value;
+
+            // Check if the tableType matches the desired tableType
+            if (key.Item2 == tableType)
+            {
+                // Update the messagingBox in chatWindow with the new message
+                chatWindow.messagingBox.Text += " " + userName + " (" + tableType + "): " + _message;
             }
         }
     }

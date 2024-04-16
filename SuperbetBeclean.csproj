@@ -97,7 +97,6 @@
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\ChatMessage.cs" />
     <Compile Include="Services\ChatService.cs" />
     <Compile Include="Services\DBService.cs" />
     <Compile Include="Services\MainService.cs" />
