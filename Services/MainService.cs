@@ -15,6 +15,7 @@ namespace SuperbetBeclean.Services
         private static Mutex internMutex, juniorMutex, seniorMutex;
         private List<MenuWindow> openedUsersWindows;
         private SqlConnection sqlConnection;
+        private DBService dbService;
         const int FULL = 8, EMPTY = 0;
         bool ended = false;
         const int INACTIVE = 0, WAITING = 1, PLAYING = 2;
@@ -26,14 +27,13 @@ namespace SuperbetBeclean.Services
         public MainService()
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
-
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
-
+            dbService = new DBService(new SqlConnection(connectionString));
             openedUsersWindows = new List<MenuWindow>();
-            internTable = new TableService(5000, 50, 100, "intern");
-            juniorTable = new TableService(50000, 500, 1000, "junior");
-            seniorTable = new TableService(500000, 5000, 10000, "senior");
+            internTable = new TableService(5000, 50, 100, "intern", dbService);
+            juniorTable = new TableService(50000, 500, 1000, "junior", dbService);
+            seniorTable = new TableService(500000, 5000, 10000, "senior", dbService);
         }
 
         public int occupiedIntern()
@@ -65,20 +65,11 @@ namespace SuperbetBeclean.Services
                     newUser.UserStreak = 1;
                 }
                 newUser.UserChips += newUser.UserStreak * 5000;
-                SqlCommand dailyBonusCmd = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
-                dailyBonusCmd.Parameters.AddWithValue("@userID", newUser.UserID);
-                dailyBonusCmd.Parameters.AddWithValue("@userChips", newUser.UserChips);
-                dailyBonusCmd.ExecuteNonQuery();
-                SqlCommand newStreakCmd = new SqlCommand("EXEC updateUserStreak @userID , @userStreak", sqlConnection);
-                newStreakCmd.Parameters.AddWithValue("@userID", newUser.UserID);
-                newStreakCmd.Parameters.AddWithValue("@userStreak", newUser.UserStreak);
-                newStreakCmd.ExecuteNonQuery();
+                dbService.UpdateUserChips(newUser.UserID, newUser.UserChips);
+                dbService.UpdateUserStreak(newUser.UserID, newUser.UserStreak);
                 MessageBox.Show("Congratulations, you got your daily bonus!\n" + "Streak: " + newUser.UserStreak + " Bonus: " + (5000 * newUser.UserStreak).ToString());
             }
-            SqlCommand newLoginCmd = new SqlCommand("EXEC updateUserLastLogin @userID , @newLogin", sqlConnection);
-            newLoginCmd.Parameters.AddWithValue("@userID", newUser.UserID);
-            newLoginCmd.Parameters.AddWithValue("@newLogin", DateTime.Now);
-            newLoginCmd.ExecuteNonQuery();
+            dbService.UpdateUserLastLogin(newUser.UserID, DateTime.Now);
         }
         public void addWindow(string username)
         {
@@ -128,16 +119,10 @@ namespace SuperbetBeclean.Services
             juniorTable.disconnectUser(window);
             seniorTable.disconnectUser(window);
 
-            SqlCommand updateChips = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
-            updateChips.Parameters.AddWithValue("@userID", player.UserID);
-            updateChips.Parameters.AddWithValue("@userChips", player.UserChips + player.UserStack);
-            updateChips.ExecuteNonQuery();
             player.UserChips += player.UserStack;
-            SqlCommand resetStack = new SqlCommand("EXEC updateUserStack @userID , @userStack", sqlConnection);
-            resetStack.Parameters.AddWithValue("@userID", player.UserID);
-            resetStack.Parameters.AddWithValue("@userStack", 0);
-            resetStack.ExecuteNonQuery();
+            dbService.UpdateUserChips(player.UserID, player.UserChips);
             player.UserStack = EMPTY;
+            dbService.UpdateUserStack(player.UserID, player.UserStack);
         }
         public bool joinInternTable(MenuWindow window)
         {

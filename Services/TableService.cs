@@ -20,11 +20,13 @@ namespace SuperbetBeclean.Services
         private int buyIn, smallBlind, bigBlind;
         private List<MenuWindow> users;
         private Deck deck; // all the cards that are not in the players hands
+        DBService dbService;
         Random random;
 
         private List<Card> communityCards;
-        public TableService(int buyIn, int smallBlind, int bigBlind, string tableType)
+        public TableService(int buyIn, int smallBlind, int bigBlind, string tableType , DBService dbService)
         {
+            this.dbService = dbService;
             this.tableType = tableType;
             users = new List<MenuWindow>();
 
@@ -37,6 +39,7 @@ namespace SuperbetBeclean.Services
             mutex = new Mutex();
 
             random = new Random();
+            this.dbService = dbService;
         }
 
         public Card getRandomCardAndRemoveIt()
@@ -151,18 +154,12 @@ namespace SuperbetBeclean.Services
 
             if (player.UserChips < buyIn) return false; /// also return different values to differentiate full from no money
 
-            SqlCommand updateChips = new SqlCommand("EXEC updateUserChips @userID , @userChips", sqlConnection);
-            updateChips.Parameters.AddWithValue("@userID", player.UserID);
-            updateChips.Parameters.AddWithValue("@userChips", player.UserChips - buyIn);
-            updateChips.ExecuteNonQuery();
-
-            SqlCommand resetStack = new SqlCommand("EXEC updateUserStack @userID , @userStack", sqlConnection);
-            resetStack.Parameters.AddWithValue("@userID", player.UserID);
-            resetStack.Parameters.AddWithValue("@userStack", buyIn);
-            resetStack.ExecuteNonQuery();
-
             player.UserChips -= buyIn;
+            dbService.UpdateUserChips(player.UserID, player.UserChips);
+
             player.UserStack = buyIn;
+            dbService.UpdateUserStack(player.UserID, player.UserStack);
+
             player.UserStatus = WAITING;
 
             mutex.WaitOne();

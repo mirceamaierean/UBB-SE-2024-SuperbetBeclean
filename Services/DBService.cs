@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace SuperbetBeclean.Services
 {
-    internal class DBService
+    public class DBService
     {
-        private readonly SqlConnection _connection;
+        private SqlConnection _connection;
 
         public DBService(SqlConnection connection)
         {
@@ -32,6 +32,7 @@ namespace SuperbetBeclean.Services
         }
         private void ExecuteNonQuery(string procedureName, SqlParameter[] parameters)
         {
+            OpenConnection();
             using (var command = new SqlCommand(procedureName, _connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
