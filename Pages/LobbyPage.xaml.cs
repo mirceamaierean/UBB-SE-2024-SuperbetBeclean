@@ -60,7 +60,7 @@ namespace SuperbetBeclean.Pages
 
         private void onShopButtonClick(object sender, RoutedEventArgs e)
         {   
-            _mainFrame.Navigate(new ShopPage(_mainFrame));
+            _mainFrame.Navigate(new ShopPage(_mainFrame, _mainWindow));
         }
 
         private void onClickInternButton(object sender, System.Windows.RoutedEventArgs e)

@@ -32,9 +32,9 @@ namespace SuperbetBeclean.Models
 
         public List<ShopItem> ShopItems { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(int currentBalance)
         {
-            Balance = 12345; // TODO: Placeholder balance, be sure to change it once the backend is implemented
+            Balance = currentBalance;
             ShopItems = new List<ShopItem>();
             _dbService = new DBService();
             LoadItems();

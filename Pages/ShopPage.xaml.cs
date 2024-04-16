@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SuperbetBeclean.Models;
+using SuperbetBeclean.Windows;
 
 namespace SuperbetBeclean.Pages
 {
@@ -21,10 +22,10 @@ namespace SuperbetBeclean.Pages
     public partial class ShopPage : Page
     {
         private Frame _mainFrame;
-        public ShopPage(Frame mainFrame)
+        public ShopPage(Frame mainFrame, MenuWindow _menuWindow)
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            DataContext = new MainViewModel(_menuWindow.userChips());
             _mainFrame = mainFrame;
         }
 
@@ -33,5 +34,13 @@ namespace SuperbetBeclean.Pages
             _mainFrame.NavigationService.GoBack();
         }
 
+        public static readonly DependencyProperty BalanceProperty = DependencyProperty.Register(
+                       "Balance", typeof(List<ShopItem>), typeof(ShopPage), new PropertyMetadata(default(List<ShopItem>)));
+
+        public int Balance
+        {
+            get { return (int)GetValue(BalanceProperty); }
+            set { SetValue(BalanceProperty, value); }
+        }
     }
 }
