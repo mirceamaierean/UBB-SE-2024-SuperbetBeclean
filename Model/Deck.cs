@@ -14,6 +14,8 @@ namespace SuperbetBeclean.Model
 
         public Deck()
         {
+            deck = new List<Card>();
+
             for (int cardValue = 2; cardValue <= 10; cardValue++)
                 addCardsForValue(cardValue.ToString());
 
