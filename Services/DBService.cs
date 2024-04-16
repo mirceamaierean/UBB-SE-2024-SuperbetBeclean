@@ -199,5 +199,24 @@ namespace SuperbetBeclean.Services
             };
             ExecuteNonQuery("updateTitle", parameters);
         }
+
+        public string GetIconPath(int iconId)
+        {
+                using (SqlCommand command = new SqlCommand("getIconByID", _connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@icon_id", SqlDbType.Int) { Value = iconId });
+
+                    _connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                            return reader["icon_path"] as string;
+                        else
+                            throw new Exception("No icon found with the provided ID.");
+                    }
+              
+            }
+        }
     }
 }
