@@ -32,5 +32,6 @@ namespace SuperbetBeclean.Pages
         {
             _mainFrame.NavigationService.GoBack();
         }
+
     }
 }

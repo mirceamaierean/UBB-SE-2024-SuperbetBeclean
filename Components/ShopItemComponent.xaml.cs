@@ -55,5 +55,12 @@ namespace SuperbetBeclean.Components
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var itemName = ItemName; // Access the ItemName property directly
+            MessageBox.Show($"BUY BUTTON CLICKED\nItem Name: {(itemName == null ? "NULL" : itemName)}");
+
+        }
     }
 }
