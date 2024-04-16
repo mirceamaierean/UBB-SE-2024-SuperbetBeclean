@@ -226,6 +226,28 @@ namespace SuperbetBeclean.Services
             }
         }
 
+        public List<string> GetLeaderboard()
+        {
+            List<string> leaderboard = new List<string>();
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getLeaderboard", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string username = reader["user_username"] as string;
+                        int chips = Convert.ToInt32(reader["user_chips"]);
+                        int level = Convert.ToInt32(reader["user_level"]);
+                        leaderboard.Add($"{username} - Lvl: {level} - Chips: {chips}");
+                    }
+                }
+            }
+            return leaderboard;
+        }
+
         public List<ShopItem> GetShopItems()
         {
             List<ShopItem> shopItems = new List<ShopItem>();
