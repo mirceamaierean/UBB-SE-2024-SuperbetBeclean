@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SuperbetBeclean.Pages"
+      xmlns:components="clr-namespace:SuperbetBeclean.Components"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
@@ -100,15 +101,22 @@
                                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="INVENTORY" Height="40" Width="250" TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="26"/>
                             </Grid>
                         </Border>
-                        
-                        <ItemsControl Grid.Row="1" ItemsSource="{Binding Path=IconComponents}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                        
+
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl Name="itemsControl" ItemsSource="{Binding OwnedItems}" Margin="24 0 0 0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <components:OwnedItemComponent/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+
                     </Grid>
                 </Border>
             </Grid>

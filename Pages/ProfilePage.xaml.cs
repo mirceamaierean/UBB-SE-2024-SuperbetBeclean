@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SuperbetBeclean.Model;
+using SuperbetBeclean.Models;
 
 namespace SuperbetBeclean.Pages
 {
@@ -30,6 +31,7 @@ namespace SuperbetBeclean.Pages
             _mainFrame = mainFrame;
             _mainWindow = mainWindow;
             User player = mainWindow.Player();
+            DataContext = new ProfileViewModel();
             if (!string.IsNullOrEmpty(player.UserCurrentIconPath))
                 profilePageUserAvatar.ImageSource = new BitmapImage(new Uri(player.UserCurrentIconPath, UriKind.Absolute));
             profilePageUsernameTextBlock.Text = mainWindow.userName();
