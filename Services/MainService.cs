@@ -19,7 +19,7 @@ namespace SuperbetBeclean.Services
         const int FULL = 8, EMPTY = 0;
         bool ended = false;
         const int INACTIVE = 0, WAITING = 1, PLAYING = 2;
-
+        public ChatWindow chatWindowIntern, chatWindowJuniorm, chatWindowSenior;
         private TableService internTable, juniorTable, seniorTable;
         string connectionString;
         // Task internTask, juniorTask, seniorTask;
@@ -34,6 +34,9 @@ namespace SuperbetBeclean.Services
             internTable = new TableService(5000, 50, 100, "intern", dbService);
             juniorTable = new TableService(50000, 500, 1000, "junior", dbService);
             seniorTable = new TableService(500000, 5000, 10000, "senior", dbService);
+            //chatWindowIntern = new ChatWindow();
+            //chatWindowJuniorm = new ChatWindow();
+            //chatWindowSenior = new ChatWindow();
         }
 
         public int occupiedIntern()

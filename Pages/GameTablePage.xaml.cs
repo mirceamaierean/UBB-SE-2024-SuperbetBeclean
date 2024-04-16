@@ -30,7 +30,12 @@ namespace SuperbetBeclean.Pages
         int playerBet = 0;
         int tableBet = 0;
         string action = "";
-
+        private List<ChatWindow> chatWindows;
+        string tableType = "intern example";
+        ChatWindow _chatWindow;
+        private Dictionary<MenuWindow, ChatWindow> menuWindowChatWindowMap = new Dictionary<MenuWindow, ChatWindow>();
+        private ChatService _chatService;
+        private List<ChatWindow> openChatWindows = new List<ChatWindow>();
         public GameTablePage(Frame mainFrame, MenuWindow mainWindow, MainService service)
         {
             InitializeComponent();
@@ -41,6 +46,10 @@ namespace SuperbetBeclean.Pages
             PlayerNameTextBox.Text = _mainWindow.userName();
             PlayerLvlTextBox.Text = "Level: " + _mainWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = "Chips: " + _mainWindow.userChips().ToString();
+           
+            _chatService = new ChatService();
+
+
         }
 
         private void GameTablePage_Loaded(object sender, RoutedEventArgs e)
@@ -142,8 +151,9 @@ namespace SuperbetBeclean.Pages
 
         private void MsgBttn_Click(object sender, RoutedEventArgs e)
         {
-            ChatWindow chatWindow = new ChatWindow();
-            chatWindow.Show();
+            _chatService.newChat(_mainWindow);
+            
         }
+        
     }
 }

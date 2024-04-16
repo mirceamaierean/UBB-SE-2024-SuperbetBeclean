@@ -22,6 +22,7 @@ namespace SuperbetBeclean.Services
         private Deck deck; // all the cards that are not in the players hands
         DBService dbService;
         Random random;
+        private ChatWindow chatWindow;
 
         private List<Card> communityCards;
         public TableService(int buyIn, int smallBlind, int bigBlind, string tableType , DBService dbService)
@@ -40,6 +41,10 @@ namespace SuperbetBeclean.Services
 
             random = new Random();
             this.dbService = dbService;
+            //chatWindow = new ChatWindow();
+        }
+        public ChatWindow getChatWindow() {
+            return chatWindow;
         }
 
         public Card getRandomCardAndRemoveIt()

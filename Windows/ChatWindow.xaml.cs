@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperbetBeclean.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace SuperbetBeclean.Windows
     /// </summary>
     public partial class ChatWindow : Window
     {
-        public ChatWindow()
+        ChatService _chatService;
+       
+        public ChatMessages Messages { get; set; } = new ChatMessages();
+
+
+        public ChatWindow(ChatService chatService)
         {
             InitializeComponent();
+            _chatService = chatService;
+            
+            DataContext = Messages;
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -37,15 +47,23 @@ namespace SuperbetBeclean.Windows
         {
             try
             {   
-
-
                 if (e.GetPosition(this).Y < 60) // Assuming the height of the upper part is 60 (adjust as needed)
                 {
-                    // Drag the window
                     DragMove();
                 }
             }
             catch { };
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //messagingBox.AppendText(chatInputTextBox.Text + "\n");
+            _chatService.newMessage(chatInputTextBox.Text + "\n");
+        }
+
+        private void messagingBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
