@@ -43,6 +43,8 @@ namespace SuperbetBeclean.Models
             // TODO: Placeholder items, be sure to change them once the backend is implemented
             ShopItems.Add(new ShopItem { ImagePath = "..\\assets\\pear.jpeg", Name = "Item 1", Description = "Description of Item 1", BuyCommand = new PlaceholderCommand() });
             ShopItems.Add(new ShopItem { ImagePath = "..\\assets\\pear.jpeg", Name = "Item 2", Description = "Description of Item 2", BuyCommand = new PlaceholderCommand() });
+            ShopItems.Add(new ShopItem { ImagePath = "..\\assets\\pear.jpeg", Name = "Item 3", Description = "Description of Item 2", BuyCommand = new PlaceholderCommand() });
+            ShopItems.Add(new ShopItem { ImagePath = "..\\assets\\pear.jpeg", Name = "Item 4", Description = "Description of Item 2", BuyCommand = new PlaceholderCommand() });
 
         }
 
@@ -66,6 +68,6 @@ public class PlaceholderCommand : ICommand
 
     public void Execute(object parameter)
     {
-        
+
     }
 }

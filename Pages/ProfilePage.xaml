@@ -89,7 +89,6 @@
             </Grid>
             <Grid Grid.Column="1">
                 <Border Margin="15 20 15 20" Background="#FFD5D3D3" BorderBrush="#FF494949" BorderThickness="2" CornerRadius="30">
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
@@ -102,9 +101,14 @@
                             </Grid>
                         </Border>
                         
-                        <Grid Grid.Row="1">
-                            
-                        </Grid>
+                        <ItemsControl Grid.Row="1" ItemsSource="{Binding Path=IconComponents}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                        
                     </Grid>
                 </Border>
             </Grid>
