@@ -44,7 +44,6 @@ namespace SuperbetBeclean.Models
 
         private void LoadItems()
         {
-            // TODO: Placeholder items, be sure to change them once the backend is implemented
             ShopItems = _dbService.GetShopItems(); 
         }
 

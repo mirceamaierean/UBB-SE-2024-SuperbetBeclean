@@ -1,4 +1,5 @@
-﻿using SuperbetBeclean.Models;
+﻿using SuperbetBeclean.Model;
+using SuperbetBeclean.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -278,5 +279,35 @@ namespace SuperbetBeclean.Services
 
             return shopItems;
         }
+
+        public List<ShopItem> GetAllUserIconsByUserId(int userId)
+        {
+            List<ShopItem> userIcons = new List<ShopItem>();
+
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getAllUserIconsByUserId", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@user_id", SqlDbType.Int) { Value = userId });
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int iconId = Convert.ToInt32(reader["icon_id"]);
+                        string iconName = reader["icon_name"] as string;
+                        int iconPrice = Convert.ToInt32(reader["icon_price"]);
+                        string iconPath = reader["icon_path"] as string;
+
+                        // Assuming ShopItem is a class with appropriate properties
+                        ShopItem shopItem = new ShopItem(iconId, iconPath, iconName, iconPrice);
+                        userIcons.Add(shopItem);
+                    }
+                }
+            }
+
+            return userIcons;
+        }
+
     }
 }

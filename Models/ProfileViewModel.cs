@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SuperbetBeclean.Services;
+using SuperbetBeclean.Windows;
 
 namespace SuperbetBeclean.Models
 {
@@ -11,10 +12,12 @@ namespace SuperbetBeclean.Models
     {
         DBService _dbService;
 
+        MenuWindow _mainWindow;
         public List<ShopItem> OwnedItems { get; set; }
 
-        public ProfileViewModel()
+        public ProfileViewModel(MenuWindow mainWindow)
         {
+            _mainWindow = mainWindow;
             OwnedItems = new List<ShopItem>();
             _dbService = new DBService();
             LoadItems();
@@ -22,8 +25,7 @@ namespace SuperbetBeclean.Models
 
         private void LoadItems()
         {
-            // TODO: Switch to owned items once that is implemented
-            OwnedItems = _dbService.GetShopItems();
+            OwnedItems = _dbService.GetAllUserIconsByUserId(_mainWindow.userId());
         }
     }
 }
