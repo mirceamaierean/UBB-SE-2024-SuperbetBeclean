@@ -27,7 +27,6 @@ namespace SuperbetBeclean.Pages
             PlayerNameTextBox.Text = menuWindow.userName();
             PlayerLevelTextBox.Text = "Level: " + menuWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = "Chips: " + menuWindow.userChips().ToString();
-            MessageBox.Show(u.UserCurrentIconPath);
             if (!string.IsNullOrEmpty(u.UserCurrentIconPath))
             {
                 PlayerIconImg.Source = new BitmapImage(new Uri(u.UserCurrentIconPath, UriKind.Absolute));

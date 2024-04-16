@@ -202,27 +202,20 @@ namespace SuperbetBeclean.Services
 
         public string GetIconPath(int iconId)
         {
-            string connectionString = ""; // Your connection string here
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand("getIconByID", connection))
+                using (SqlCommand command = new SqlCommand("getIconByID", _connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add(new SqlParameter("@icon_id", SqlDbType.Int) { Value = iconId });
 
-                    connection.Open();
+                    _connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
-                        {
                             return reader["icon_path"] as string;
-                        }
                         else
-                        {
                             throw new Exception("No icon found with the provided ID.");
-                        }
                     }
-                }
+              
             }
         }
     }
