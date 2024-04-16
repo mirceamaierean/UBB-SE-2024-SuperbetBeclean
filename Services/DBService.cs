@@ -343,5 +343,18 @@ namespace SuperbetBeclean.Services
 
             return iconId;
         }
+
+        public void SetCurrentIcon(int userId, int iconId)
+        {
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("setCurrentIcon", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@user_id", SqlDbType.Int) { Value = userId });
+                command.Parameters.Add(new SqlParameter("@icon_id", SqlDbType.Int) { Value = iconId });
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

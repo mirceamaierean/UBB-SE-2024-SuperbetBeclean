@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SuperbetBeclean.Model;
 using SuperbetBeclean.Services;
 using SuperbetBeclean.Windows;
 
@@ -25,7 +26,12 @@ namespace SuperbetBeclean.Models
 
         private void LoadItems()
         {
-            OwnedItems = _dbService.GetAllUserIconsByUserId(_mainWindow.userId());
+            List<ShopItem> _ownedItems = _dbService.GetAllUserIconsByUserId(_mainWindow.userId());
+            foreach (var item in _ownedItems)
+            {
+                item.UserId = _mainWindow.userId();
+                OwnedItems.Add(item);
+            }
         }
     }
 }

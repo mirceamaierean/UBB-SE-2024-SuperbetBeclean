@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperbetBeclean.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,13 @@ namespace SuperbetBeclean.Components
     {
 
         public static readonly DependencyProperty OwnedImagePathProperty = DependencyProperty.Register(
-            "OwnedImagePath", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
+            "OwnedImagePath", typeof(string), typeof(OwnedItemComponent), new PropertyMetadata(default(string)));
 
         public static readonly DependencyProperty OwnedItemNameProperty = DependencyProperty.Register(
-            "OwnedItemName", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
+            "OwnedItemName", typeof(string), typeof(OwnedItemComponent), new PropertyMetadata(default(string)));
+
+        public static readonly DependencyProperty OwnedUserIdProperty = DependencyProperty.Register(
+            "OwnedUserId", typeof(int), typeof(OwnedItemComponent), new PropertyMetadata(default(int)));
 
 
         // Properties for data binding
@@ -39,11 +43,26 @@ namespace SuperbetBeclean.Components
             get { return (string)GetValue(OwnedItemNameProperty); }
             set { SetValue(OwnedItemNameProperty, value); }
         }
-        
+
+        public int OwnedUserId
+        {
+            get { return (int)GetValue(OwnedUserIdProperty); }
+            set { SetValue(OwnedUserIdProperty, value); }
+        }
 
         public OwnedItemComponent()
         {
             InitializeComponent();
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var itemName = OwnedItemName; // Access the ItemName property directly
+            DBService _dbService = new DBService();
+            var itemId = _dbService.GetIconIDByIconName(itemName);
+            Console.WriteLine(OwnedUserId.ToString(), itemId);
+            _dbService.SetCurrentIcon(OwnedUserId, itemId);
         }
     }
 }
