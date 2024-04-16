@@ -20,27 +20,27 @@ namespace SuperbetBeclean.Components
     public partial class OwnedItemComponent : UserControl
     {
 
-        public static readonly DependencyProperty ImagePathProperty = DependencyProperty.Register(
-            "ImagePath", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty OwnedImagePathProperty = DependencyProperty.Register(
+            "OwnedImagePath", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
-        public static readonly DependencyProperty ItemNameProperty = DependencyProperty.Register(
-            "ItemName", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty OwnedItemNameProperty = DependencyProperty.Register(
+            "OwnedItemName", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
 
 
         public static readonly DependencyProperty EquipCommandProperty = DependencyProperty.Register(
-            "EqipCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
+            "OwnedEquipCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
 
         // Properties for data binding
-        public string ImagePath
+        public string OwnedImagePath
         {
-            get { return (string)GetValue(ImagePathProperty); }
-            set { SetValue(ImagePathProperty, value); }
+            get { return (string)GetValue(OwnedImagePathProperty); }
+            set { SetValue(OwnedImagePathProperty, value); }
         }
 
-        public string ItemName
+        public string OwnedItemName
         {
-            get { return (string)GetValue(ItemNameProperty); }
-            set { SetValue(NameProperty, value); }
+            get { return (string)GetValue(OwnedItemNameProperty); }
+            set { SetValue(OwnedItemNameProperty, value); }
         }
 
         public ICommand EquipCommand

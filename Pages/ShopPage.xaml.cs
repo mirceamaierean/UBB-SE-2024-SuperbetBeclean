@@ -25,7 +25,7 @@ namespace SuperbetBeclean.Pages
         public ShopPage(Frame mainFrame, MenuWindow _menuWindow)
         {
             InitializeComponent();
-            DataContext = new MainViewModel(_menuWindow.userChips());
+            DataContext = new MainViewModel(_menuWindow.userChips(), _menuWindow.userId());
             _mainFrame = mainFrame;
         }
 
