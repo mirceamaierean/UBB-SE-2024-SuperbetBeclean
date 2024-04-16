@@ -68,7 +68,9 @@
     <Compile Include="Models\MainViewModel.cs" />
     <Compile Include="Models\ShopItem.cs" />
     <Compile Include="HandRankCalculator.cs" />
+    <Compile Include="Model\Card.cs" />
     <Compile Include="Model\Challenge.cs" />
+    <Compile Include="Model\Deck.cs" />
     <Compile Include="Model\Font.cs" />
     <Compile Include="Model\Icon.cs" />
     <Compile Include="Model\Table.cs" />
@@ -96,10 +98,11 @@
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DBService.cs" />
+    <Compile Include="Services\MainService.cs" />
+    <Compile Include="Services\TableService.cs" />
     <Compile Include="Windows\ChallengesWindow.xaml.cs">
       <DependentUpon>ChallengesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\Service.cs" />
     <Compile Include="Windows\ChatWindow.xaml.cs">
       <DependentUpon>ChatWindow.xaml</DependentUpon>
     </Compile>

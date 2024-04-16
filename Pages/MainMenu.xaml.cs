@@ -14,8 +14,8 @@ namespace SuperbetBeclean.Pages
         private Frame _mainFrame;
         private MenuWindow _menuWindow;
         private User _user;
-        private Service _service;
-        public MainMenu(Frame mainFrame, MenuWindow mainWindow, Service serv, User user)
+        private MainService _service;
+        public MainMenu(Frame mainFrame, MenuWindow mainWindow, MainService serv, User user)
         {
             InitializeComponent();
             _mainFrame = mainFrame;

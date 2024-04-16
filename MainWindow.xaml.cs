@@ -10,11 +10,11 @@ namespace SuperbetBeclean
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Service service;
+        private MainService service;
         public MainWindow()
         {
             InitializeComponent();
-            service = new Service();
+            service = new MainService();
             MainFrame.Navigate(new LoginPage(MainFrame, this));
             Title = "Superbet Beclean - Poker";
             Closed += endGames;

@@ -16,12 +16,9 @@ namespace SuperbetBeclean.Pages
     {
         private Frame _mainFrame;
         private MenuWindow _mainWindow;
-        private Service _service;
+        private MainService _service;
         private User _user;
-        private SqlConnection sqlConnection;
-        private string connectionString;
-
-        public LobbyPage(Frame mainFrame, MenuWindow menuWindow, Service service, User u)
+        public LobbyPage(Frame mainFrame, MenuWindow menuWindow, MainService service, User u)
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
             sqlConnection = new SqlConnection(connectionString);
@@ -73,24 +70,24 @@ namespace SuperbetBeclean.Pages
 
         private void onClickInternButton(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (_service.joinInternTable(_user))
-                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow, _service));
+            if (_service.joinInternTable(_mainWindow))
+                _mainFrame.Navigate(_mainWindow.internPage);
             else
                 MessageBox.Show("Sorry, this table is full.");
         }
 
         private void onClickJuniorBttn(object sender, System.Windows.RoutedEventArgs e)
         {
-            if ( _service.joinJuniorTable(_user))
-                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow, _service));
+            if (_service.joinJuniorTable(_mainWindow))
+                _mainFrame.Navigate(_mainWindow.juniorPage);
             else
-                MessageBox.Show("Sorry, this table is full.j");
+                MessageBox.Show("Sorry, this table is full.");
         }
 
         private void onClickSeniorButton(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (_service.joinSeniorTable(_user))
-                _mainFrame.Navigate(new GameTablePage(_mainFrame, _mainWindow, _service));
+            if (_service.joinSeniorTable(_mainWindow))
+                _mainFrame.Navigate(_mainWindow.seniorPage);
             else
                 MessageBox.Show("Sorry, this table is full.");
         }

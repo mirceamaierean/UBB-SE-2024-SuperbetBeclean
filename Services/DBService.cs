@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace SuperbetBeclean.Services
 {
-    internal class DBService
+    public class DBService
     {
-        private readonly SqlConnection _connection;
+        private SqlConnection _connection;
 
         public DBService(SqlConnection connection)
         {
@@ -32,6 +32,7 @@ namespace SuperbetBeclean.Services
         }
         private void ExecuteNonQuery(string procedureName, SqlParameter[] parameters)
         {
+            OpenConnection();
             using (var command = new SqlCommand(procedureName, _connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -197,6 +198,32 @@ namespace SuperbetBeclean.Services
                 new SqlParameter("@title_content", SqlDbType.VarChar, 255) { Value = titleContent }
             };
             ExecuteNonQuery("updateTitle", parameters);
+        }
+
+        public string GetIconPath(int iconId)
+        {
+            string connectionString = ""; // Your connection string here
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("getIconByID", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@icon_id", SqlDbType.Int) { Value = iconId });
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader["icon_path"] as string;
+                        }
+                        else
+                        {
+                            throw new Exception("No icon found with the provided ID.");
+                        }
+                    }
+                }
+            }
         }
     }
 }
