@@ -13,14 +13,14 @@ namespace SuperbetBeclean.Services
     public class TableService
     {
 
-        const string HEART = "H", DIAMOND = "D", SPADE = "S", CLUB = "C";
         private string tableType;
         private static Mutex mutex;
         const int FULL = 8, EMPTY = 0, WAITING = 1;
         bool ended = false;
         private int buyIn, smallBlind, bigBlind;
         private List<MenuWindow> users;
-        private List<Card> tableDeck; // all the cards that are not in the players hands
+        private Deck deck; // all the cards that are not in the players hands
+        Random random;
 
         private List<Card> communityCards;
         public TableService(int buyIn, int smallBlind, int bigBlind, string tableType)
@@ -35,38 +35,18 @@ namespace SuperbetBeclean.Services
             Task.Run(() => runTable());
 
             mutex = new Mutex();
-        }
 
-        public void addCardsForValue(string value)
-        {
-            tableDeck.Add(new Card(value, HEART));
-            tableDeck.Add(new Card(value, DIAMOND));
-            tableDeck.Add(new Card(value, SPADE));
-            tableDeck.Add(new Card(value, CLUB));
-        }
-
-
-        public void generateAllPossibleHands()
-        {
-            tableDeck = new List<Card>();
-
-            for (int cardValue = 2; cardValue <= 10; cardValue++)
-                addCardsForValue(cardValue.ToString());
-
-            addCardsForValue("J");
-            addCardsForValue("Q");
-            addCardsForValue("K");
-            addCardsForValue("A");
+            random = new Random();
         }
 
         public Card getRandomCardAndRemoveIt()
         {
-            Random random = new Random();
-            int index = random.Next(0, tableDeck.Count);
-            Card card = new Card(tableDeck[index].Value, tableDeck[index].Suit);
-            tableDeck.RemoveAt(index);
+            int index = random.Next(0, deck.getDeckSize());
+            Card card = deck.getCardFromIndex(index);
+            deck.removeCardFromIndex(index);
             return card;
         }
+
         public void generateCommunityCards()
         {
             communityCards = new List<Card>();
@@ -101,7 +81,7 @@ namespace SuperbetBeclean.Services
                     await Task.Delay(3000);
                     continue;
                 }
-                generateAllPossibleHands();
+                deck = new Deck();
                 // generate community cards
                 generateCommunityCards();
                 // add cards to players
