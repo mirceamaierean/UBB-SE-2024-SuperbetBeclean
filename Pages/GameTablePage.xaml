@@ -123,13 +123,150 @@
                 <ColumnDefinition Width="228*"/>
 
             </Grid.ColumnDefinitions>
+            <Grid x:Name="Corner1" Width="128" Height="128"  Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player2Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
+                <Image x:Name="Player2Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Corner2" Width="128" Height="128"  Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player3Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
+                <Image x:Name="Player3Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
 
+            <Grid x:Name="Corner3" Width="128" Height="128" Grid.Row="2" Grid.Column="4" VerticalAlignment="Top"  Visibility="Hidden" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player6Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
+                <Image x:Name="Player6Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
 
-            <Image x:Name="CardTable1" Grid.Column="1" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center" Margin="0,12,0,13" Visibility="Visible"/>
-            <Image x:Name="CardTable2" Grid.Column="1" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45"  Grid.ColumnSpan="2" Margin="102,12,83,13" Visibility="Visible"/>
-            <Image x:Name="CardTable3" Grid.Column="2" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center"  Visibility="Visible" />
-            <Image x:Name="CardTable4" Grid.Column="2" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="81,12,0,13" Visibility="Visible"/>
-            <Image x:Name="CardTable5" Grid.Column="3" Grid.Row="1" Source="https://lh3.googleusercontent.com/fife/ALs6j_ExTJ7CQ8ya61FNq1P78B5Z5Lb5u4Ovpx7N3bzGnZzuvSslGqTi1C1LMQH3e9Z21UKt1Y5st3i0GvR6NX8ZHIjI34zx61FBrGDkzueeNrvvZmeSn5--pKufpL8VzqRseGYJchm6yepE85fF7YC0SJpLlIkn_ys2nup1JVu0yUFx6y1ag1o3zMUgcps6YzfIYN0k-5wes5Js02yNNpsRMYxOvgmzWsoY-hjALlyoZoJHNu_rkZeMqrhrNQrj6rqLrOXZWuOUOa5BKSTHIYWM0WPknMWMqFwrjtXXWuWcuPwfBbWwPX_w9KybDnqAOTQ--Qez74T1zrTTNkblHJx-m4kWMfPLEnWrdM99ZaG73k3xO4poAYf8xRaLnhBo6_o8OULz5CNYu4r8ZmPHLd3FqAnZNzibqDcFCgvkFDG1XAXBFLGYHDWE1pcZ3aRihWiOgh892lbskFmcZHqoKpjsXUqDPyN6pe0pPCvg3iWZkKPsIGxsNTcqRlsOoAUB3qTYyZjL9ldN5Y-Unrgwcb0B5Fy7R5wzZlrwmPAQmxr27XDWEUB9y8ZfWJxPBR4xuBzpmU8K9YLNFCKQ52qNOkwCkm1gF6C_nQa5Q5UqIulBRFvW9rAzoYeZo7KpmIl9hnZ-xT5c_F2J9UJb5dYrQVDlUNSVdWNWU0CFoL4ZjeyvC96BoBVQXXadPpFHM3mqlljAxSyN9uTd28I3Dkra6tQL7ME9uVau2dN0iaEDPHqa2uHL9cCDQnF4sVzxQSxNR9SdyHt91ZOU7H0oHPRS9Ie4zP5y2qKQ_rPDkRmnxrqCyMAA0Xvs_if0dCuUv38XysOuYjzIiBip_MXnQUrsX77GRheDL_r082maubhnSrdrdu8Rr8zlg_q617oVylPaRqrGTdSOSerqeH3YFFOMLefzpgoCs33oqXo-ZbA3DuyBYviQaO-n31z5uX610-yCJl9JgZGEuxd5OkquKwvfZE5EDR9TU37J4aulBqcTkd5m2lN8AWzElpneGPtHV1sthTlhYyt6Qy-GgxV6zTsaL171w76th0INZGZf-h2gtlA3kb21rHCW8AocN2PU_QfB-x8ZTXr-9dCTZgwq1xzFhLhMtGnYvqHDLvd8LXAMRM307KLN-zm7Wjy8PwEMIeWoVbmFMfumEr-0i-BrL3n7uKxDcVuOZOuWEUdtz9Ndcvj0cCroHCv_nriSkFT4gqlHcXnuTCYrEgQlolsU8F9_5i9exo6cgPbKEXSEhgP3tpHxfSaSLByVvYzkWb0DK-Y3jVOHjvWo_uZHmxfwGutrwESKUrSdCAwFVZS5LfMbXp0qBsAT-QOflBk8vaga4ZPKUDk7cdqLvlZd0DTYcB_SlU_tLpgp-tBJeaj1fwStu891tA4IbujV7lBabkLJ-ulibl2J7Ch-AcdyRm0sISlPVpQyPRrulPGd9dx7EOkLshQFaN7iM5Dg1LFHsLLnFE6Qosd5ZGAWFxJ1lC22dh0m0CaMIZVx2bXxvuN-h9Pl3r82ipynP_znBcPYsdPe3pYdBoFVND_ixdlP0a7UWP2T3mFSI6EuSpalKOAMYfVDEK9M0RLwMUDAa18rPIeUVB3CNByNrSTBPjcL3g6bVoxAFfVnbGvjx3ONL387sIKa53udCTiTekh18v_U=w3560-h2210" Height="80" Width="45" HorizontalAlignment="Left" Margin="37,12,0,13" Visibility="Visible"/>
+            <Grid x:Name="Corner4" Width="128" Height="128"  Grid.Row="0" Grid.Column="4" VerticalAlignment="Bottom"  Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player7Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
+                <Image x:Name="Player7Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Cols1" Width="108" Height="128" Grid.Row="0" Grid.Column="1"  Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player1Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
+                <Image x:Name="Player1Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Cols2" Width="108" Height="128" Grid.Row="2" Grid.Column="1"  Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player4Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
+                <Image x:Name="Player4Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Cols3" Width="108" Height="128" Grid.Row="2" Grid.Column="3"  Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player5Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
+                <Image x:Name="Player5Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Cols4" Width="108" Height="128" Grid.Row="0" Grid.Column="3"  Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player8Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
+                <Image x:Name="Player8Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+
+            <Image x:Name="CardTable1" Grid.Column="1" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center" Margin="0,12,0,13" Visibility="Hidden"/>
+            <Image x:Name="CardTable2" Grid.Column="1" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45"  Grid.ColumnSpan="2" Margin="102,12,83,13" Visibility="Hidden"/>
+            <Image x:Name="CardTable3" Grid.Column="2" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center"  Visibility="Hidden" />
+            <Image x:Name="CardTable4" Grid.Column="2" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="81,12,0,13" Visibility="Hidden"/>
+            <Image x:Name="CardTable5" Grid.Column="3" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Margin="37,12,0,13" Visibility="Hidden"/>
 
 
             <!--DOWN PROFILES  UP TABLE CARDS-->
@@ -222,7 +359,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,136,25,32" >
+            <Border Grid.Row="0" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,161,25,7" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -299,7 +436,7 @@
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="26,139,26,29" >
+            <Border Grid.Row="0" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="26,158,26,10" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
