@@ -48,6 +48,7 @@ namespace SuperbetBeclean.Services
                 command.Parameters.AddRange(parameters);
                 command.ExecuteNonQuery();
             }
+            CloseConnection();
         }
 
         public void UpdateUser(int id, string username, int currentFont, int currentTitle, int currentIcon, int currentTable, int chips, int stack, int streak, int handsPlayed, int level, DateTime lastLogin)

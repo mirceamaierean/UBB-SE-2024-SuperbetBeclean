@@ -25,7 +25,7 @@ namespace SuperbetBeclean.Windows
     {
         private User user;
         private MainService service;
-        public GameTablePage internPage, juniorPage, seniorPage;
+        Dictionary < string , GameTablePage > gamePages;
 
         public MenuWindow(User u, MainService serv)
         {
@@ -34,9 +34,10 @@ namespace SuperbetBeclean.Windows
             this.user = u;
             this.Title = user.UserName;
             MenuFrame.Navigate(new MainMenu(MenuFrame, this, serv, user));
-            internPage = new GameTablePage(MenuFrame, this, service,"intern");
-            juniorPage = new GameTablePage(MenuFrame, this, service,"junior");
-            seniorPage = new GameTablePage(MenuFrame, this, service,"senior");
+            gamePages = new Dictionary<string, GameTablePage> ();
+            gamePages.Add("intern", new GameTablePage(MenuFrame, this, service, "intern"));
+            gamePages.Add("junior", new GameTablePage(MenuFrame, this, service, "junior"));
+            gamePages.Add("senior", new GameTablePage(MenuFrame, this, service, "senior"));
             Closed += disconnectUser;
         }
         public void disconnectUser(object sender, System.EventArgs e)
@@ -44,44 +45,62 @@ namespace SuperbetBeclean.Windows
             service.disconnectUser(this);
         }
 
-        async public Task < int > startTime(string table)
+        async public Task < int > startTime(string table, int minBet, int maxBet)
         {
             int bet = 0;
-            if (table == "intern")
-                bet = await internPage.runTimer();
-            if (table == "junior")
-                bet = await juniorPage.runTimer();
-            if (table == "senior")
-                bet = await seniorPage.runTimer();
+            bet = await gamePages[table].runTimer(minBet, maxBet);
             return bet;
         }
 
-        public void notify(string table, int currentPot)
+        public void resetCards(string table)
         {
-            if (table == "intern")
-            {
-                internPage.updatePot(currentPot);
-            }
-            if (table == "junior")
-            {
-                juniorPage.updatePot(currentPot);
-            }
-            if (table == "senior")
-            {
-                seniorPage.updatePot(currentPot);
-            }
+            gamePages[table].resetCards();
         }
 
-        public void endTurn(string table)
+        public void notifyUserCard(string table, User u, int card, string cardValue)
         {
-            if (table == "intern")
-                internPage.endTurn();
-            if (table == "junior")
-                juniorPage.endTurn();
-            if (table == "senior")
-                seniorPage.endTurn();
+            gamePages[table].addUserCard(u == user, u.UserTablePlace, card, cardValue);
         }
 
+        public void notifyTableCard(string table, int card, string cardValue)
+        {
+            gamePages[table].addTableCard(card, cardValue);
+        }
+
+        public void showCards(string table, User player)
+        {
+            gamePages[table].showCards(player);
+        }
+        public void notify(string table, User player, int tablePot, int tableBet)
+        {
+            gamePages[table].updatePlayerMoney(player);
+            gamePages[table].updatePot(tablePot, tableBet);
+        }
+        public void foldPlayer(string table, User player)
+        {
+            gamePages[table].playerFold(player);
+        }
+        public void showPlayer(string table, User player)
+        {
+            gamePages[table].showPlayer(player);
+        }
+
+        public void hidePlayer(string table, User player)
+        {
+            gamePages[table].hidePlayer(player);
+        }
+        public void endTurn(string table, User player)
+        {
+            gamePages[table].endTurn(player);
+        }
+        public void startRound(string table, User player)
+        {
+            gamePages[table].startRound(player);
+        }
+        public void resetPot(string table)
+        {
+            gamePages[table].resetPot();
+        }
         public User Player()
         {
             return user;
@@ -110,6 +129,21 @@ namespace SuperbetBeclean.Windows
         public int userId()
         {
             return user.UserID;
+        }
+        
+        public GameTablePage internPage()
+        {
+            return gamePages["intern"];
+        }
+        
+        public GameTablePage juniorPage()
+        {
+            return gamePages["junior"];
+        }
+        
+        public GameTablePage seniorPage()
+        {
+            return gamePages["senior"];
         }
     }
 }
