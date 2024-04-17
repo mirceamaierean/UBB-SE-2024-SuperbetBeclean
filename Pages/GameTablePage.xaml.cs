@@ -58,6 +58,7 @@ namespace SuperbetBeclean.Pages
         private void QuitBttn_Click(object sender, RoutedEventArgs e)
         {
             _mainFrame.NavigationService.GoBack();
+            action = "Fold";
             _mainWindow.disconnectUser(sender, e);
         }
 
@@ -220,8 +221,8 @@ namespace SuperbetBeclean.Pages
                 Label playerStack = FindName("Player" + player.UserTablePlace + "Stack") as Label;
                 Label playerBet = FindName("Player" + player.UserTablePlace + "Bet") as Label;
                 playerMoney.Visibility = Visibility.Hidden;
-                playerStack.Content = "Stack: 0";
-                playerBet.Content = "-";
+                playerStack.Content = "";
+                playerBet.Content = "";
             });
         }
         public void addTableCard(int card, string cardValue)
