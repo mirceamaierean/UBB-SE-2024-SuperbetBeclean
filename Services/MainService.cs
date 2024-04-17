@@ -12,12 +12,10 @@ namespace SuperbetBeclean.Services
 {
     public class MainService
     {
-        private static Mutex internMutex, juniorMutex, seniorMutex;
         private List<MenuWindow> openedUsersWindows;
         private SqlConnection sqlConnection;
         private DBService dbService;
         const int FULL = 8, EMPTY = 0;
-        bool ended = false;
         const int INACTIVE = 0, WAITING = 1, PLAYING = 2;
         public ChatWindow chatWindowIntern, chatWindowJuniorm, chatWindowSenior;
         private TableService internTable, juniorTable, seniorTable;
@@ -28,7 +26,6 @@ namespace SuperbetBeclean.Services
         {
             connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
             sqlConnection = new SqlConnection(connectionString);
-            sqlConnection.Open();
             dbService = new DBService(new SqlConnection(connectionString));
             openedUsersWindows = new List<MenuWindow>();
             internTable = new TableService(5000, 50, 100, "intern", dbService);
@@ -78,6 +75,7 @@ namespace SuperbetBeclean.Services
 
         public void addWindow(string username)
         {
+            sqlConnection.Open();
             SqlCommand command = new SqlCommand("EXEC getUser @username", sqlConnection);
             command.Parameters.AddWithValue("@username", username);
             try
@@ -114,12 +112,13 @@ namespace SuperbetBeclean.Services
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
+            sqlConnection.Close();
         }
         public void disconnectUser(MenuWindow window)
         {
             User player = window.Player();
             player.UserStatus = INACTIVE;
-
+            player.UserBet = 0;
             internTable.disconnectUser(window);
             juniorTable.disconnectUser(window);
             seniorTable.disconnectUser(window);
@@ -142,10 +141,6 @@ namespace SuperbetBeclean.Services
         public bool joinSeniorTable(MenuWindow window)
         {
             return seniorTable.joinTable(window, ref sqlConnection);
-        }
-        public void endGames()
-        {
-            ended = true;
         }
     }
 }

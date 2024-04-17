@@ -4,9 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SuperbetBeclean.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="676" d:DesignWidth="816" 
-      Title="GameTablePage"   MinHeight="676" MinWidth="816">
+      mc:Ignorable="d" d:DesignWidth="816" 
+      Title="GameTablePage"   MinHeight="660" MinWidth="816" Height="672">
     <Page.Resources>
         <Style TargetType="Button" x:Key="RoundedButtonStyle">
             <Setter Property="Template">
@@ -60,24 +59,31 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="#232323">
+    <Grid Background="#232323" Margin="0,0,0,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="89*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="521"/>
-            <RowDefinition Height="102"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="12"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#424242">
+        <Grid Grid.Row="0" Background="#424242" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Background="WhiteSmoke" Width="220" Height="44" CornerRadius="20,20,20,20" HorizontalAlignment="Center" Margin="0,0,80,0">
+            <Border Grid.Column="0" Background="WhiteSmoke" Width="250" Height="44" CornerRadius="20,20,20,20" HorizontalAlignment="Center" Margin="0,3,0,3">
 
 
                 <Grid  Width="207" Height="38" HorizontalAlignment="Center" >
                     <TextBlock x:Name="PlayerNameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="157"/>
                     <TextBlock x:Name="PlayerLvlTextBox" Text="lvlTemp" Margin="50,19,103,0"/>
-                    <TextBlock x:Name="PlayerChipsTextBox" Text="chipsTemp" Margin="119,19,28,0"/>
+                    <TextBlock x:Name="PlayerChipsTextBox" Text="chipsTemp" Margin="119,19,0,0"/>
                     <Image x:Name="PlayerIconImg"  HorizontalAlignment="Left" Height="36" Width="36" Source="/assets/profilepict.png" Margin="4,0,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
@@ -105,7 +111,7 @@
                 <Button x:Name="QuitBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Quit" HorizontalAlignment="Center" Width="82" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand"  Margin="0,13,0,13" Click="QuitBttn_Click"/>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
@@ -123,13 +129,13 @@
                 <ColumnDefinition Width="228*"/>
 
             </Grid.ColumnDefinitions>
-            <Grid x:Name="Corner1" Width="128" Height="128"  Visibility="Hidden">
+            <Grid x:Name="Corner1" Width="128" Height="128" Margin="79,80,21,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Player2Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
-                <Image x:Name="Player2Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                <Image x:Name="Player2Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right" Visibility="Hidden"/>
+                <Image x:Name="Player2Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15" Visibility="Hidden">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -140,31 +146,13 @@
                     </Image.RenderTransform>
                 </Image>
             </Grid>
-            <Grid x:Name="Corner2" Width="128" Height="128"  Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  Visibility="Hidden" Margin="40,2,60,0">
+            <Grid x:Name="Corner2" Width="128" Height="128"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Margin="79,100,21,0" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Player3Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
-                <Image x:Name="Player3Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="22"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                </Image>
-            </Grid>
-
-            <Grid x:Name="Corner3" Width="128" Height="128" Grid.Row="2" Grid.Column="4" VerticalAlignment="Top"  Visibility="Hidden" Margin="60,0,39,0" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Image x:Name="Player6Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
-                <Image x:Name="Player6Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                <Image x:Name="Player3Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right" Visibility="Hidden"/>
+                <Image x:Name="Player3Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15" Visibility="Hidden">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -176,13 +164,13 @@
                 </Image>
             </Grid>
 
-            <Grid x:Name="Corner4" Width="128" Height="128"  Grid.Row="0" Grid.Column="4" VerticalAlignment="Bottom"  Visibility="Hidden">
+            <Grid x:Name="Corner3" Width="128" Height="128" Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" Margin="44,97,55,0" Grid.RowSpan="2" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Player7Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
-                <Image x:Name="Player7Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                <Image x:Name="Player6Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right" Visibility="Hidden"/>
+                <Image x:Name="Player6Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15" Visibility="Hidden">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -193,13 +181,14 @@
                     </Image.RenderTransform>
                 </Image>
             </Grid>
-            <Grid x:Name="Cols1" Width="108" Height="128" Grid.Row="0" Grid.Column="1"  Visibility="Hidden">
+
+            <Grid x:Name="Corner4" Width="128" Height="128"  Grid.Row="0" Grid.Column="4" VerticalAlignment="Bottom" Margin="10,0,89,100" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Player1Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
-                <Image x:Name="Player1Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                <Image x:Name="Player7Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right" Visibility="Hidden"/>
+                <Image x:Name="Player7Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15" Visibility="Hidden">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -210,13 +199,13 @@
                     </Image.RenderTransform>
                 </Image>
             </Grid>
-            <Grid x:Name="Cols2" Width="108" Height="128" Grid.Row="2" Grid.Column="1"  Visibility="Hidden">
+            <Grid x:Name="Cols1" Width="108" Height="128" Grid.Row="0" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Player4Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
-                <Image x:Name="Player4Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                <Image x:Name="Player1Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right" Visibility="Hidden"/>
+                <Image x:Name="Player1Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15" Visibility="Hidden">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -227,13 +216,30 @@
                     </Image.RenderTransform>
                 </Image>
             </Grid>
-            <Grid x:Name="Cols3" Width="108" Height="128" Grid.Row="2" Grid.Column="3"  Visibility="Hidden">
+            <Grid x:Name="Cols2" Width="108" Height="128" Grid.Row="2" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Player5Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right"/>
-                <Image x:Name="Player5Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15">
+                <Image x:Name="Player4Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right" Visibility="Hidden"/>
+                <Image x:Name="Player4Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15" Visibility="Hidden">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="22"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Cols3" Width="108" Height="128" Grid.Row="2" Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Player5Card1" Grid.Column="0" Source="/assets/cards/downCard.jpg" Height="80" Width="55" HorizontalAlignment="Right" Visibility="Hidden"/>
+                <Image x:Name="Player5Card2" Grid.Column="1"  Source="/assets/cards/downCard.jpg" Height="80" Width="55" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="0,33,0,15" Visibility="Hidden">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -261,97 +267,100 @@
                     </Image.RenderTransform>
                 </Image>
             </Grid>
+            <Grid Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="NaN" Margin="0,12,0,12" Grid.Row="1" Width="275">
 
-            <Image x:Name="CardTable1" Grid.Column="1" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center" Margin="0,12,0,13" Visibility="Hidden"/>
-            <Image x:Name="CardTable2" Grid.Column="1" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45"  Grid.ColumnSpan="2" Margin="102,12,83,13" Visibility="Hidden"/>
-            <Image x:Name="CardTable3" Grid.Column="2" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Center"  Visibility="Hidden" />
-            <Image x:Name="CardTable4" Grid.Column="2" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="81,12,0,13" Visibility="Hidden"/>
-            <Image x:Name="CardTable5" Grid.Column="3" Grid.Row="1" Source="/assets/cards/downCard.jpg" Height="80" Width="45" HorizontalAlignment="Left" Margin="37,12,0,13" Visibility="Hidden"/>
+                <Image x:Name="CardTable1" Source="/assets/cards/9D.png" Height="80" Width="45" HorizontalAlignment="Left" Visibility="Hidden"/>
+                <Image x:Name="CardTable2" Source="/assets/cards/9D.png" Height="80" Width="45" HorizontalAlignment="Left"  Margin="58,0,0,0" Visibility="Hidden"/>
+                <Image x:Name="CardTable3" Source="/assets/cards/9D.png" Height="80" Width="45" HorizontalAlignment="Center" Visibility="Hidden"/>
+                <Image x:Name="CardTable4" Source="/assets/cards/9D.png" Height="80" Width="45" HorizontalAlignment="Left" Margin="171,0,0,0" Visibility="Hidden"/>
+                <Image x:Name="CardTable5" Source="/assets/cards/9D.png" Height="80" Width="45" HorizontalAlignment="Left" Margin="229,0,0,0" Visibility="Hidden"/>
+
+            </Grid>
 
 
             <!--DOWN PROFILES  UP TABLE CARDS-->
-            <Border Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,10,0,150" Visibility="Hidden">
-                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5" Visibility="Hidden" >
+            <Border x:Name="Player1Border" Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,10,0,150" Visibility="Hidden">
+                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
                     <TextBlock x:Name="Player1NameTextBox" HorizontalAlignment="Left" Margin="38,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
-                    <TextBlock x:Name="Player1LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0" FontSize="9"/>
+                    <TextBlock x:Name="Player1LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0"/>
                     <Image x:Name="Player1IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="0,4,0,3" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
 
-            <Border Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Left" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="10,30,0,0">
-                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Visibility="Hidden" Margin="0,5,0,5" >
-                    <TextBlock x:Name="Player2NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="58"/>
+            <Border x:Name="Player2Border" Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Left" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="45,40,0,0">
+                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
+                    <TextBlock x:Name="Player2NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player2LvlTextBox" Text="lvlTemp" Margin="50,19,0,0" />
                     <Image x:Name="Player2IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="4,1,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="0" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Left" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Bottom" Margin="10,0,0,30">
-                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Visibility="Hidden" Margin="0,5,0,5" >
-                    <TextBlock x:Name="Player3NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="58"/>
+            <Border x:Name="Player3Border" Grid.Row="2" Grid.Column="0" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Left" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Bottom" Margin="37,0,0,43">
+                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
+                    <TextBlock x:Name="Player3NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player3LvlTextBox" Text="lvlTemp" Margin="50,19,0,0" />
                     <Image x:Name="Player3IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="4,1,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="1" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,10,0,0" Visibility="Hidden" VerticalAlignment="Bottom">
-                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5" Visibility="Hidden" >
+            <Border x:Name="Player4Border" Grid.Row="2" Grid.Column="1" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,160,0,0" Visibility="Hidden" VerticalAlignment="Top">
+                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
                     <TextBlock x:Name="Player4NameTextBox" HorizontalAlignment="Left" Margin="38,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
-                    <TextBlock x:Name="Player4LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0" FontSize="9"/>
+                    <TextBlock x:Name="Player4LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0"/>
                     <Image x:Name="Player4IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="0,4,0,3" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="3" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,10,0,0" Visibility="Hidden" VerticalAlignment="Bottom">
-                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5" Visibility="Hidden" >
+            <Border x:Name="Player5Border" Grid.Row="2" Grid.Column="3" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,10,0,0" Visibility="Hidden" VerticalAlignment="Bottom">
+                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5" >
                     <TextBlock x:Name="Player5NameTextBox" HorizontalAlignment="Left" Margin="38,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
-                    <TextBlock x:Name="Player5LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0" FontSize="9"/>
+                    <TextBlock x:Name="Player5LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0"/>
                     <Image x:Name="Player5IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="0,4,0,3" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="4" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Right" Visibility="Hidden" CornerRadius="10,10,10,10" Margin="0,0,10,30" VerticalAlignment="Bottom">
-                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Visibility="Hidden" Margin="0,5,0,5" >
-                    <TextBlock x:Name="Player6NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="58"/>
+            <Border x:Name="Player6Border" Grid.Row="2" Grid.Column="4" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Right" Visibility="Hidden" CornerRadius="10,10,10,10" Margin="0,0,20,35" VerticalAlignment="Bottom">
+                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
+                    <TextBlock x:Name="Player6NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player6LvlTextBox" Text="lvlTemp" Margin="50,19,0,0" />
                     <Image x:Name="Player6IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="4,1,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="4" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Right" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="10,30,0,0">
-                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Visibility="Hidden" Margin="0,5,0,5" >
-                    <TextBlock x:Name="Player7NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="58"/>
+            <Border x:Name="Player7Border" Grid.Row="0" Grid.Column="4" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Right" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="0,55,33,0">
+                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
+                    <TextBlock x:Name="Player7NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player7LvlTextBox" Text="lvlTemp" Margin="50,19,0,0" />
                     <Image x:Name="Player7IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="4,1,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="3" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,10,0,150" Visibility="Hidden">
-                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5" Visibility="Hidden" >
+            <Border x:Name="Player8Border" Grid.Row="0" Grid.Column="3" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,4,0,156" Visibility="Hidden">
+                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
                     <TextBlock x:Name="Player8NameTextBox" HorizontalAlignment="Left" Margin="38,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
-                    <TextBlock x:Name="Player8LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0" FontSize="9"/>
+                    <TextBlock x:Name="Player8LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0"/>
                     <Image x:Name="Player8IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="0,4,0,3" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
 
             <!-- UP PROFILES  DOWN BET FIELDS-->
-            <Border Grid.Row="0" Grid.Column="2" CornerRadius="10"  Background="WhiteSmoke" Width="98" Height="67" VerticalAlignment="Bottom">
+            <Border Grid.Row="0" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Width="98" Height="67" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="131,137,1,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Label x:Name="PotText" Grid.Row="0" Background="WhiteSmoke" Content="POT:" FontSize="16" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <Label x:Name="PotValue" Grid.Row="1" Background="WhiteSmoke" Content="1234"  FontSize="16" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label x:Name="PotValue" Grid.Row="1" Background="WhiteSmoke" Content="0"  FontSize="16" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,168,25,0" Height="40" Width="75" >
+            <Border x:Name="Player1MoneyData" Grid.Row="0" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,168,25,0" Height="40" Width="75" >
                 <Grid Width="75">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="Player1Stack" Background="WhiteSmoke" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label x:Name="Player1Bet" Grid.Row="1" Background="WhiteSmoke" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Height="23" Width="61" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player1Stack" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player1Bet" Grid.Row="1" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Height="24" Width="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="0" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="68" Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <Border x:Name="Player2MoneyData" Grid.ColumnSpan="2" Grid.Column="0" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="68" Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,115,65" Grid.RowSpan="2" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
@@ -361,12 +370,12 @@
                         <RowDefinition/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="Player2Stack" Background="WhiteSmoke" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Grid.ColumnSpan="2" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="48" />
-                    <Label x:Name="Player2Bet" Grid.Row="1" Background="WhiteSmoke" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="48" Grid.ColumnSpan="2" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player2Stack" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="68" />
+                    <Label x:Name="Player2Bet" Grid.Row="1" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="68" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="0" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="68" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" >
+            <Border x:Name="Player3MoneyData" Grid.Row="1" Grid.Column="0" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="68" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,95,97,0" Grid.RowSpan="2" Grid.ColumnSpan="2" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
@@ -376,49 +385,34 @@
                         <RowDefinition/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="Player3Stack" Background="WhiteSmoke" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Grid.ColumnSpan="2" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="48" />
-                    <Label x:Name="Player3Bet" Grid.Row="1" Background="WhiteSmoke" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="48" Grid.ColumnSpan="2" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player3Stack" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="68" />
+                    <Label x:Name="Player3Bet" Grid.Row="1" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="68" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,0,25,0" VerticalAlignment="Top" Height="40" Width="75" >
-                <Grid>
+            <Border x:Name="Player4MoneyData" Grid.Row="2" Grid.Column="1" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="56,10,0,0" VerticalAlignment="Top" Height="40" Width="75" >
+                <Grid Margin="3,0,-3,0">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="Player4Stack" Background="WhiteSmoke" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label x:Name="Player4Bet" Grid.Row="1" Background="WhiteSmoke" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Height="23" Width="61" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player4Stack" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Width="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="-3,0,0,0" />
+                    <Label x:Name="Player4Bet" Grid.Row="1" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="-3,0,0,0" />
 
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,0,25,0" VerticalAlignment="Top" Height="40" Width="75" >
-                <Grid>
+            <Border x:Name="Player5MoneyData" Grid.Row="2" Grid.Column="2" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="91,12,64,0" VerticalAlignment="Top" Height="40" Width="75" Grid.ColumnSpan="2" >
+                <Grid Margin="-1,0,1,0">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="Player5Stack" Background="WhiteSmoke" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label x:Name="Player5Bet" Grid.Row="1" Background="WhiteSmoke" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Height="23" Width="61" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player5Stack" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Height="22" Width="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player5Bet" Grid.Row="1" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Height="22" Width="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
                 </Grid>
             </Border>
-            <Border Grid.Row="2" Grid.Column="4" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="68" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Left" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Label x:Name="Player6Stack" Background="WhiteSmoke" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Grid.ColumnSpan="2" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="48" />
-                    <Label x:Name="Player6Bet" Grid.Row="1" Background="WhiteSmoke" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="48" Grid.ColumnSpan="2" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-
-                </Grid>
-            </Border>
-            <Border Grid.Row="0" Grid.Column="4" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="68" Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left" >
+            <Border x:Name="Player6MoneyData" Grid.Row="1" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="68" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="104,94,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
@@ -428,44 +422,47 @@
                         <RowDefinition/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="Player7Stack" Background="WhiteSmoke" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Grid.ColumnSpan="2" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="48" />
-                    <Label x:Name="Player7Bet" Grid.Row="1" Background="WhiteSmoke" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="48" Grid.ColumnSpan="2" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player6Stack" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="68" />
+                    <Label x:Name="Player6Bet" Grid.Row="1" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="68" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
                 </Grid>
             </Border>
-            <Border Grid.Row="0" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,0,25,0" VerticalAlignment="Bottom" Height="40" Width="75" >
+            <Border x:Name="Player7MoneyData" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Height="40" Width="68" Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="116,0,0,60" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="Player7Stack" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="68" />
+                    <Label x:Name="Player7Bet" Grid.Row="1" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="68" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+
+                </Grid>
+            </Border>
+            <Border x:Name="Player8MoneyData" Grid.Row="0" Grid.Column="3" CornerRadius="10"  Background="WhiteSmoke" Visibility="Hidden" Margin="25,0,25,0" VerticalAlignment="Bottom" Height="40" Width="75" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="Player8Stack" Background="WhiteSmoke" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label x:Name="Player8Bet" Grid.Row="1" Background="WhiteSmoke" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Height="23" Width="61" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player8Stack" Content="Stack:" FontSize="9" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="76" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label x:Name="Player8Bet" Grid.Row="1" Content="Bet:"  FontSize="9" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Height="24" Width="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
                 </Grid>
             </Border>
 
         </Grid>
-        <Grid Grid.Row="2" Background="#232323">
+        <Grid Grid.Row="2" Background="#232323" Grid.ColumnSpan="3" Grid.RowSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <Border  CornerRadius="10" Background="WhiteSmoke" Margin="6,5,10,39">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Label x:Name="CurrentBetText" Grid.Row="0" Background="WhiteSmoke" Content="Your current bet:" FontSize="16" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <Label x:Name="CurrentBetValue" Grid.Row="1" Background="WhiteSmoke" Content="123" Width="125" FontSize="16" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" />
-
-                </Grid>
-            </Border>
-
-            <Grid Grid.Column="1"
+            <Grid Grid.ColumnSpan="2" Margin="99,0,64,18"
                   >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -475,50 +472,47 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Label Content="Input Bet" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#00000000" FontSize="16" Height="31" Margin="0,20,0,0" Width="75" Foreground="White"/>
-                <Border Grid.Row="1"  CornerRadius="20" Background="White" Height="40" Margin="5,5,0,6" RenderTransformOrigin="0.5,0.5">
-                    <Border.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform AngleY="-0.197"/>
-                            <RotateTransform/>
-                            <TranslateTransform Y="0.263"/>
-                        </TransformGroup>
-                    </Border.RenderTransform>
-                    <TextBox BorderBrush="Transparent" x:Name="BetInput" Grid.Row="1" Text="input bet..." Height="28" Width="143" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border  CornerRadius="10" Background="WhiteSmoke" Margin="8,13,8,13" Grid.RowSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="CurrentBetText" Grid.Row="0" Background="WhiteSmoke" Content="Your current bet:" FontSize="16" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Label x:Name="CurrentBetValue" Grid.Row="1" Background="WhiteSmoke" Content="0" Width="125" FontSize="16" Foreground="Black" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
 
+                    </Grid>
                 </Border>
             </Grid>
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="163,0,0,18">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
+                <Grid Margin="-60,27,0,0" Grid.RowSpan="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="7*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="51*"/>
+                        <ColumnDefinition Width="173*"/>
+                        <ColumnDefinition Width="51*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
-                    <Slider Style="{StaticResource CustomSliderStyle}"    TickPlacement="BottomRight" TickFrequency="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="367" Foreground="Red" Background="White"/>
-                    <Label Content="MAX" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
+                    <Label x:Name="MinValueBet" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White" Width="93" Height="37" HorizontalContentAlignment="Center"/>
+                    <Slider x:Name="SliderBet"  Style="{StaticResource CustomSliderStyle}"  TickPlacement="BottomRight" TickFrequency="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="345" Foreground="Red" Background="White" ValueChanged="Slider_ValueChanged" Height="30"/>
+                    <Label x:Name="MaxValueBet"  Content="MAX" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White" Height="37" Width="93" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="SliderValueBet" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Foreground="White" Grid.Column="1" Margin="0,26,0,0" Height="32" Width="305" HorizontalContentAlignment="Center"/>
                 </Grid>
 
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" Margin="-60,0,0,1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Button  Grid.Column="0" x:Name="RaiseBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Raise" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" Click="RaiseBttn_Click" />
-                    <Button  Grid.Column="1" x:Name="AllInBttn" Style="{StaticResource HorizontalButtonStyle}" Content="All In" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" />
-                    <Button  Grid.Column="2" x:Name="CallBtn" Style="{StaticResource HorizontalButtonStyle}" Content="Call" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" Click="CallBtn_Click" />
-                    <Button  Grid.Column="3" x:Name="FoldBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Fold" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" />
+                    <Button  Grid.Column="1" x:Name="CallBtn" Style="{StaticResource HorizontalButtonStyle}" Content="Call" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" Click="CallBtn_Click" />
+                    <Button  Grid.Column="2" x:Name="FoldBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Fold" HorizontalAlignment="Center" Height="24" Width="82" Background="White" BorderBrush="White" FontSize="16" Cursor="Hand" Click="FoldBttn_Click" />
                 </Grid>
             </Grid>
-            <TextBlock x:Name="PlayerTimer" Text="Time: " Margin="12,73,19,10"  Foreground="White" FontSize="17"/>
+            <TextBlock x:Name="PlayerTimer" Text="Time: " Margin="15,31,15,52"  Foreground="White" FontSize="17"/>
         </Grid>
     </Grid>
 </Page>
