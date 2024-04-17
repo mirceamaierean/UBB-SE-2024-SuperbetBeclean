@@ -90,5 +90,12 @@ namespace SuperbetBeclean.Pages
         {
             _mainFrame.Navigate(new ProfilePage(_mainFrame, _mainWindow));
         }
+
+        private void ShopBttn_Click(object sender, RoutedEventArgs e)
+        {
+            string currentUserName = _mainWindow.userName();
+            RequestsWindow requestWindow=new RequestsWindow(currentUserName);
+            requestWindow.Show();
+        }
     }
 }

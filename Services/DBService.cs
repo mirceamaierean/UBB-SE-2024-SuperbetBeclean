@@ -278,5 +278,159 @@ namespace SuperbetBeclean.Services
 
             return shopItems;
         }
+        public List<string> GetAllRequestsByToUserID(int toUser)
+        {
+            List<string> requests = new List<string>();
+
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getAllRequestsByToUserID", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@toUser", SqlDbType.Int) { Value = toUser });
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        // Extract date from reader and convert it to a DateTime object
+                        DateTime requestDate = (DateTime)reader["request_date"];
+                        // Format the date to include only the date portion without the time
+                        string formattedDate = requestDate.ToShortDateString();
+
+                        int fromUserID = Convert.ToInt32(reader["request_fromUser"]);
+                        int toUserID = Convert.ToInt32(reader["request_toUser"]);
+
+                        // Get usernames corresponding to user IDs
+                        string fromUserName = GetUserNameByUserId(fromUserID);
+                        string toUserName = GetUserNameByUserId(toUserID);
+
+                        string requestInfo = $"From: {fromUserName}, To: {toUserName}, Date: {formattedDate}";
+                        requests.Add(requestInfo);
+                    }
+                }
+            }
+
+            return requests;
+        }
+
+
+        public List<Tuple<int, int>> GetAllRequestsByToUserIDSimplified(int toUser)
+        {
+            List<Tuple<int, int>> requests = new List<Tuple<int, int>>();
+
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getAllRequestsByToUserID", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@toUser", SqlDbType.Int) { Value = toUser });
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int fromUserID = Convert.ToInt32(reader["request_fromUser"]);
+                        int toUserID = Convert.ToInt32(reader["request_toUser"]);
+
+                        requests.Add(Tuple.Create(fromUserID, toUserID));
+                    }
+                }
+            }
+
+            return requests;
+        }
+        public void CreateRequest(int fromUser, int toUser)
+        {
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("createRequest", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@fromUser", SqlDbType.Int) { Value = fromUser });
+                command.Parameters.Add(new SqlParameter("@toUser", SqlDbType.Int) { Value = toUser });
+
+                command.ExecuteNonQuery();
+            }
+        }
+        public string GetUserNameByUserId(int userId)
+        {
+            string username = null;
+
+            // Open a new connection
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cn"].ConnectionString))
+            {
+                connection.Open();
+
+                // Use a new SqlCommand
+                using (SqlCommand command = new SqlCommand("getUserNameByUserId", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int) { Value = userId });
+
+                    // Execute the command
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            username = reader["user_username"] as string;
+                        }
+                    }
+                }
+            }
+
+            return username;
+        }
+
+        public int GetUserIdByUserName(string username)
+        {
+            int userId = -1;
+
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getUserIdByUserName", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@name", SqlDbType.VarChar, 128) { Value = username });
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        userId = Convert.ToInt32(reader["user_id"]);
+                    }
+                }
+            }
+
+            return userId;
+        }
+        public int GetChipsByUserId(int userId)
+        {
+            int chips = -1;
+
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("getChipsByUserId", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int) { Value = userId });
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        chips = Convert.ToInt32(reader["user_chips"]);
+                    }
+                }
+            }
+
+            return chips;
+        }
+        public void DeleteRequestsByUserId(int userId)
+        {
+            OpenConnection();
+            using (SqlCommand command = new SqlCommand("DeleteRequestsByUserId", _connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = userId });
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
