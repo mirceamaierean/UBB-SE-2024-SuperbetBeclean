@@ -52,6 +52,10 @@ namespace SuperbetBeclean.Windows
             return bet;
         }
 
+        public void updateChips(string table, User player)
+        {
+            gamePages[table].updateChips(player);
+        }
         public void resetCards(string table)
         {
             gamePages[table].resetCards();
