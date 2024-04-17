@@ -96,6 +96,7 @@ namespace SuperbetBeclean.Services
                             dbService.UpdateUserChips(player.UserID, player.UserChips);
                             player.UserStack = buyIn;
                             dbService.UpdateUserStack(player.UserID, player.UserStack);
+                            menuWindow.updateChips(tableType, player);
                         }
                     }
                 }
@@ -144,6 +145,7 @@ namespace SuperbetBeclean.Services
                     communityCards[i] = card;
                 }
                 int tablePot = 0;
+                int canBetPlayers = activePlayers.Count;
                 for (int turn = 0; turn <= 3; turn++)
                 {
                     if (activePlayers.Count < 2) break;
@@ -173,7 +175,7 @@ namespace SuperbetBeclean.Services
                     int currentBetPlayer = -1;
                     while (!turnEnded)
                     {
-                        if (activePlayers.Count < 2) break;
+                        if (canBetPlayers < 2) break;
                         MenuWindow currentWindow = activePlayers.Peek();
                         User player = currentWindow.Player();
 
@@ -185,6 +187,7 @@ namespace SuperbetBeclean.Services
                         if (player.UserID == currentBetPlayer) break;
                         if (player.UserStack == 0)
                         {
+                            canBetPlayers--;
                             activePlayers.Enqueue(activePlayers.Dequeue());
                             continue;
                         }
@@ -195,6 +198,7 @@ namespace SuperbetBeclean.Services
                             Console.WriteLine(player.UserName + " folded!");
                             player.UserStatus = WAITING;
                             player.UserBet = 0;
+                            canBetPlayers--;
                             foreach (MenuWindow window in activePlayers) { window.foldPlayer(tableType, player); }
                         }
                         else

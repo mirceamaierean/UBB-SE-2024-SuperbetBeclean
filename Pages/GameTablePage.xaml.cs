@@ -51,7 +51,12 @@ namespace SuperbetBeclean.Pages
 
 
         }
-
+        public void updateChips(User player)
+        {
+            Application.Current.Dispatcher.Invoke(() => {
+                PlayerChipsTextBox.Text = player.UserChips.ToString();
+            });
+        }
         private void GameTablePage_Loaded(object sender, RoutedEventArgs e)
         {
             Window window = Window.GetWindow(this);
