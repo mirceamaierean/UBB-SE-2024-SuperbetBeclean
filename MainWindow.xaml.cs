@@ -17,16 +17,11 @@ namespace SuperbetBeclean
             service = new MainService();
             MainFrame.Navigate(new LoginPage(MainFrame, this));
             Title = "Superbet Beclean - Poker";
-            Closed += endGames;
         }
         public void openNewWindow(string username)
         {
             service.addWindow(username);
         }
 
-        private void endGames(object sender, System.EventArgs e)
-        {
-            service.endGames();
-        }
     }
 }

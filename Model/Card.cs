@@ -18,5 +18,6 @@ namespace SuperbetBeclean.Model
 
         public string Value { get { return value; } set { value = value; } }
         public string Suit { get { return suit; } set { suit = value; } }
+        public string Info() { return value + suit; }
     }
 }

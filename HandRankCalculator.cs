@@ -1,4 +1,5 @@
 ﻿
+using SuperbetBeclean.Model;
 using System;
 using System.Collections.Generic;
 
@@ -32,51 +33,51 @@ class HandRankCalculator
         pows = new List<int>() { 1, 15, 225, 3375, 50625, 759375 }; /// Powers of 15
     }
 
-    private void handSort(List<Tuple<string, string>> hand)
+    private void handSort(List<Card> hand)
     {
-        hand.Sort((x, y) => cardValues[y.Item1].CompareTo(cardValues[x.Item1]));
+        hand.Sort((x, y) => cardValues[y.Value].CompareTo(cardValues[x.Value]));
     }
-    private bool isRoyalFlush(List<Tuple<string, string>> hand)
+    private bool isRoyalFlush(List<Card> hand)
     {
         if (isFlush(hand))
         {
             for (int i = 0; i < hand.Count; i++)
             {
-                if (cardValues[hand[i].Item1] != 14 - i)
+                if (cardValues[hand[i].Value] != 14 - i)
                     return false;
             }
             return true;
         }
         return false;
     }
-    private int hashRoyalFlush(List<Tuple<string, string>> hand)
+    private int hashRoyalFlush(List<Card> hand)
     {
         return pows[0];
     }
 
-    private bool isStraightFlush(List<Tuple<string, string>> hand)
+    private bool isStraightFlush(List<Card> hand)
     {
         if (isStraight(hand) && isFlush(hand))
             return true;
         return false;
     }
 
-    private int hashStraightFlush(List<Tuple<string, string>> hand)
+    private int hashStraightFlush(List<Card> hand)
     {
-        if (hand[0].Item1 == "A" && hand[1].Item1 == "5")
-            return cardValues[hand[1].Item1] * pows[0];
+        if (hand[0].Value == "A" && hand[1].Value == "5")
+            return cardValues[hand[1].Value] * pows[0];
         else
-            return cardValues[hand[0].Item1] * pows[0];
+            return cardValues[hand[0].Value] * pows[0];
     }
     
-    private bool isFourOfAKind(List<Tuple<string, string>> hand)
+    private bool isFourOfAKind(List<Card> hand)
     {
         Dictionary <string, int> freq = new Dictionary <string, int>();
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
         if (freq.Count != 2) 
             return false;
@@ -88,14 +89,14 @@ class HandRankCalculator
         return true;
     }
 
-    private int hashFourOfAKind(List <Tuple<string, string>> hand)
+    private int hashFourOfAKind(List <Card> hand)
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
         int result = 0;
         foreach (KeyValuePair<string, int> pair in freq)
@@ -106,14 +107,14 @@ class HandRankCalculator
         return result;
     }
 
-    private bool isFullHouse(List<Tuple<string, string>> hand)
+    private bool isFullHouse(List<Card> hand)
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
         if (freq.Count != 2)
             return false;
@@ -125,14 +126,14 @@ class HandRankCalculator
         return true;
     }
 
-    private int hashFullHouse(List<Tuple<string, string>> hand)
+    private int hashFullHouse(List<Card> hand)
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
         int result = 0;
         foreach (KeyValuePair<string, int> pair in freq)
@@ -142,51 +143,51 @@ class HandRankCalculator
         }
         return result;
     }
-    private bool isFlush(List<Tuple<string, string>> hand)
+    private bool isFlush(List<Card> hand)
     {
         HashSet<string> suits = new HashSet<string>();
-        foreach (Tuple<string, string> card in hand)
-            suits.Add(card.Item2);
+        foreach (Card card in hand)
+            suits.Add(card.Suit);
         return suits.Count == 1;
     }
 
-    private int hashFlush(List<Tuple<string, string>> hand)
+    private int hashFlush(List<Card> hand)
     {
         int result = 0, freebit = 4;
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            result += cardValues[card.Item1] * pows[freebit--];
+            result += cardValues[card.Value] * pows[freebit--];
         }
         return result;
     }
 
-    private bool isStraight(List<Tuple<string, string>> hand)
+    private bool isStraight(List<Card> hand)
     {
         bool isStraight = true;
         for (int i = 0; i < hand.Count - 1; i++)
         {
-            if (cardValues[hand[i].Item1] - 1 != cardValues[hand[i + 1].Item1] && (hand[i].Item1 != "A" || hand[i + 1].Item1 != "5"))
+            if (cardValues[hand[i].Value] - 1 != cardValues[hand[i + 1].Value] && (hand[i].Value != "A" || hand[i + 1].Value != "5"))
                 isStraight = false;
         }
         return isStraight;
     }
     
-    private int hashStraight(List<Tuple<string, string>> hand)
+    private int hashStraight(List<Card> hand)
     {
-        if (hand[0].Item1 == "A" && hand[1].Item1 == "5")
-            return cardValues[hand[1].Item1] * pows[0];
+        if (hand[0].Value == "A" && hand[1].Value == "5")
+            return cardValues[hand[1].Value] * pows[0];
         else
-            return cardValues[hand[0].Item1] * pows[0];
+            return cardValues[hand[0].Value] * pows[0];
     }
 
-    private bool isThreeOfAKind(List<Tuple<string, string>> hand)
+    private bool isThreeOfAKind(List<Card> hand)
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
         
         foreach (KeyValuePair<string, int> pair in freq)
@@ -197,116 +198,116 @@ class HandRankCalculator
         return false;
     }
 
-    private int hashThreeOfAKind(List<Tuple<string, string>> hand)
+    private int hashThreeOfAKind(List<Card> hand)
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
         int freebit = 1, result = 0;
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq[card.Item1] == TRIPS)
+            if (freq[card.Value] == TRIPS)
             {
-                result += cardValues[card.Item1] * pows[2];
-                freq[card.Item1] = NULL;
+                result += cardValues[card.Value] * pows[2];
+                freq[card.Value] = NULL;
             }
-            else if (freq[card.Item1] != NULL)
+            else if (freq[card.Value] != NULL)
             {
-                result += cardValues[card.Item1] * pows[freebit--];
+                result += cardValues[card.Value] * pows[freebit--];
             }
         }
         return result;
     }
 
-    private bool isTwoPairs(List<Tuple<string, string>> hand) 
+    private bool isTwoPairs(List<Card> hand) 
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
         return freq.Count == 3;
     }
 
-    private int hashTwoPairs(List<Tuple<string, string>> hand)
+    private int hashTwoPairs(List<Card> hand)
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
         int freebit = 2, result = 0;
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq[card.Item1] == PAIR)
+            if (freq[card.Value] == PAIR)
             {
-                result += cardValues[card.Item1] * pows[freebit--];
-                freq[card.Item1] = NULL;
+                result += cardValues[card.Value] * pows[freebit--];
+                freq[card.Value] = NULL;
             }
-            else if (freq[card.Item1] != NULL)
+            else if (freq[card.Value] != NULL)
             {
-                result += cardValues[card.Item1] * pows[0];
+                result += cardValues[card.Value] * pows[0];
             }
         }
         return result;
     }
 
-    private bool isOnePair(List<Tuple<string, string>> hand)
+    private bool isOnePair(List<Card> hand)
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
         return freq.Count == 4;
     }
 
-    private int hashOnePair(List<Tuple<string, string>> hand)
+    private int hashOnePair(List<Card> hand)
     {
         Dictionary<string, int> freq = new Dictionary<string, int>();
         int freebit = 2, result = 0;
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq.ContainsKey(card.Item1))
-                freq[card.Item1]++;
-            else freq[card.Item1] = INIT;
+            if (freq.ContainsKey(card.Value))
+                freq[card.Value]++;
+            else freq[card.Value] = INIT;
         }
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            if (freq[card.Item1] == PAIR)
+            if (freq[card.Value] == PAIR)
             {
-                result += cardValues[card.Item1] * pows[3];
-                freq[card.Item1] = NULL;
+                result += cardValues[card.Value] * pows[3];
+                freq[card.Value] = NULL;
             }
-            else if (freq[card.Item1] != NULL)
+            else if (freq[card.Value] != NULL)
             {
-                result += cardValues[card.Item1] * pows[freebit--];
+                result += cardValues[card.Value] * pows[freebit--];
             }
         }
         return result;
     }
 
-    private int hashHighCard(List<Tuple<string, string>> hand)
+    private int hashHighCard(List<Card> hand)
     {
         int freebit = 4, result = 0;
-        foreach (Tuple<string, string> card in hand)
+        foreach (Card card in hand)
         {
-            result += cardValues[card.Item1] * pows[freebit--];
+            result += cardValues[card.Value] * pows[freebit--];
         }
         return result;
     }
 
-    public Tuple<int, int> getValue(List < Tuple < string, string > > hand)
+    public Tuple<int, int> getValue(List < Card > hand)
     {
         handSort(hand);
         if (isRoyalFlush(hand))
