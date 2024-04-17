@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using SuperbetBeclean.Services; // Assuming you have a service for retrieving requests
+using SuperbetBeclean.Pages;
+using SuperbetBeclean.Services;
+using SuperbetBeclean.Windows; // Assuming you have a service for retrieving requests
 
 namespace SuperbetBeclean
 {
@@ -14,12 +18,22 @@ namespace SuperbetBeclean
     {
         private DBService _dbService;
         string _currentUserName;
-        List<string> requests;
-        public RequestsWindow(string currentUserName)
+        private List<string> requests;
+        private SqlConnection sqlConnection;
+        private DBService dbService;
+        private string connectionString;
+        private LobbyPage _lobbyPage;
+        public string _userName;
+        public RequestsWindow(string currentUserName,LobbyPage lobbyPage,string userName)
         {
             InitializeComponent();
-            _dbService = new DBService(); // Initialize the database service
+            _userName = userName;
+            connectionString = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
+            sqlConnection = new SqlConnection(connectionString);
+            sqlConnection.Open();
+            _dbService = new DBService(new SqlConnection(connectionString)); // Initialize the database service
             _currentUserName = currentUserName;
+            _lobbyPage = lobbyPage;
             // Call a method to load and display requests
             LoadRequests();
             chipsInRequestPage.Text = _dbService.GetChipsByUserId(_dbService.GetUserIdByUserName(_currentUserName)).ToString();
@@ -28,7 +42,7 @@ namespace SuperbetBeclean
         private void LoadRequests()
         {
             requests = _dbService.GetAllRequestsByToUserID(_dbService.GetUserIdByUserName(_currentUserName)); // Get requests from the database
-
+            RequestsStackPanel.Children.Clear();
             // Create and add request items dynamically
             foreach (string requestInfo in requests)
             {
@@ -77,12 +91,33 @@ namespace SuperbetBeclean
             {
                 int fromUserID = request.Item1;
                 int toUserID = request.Item2;
-                int numberChips = _dbService.GetChipsByUserId(fromUserID)+3000;
-                _dbService.UpdateUserChips(fromUserID, numberChips);
+                int numberChips = _dbService.GetChipsByUserId(fromUserID) + 3000;
+                _dbService.UpdateUserChips(fromUserID, _dbService.GetChipsByUserId(fromUserID) + 3000);
+
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(RequestsWindow))
+                    {
+                        RequestsWindow requestWindow = (RequestsWindow)window;
+                        if (requestWindow._userName == _dbService.GetUserNameByUserId(fromUserID)){ 
+                        
+                        //_lobbyPage.PlayerChipsTextBox.Text = _dbService.GetChipsByUserId(fromUserID).ToString();
+                        requestWindow.chipsInRequestPage.Text = _dbService.GetChipsByUserId(fromUserID).ToString();
+                        requestWindow._lobbyPage.PlayerChipsTextBox.Text = _dbService.GetChipsByUserId(fromUserID).ToString();
+
+                        }
+
+                    }
+                    
+
+                }
+
                
-            }
+        }
+            
             _dbService.DeleteRequestsByUserId(_dbService.GetUserIdByUserName(_currentUserName));
             LoadRequests();
+            
         }
         //Decline all
         private void Button_Click_1(object sender, RoutedEventArgs e)
