@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperbetBeclean.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace SuperbetBeclean.Models
     public class MainViewModel : INotifyPropertyChanged
     {
         private int _balance;
+
+        DBService _dbService;
 
         public int Balance
         {
@@ -33,6 +36,7 @@ namespace SuperbetBeclean.Models
         {
             Balance = 12345; // TODO: Placeholder balance, be sure to change it once the backend is implemented
             ShopItems = new List<ShopItem>();
+            _dbService = new DBService();
             LoadItems();
         }
 
@@ -41,9 +45,7 @@ namespace SuperbetBeclean.Models
         private void LoadItems()
         {
             // TODO: Placeholder items, be sure to change them once the backend is implemented
-            ShopItems.Add(new ShopItem { ImagePath = "..\\assets\\pear.jpeg", Name = "Item 1", Description = "Description of Item 1", BuyCommand = new PlaceholderCommand() });
-            ShopItems.Add(new ShopItem { ImagePath = "..\\assets\\pear.jpeg", Name = "Item 2", Description = "Description of Item 2", BuyCommand = new PlaceholderCommand() });
-
+            ShopItems = _dbService.GetShopItems(); 
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -66,6 +68,6 @@ public class PlaceholderCommand : ICommand
 
     public void Execute(object parameter)
     {
-        
+
     }
 }
