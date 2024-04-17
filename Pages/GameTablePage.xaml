@@ -280,7 +280,7 @@
 
             <!--DOWN PROFILES  UP TABLE CARDS-->
             <Border x:Name="Player1Border" Grid.Row="0" Grid.Column="1" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,10,0,150" Visibility="Hidden">
-                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
+                <Grid x:Name="Player1Grid"  Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
                     <TextBlock x:Name="Player1NameTextBox" HorizontalAlignment="Left" Margin="38,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player1LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0"/>
                     <Image x:Name="Player1IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="0,4,0,3" Stretch="UniformToFill" Cursor="Hand"/>
@@ -288,49 +288,49 @@
             </Border>
 
             <Border x:Name="Player2Border" Grid.Row="0" Grid.Column="0" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Left" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="45,40,0,0">
-                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
+                <Grid x:Name="Player2Grid"  Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
                     <TextBlock x:Name="Player2NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player2LvlTextBox" Text="lvlTemp" Margin="50,19,0,0" />
                     <Image x:Name="Player2IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="4,1,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
             <Border x:Name="Player3Border" Grid.Row="2" Grid.Column="0" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Left" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Bottom" Margin="37,0,0,43">
-                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
+                <Grid x:Name="Player3Grid"  Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
                     <TextBlock x:Name="Player3NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player3LvlTextBox" Text="lvlTemp" Margin="50,19,0,0" />
                     <Image x:Name="Player3IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="4,1,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
             <Border x:Name="Player4Border" Grid.Row="2" Grid.Column="1" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,160,0,0" Visibility="Hidden" VerticalAlignment="Top">
-                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
+                <Grid x:Name="Player4Grid"  Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
                     <TextBlock x:Name="Player4NameTextBox" HorizontalAlignment="Left" Margin="38,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player4LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0"/>
                     <Image x:Name="Player4IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="0,4,0,3" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
             <Border x:Name="Player5Border" Grid.Row="2" Grid.Column="3" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,10,0,0" Visibility="Hidden" VerticalAlignment="Bottom">
-                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5" >
+                <Grid x:Name="Player5Grid"  Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5" >
                     <TextBlock x:Name="Player5NameTextBox" HorizontalAlignment="Left" Margin="38,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player5LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0"/>
                     <Image x:Name="Player5IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="0,4,0,3" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
             <Border x:Name="Player6Border" Grid.Row="2" Grid.Column="4" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Right" Visibility="Hidden" CornerRadius="10,10,10,10" Margin="0,0,20,35" VerticalAlignment="Bottom">
-                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
+                <Grid x:Name="Player6Grid"  Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
                     <TextBlock x:Name="Player6NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player6LvlTextBox" Text="lvlTemp" Margin="50,19,0,0" />
                     <Image x:Name="Player6IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="4,1,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
             <Border x:Name="Player7Border" Grid.Row="0" Grid.Column="4" Background="WhiteSmoke" Width="112" Height="48" HorizontalAlignment="Right" Visibility="Hidden" CornerRadius="10,10,10,10" VerticalAlignment="Top" Margin="0,55,33,0">
-                <Grid   Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
+                <Grid  x:Name="Player7Grid" Background="WhiteSmoke" Width="108" Height="38" HorizontalAlignment="Center" Margin="0,5,0,5" >
                     <TextBlock x:Name="Player7NameTextBox" HorizontalAlignment="Left" Margin="50,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player7LvlTextBox" Text="lvlTemp" Margin="50,19,0,0" />
                     <Image x:Name="Player7IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="4,1,0,1" Stretch="UniformToFill" Cursor="Hand"/>
                 </Grid>
             </Border>
             <Border x:Name="Player8Border" Grid.Row="0" Grid.Column="3" Background="WhiteSmoke" Width="108" HorizontalAlignment="Center"  CornerRadius="10,10,10,10" Margin="0,4,0,156" Visibility="Hidden">
-                <Grid   Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
+                <Grid x:Name="Player8Grid" Background="WhiteSmoke" Width="99" HorizontalAlignment="Center" Margin="0,6,0,5">
                     <TextBlock x:Name="Player8NameTextBox" HorizontalAlignment="Left" Margin="38,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
                     <TextBlock x:Name="Player8LvlTextBox" Text="lvlTemp" Margin="38,19,-1,0"/>
                     <Image x:Name="Player8IconImg"  HorizontalAlignment="Left" Height="30" Width="30" Source="/assets/profilepict.png" Margin="0,4,0,3" Stretch="UniformToFill" Cursor="Hand"/>

@@ -68,26 +68,35 @@ namespace SuperbetBeclean.Pages
 
         private void onClickInternButton(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (_service.joinInternTable(_mainWindow))
+            int response = _service.joinInternTable(_mainWindow);
+            if (response == 1)
                 _mainFrame.Navigate(_mainWindow.internPage());
-            else
+            else if (response == 0)
                 MessageBox.Show("Sorry, this table is full.");
+            else if (response == 1)
+                MessageBox.Show("Sorry, you don't have enough money.");
         }
 
         private void onClickJuniorBttn(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (_service.joinJuniorTable(_mainWindow))
+            int response = _service.joinJuniorTable(_mainWindow);
+            if (response == 1)
                 _mainFrame.Navigate(_mainWindow.juniorPage());
-            else
+            else if (response == 0)
                 MessageBox.Show("Sorry, this table is full.");
+            else if (response == 1)
+                MessageBox.Show("Sorry, you don't have enough money.");
         }
 
         private void onClickSeniorButton(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (_service.joinSeniorTable(_mainWindow))
+            int response = _service.joinSeniorTable(_mainWindow);
+            if (response == 1)
                 _mainFrame.Navigate(_mainWindow.seniorPage());
-            else
+            else if (response == 0)
                 MessageBox.Show("Sorry, this table is full.");
+            else if (response == 1)
+                MessageBox.Show("Sorry, you don't have enough money.");
         }
         private void PlayerIconImg_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
