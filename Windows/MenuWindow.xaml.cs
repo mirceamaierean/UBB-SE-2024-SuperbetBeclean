@@ -35,9 +35,9 @@ namespace SuperbetBeclean.Windows
             this.Title = user.UserName;
             MenuFrame.Navigate(new MainMenu(MenuFrame, this, serv, user));
             gamePages = new Dictionary<string, GameTablePage> ();
-            gamePages.Add("intern", new GameTablePage(MenuFrame, this, service));
-            gamePages.Add("junior", new GameTablePage(MenuFrame, this, service));
-            gamePages.Add("senior", new GameTablePage(MenuFrame, this, service));
+            gamePages.Add("intern", new GameTablePage(MenuFrame, this, service, "intern"));
+            gamePages.Add("junior", new GameTablePage(MenuFrame, this, service, "junior"));
+            gamePages.Add("senior", new GameTablePage(MenuFrame, this, service, "senior"));
             Closed += disconnectUser;
         }
         public void disconnectUser(object sender, System.EventArgs e)
