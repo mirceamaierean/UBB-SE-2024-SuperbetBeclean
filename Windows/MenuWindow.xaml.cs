@@ -134,14 +134,20 @@ namespace SuperbetBeclean.Windows
         {
             return user.UserCurrentIconPath;
         }
+        public int userId()
+        {
+            return user.UserID;
+        }
         public GameTablePage internPage()
         {
             return gamePages["intern"];
         }
+        
         public GameTablePage juniorPage()
         {
             return gamePages["junior"];
         }
+        
         public GameTablePage seniorPage()
         {
             return gamePages["senior"];

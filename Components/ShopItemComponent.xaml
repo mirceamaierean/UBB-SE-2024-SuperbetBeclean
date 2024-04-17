@@ -30,7 +30,7 @@
 
             <TextBlock Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Left" Margin="0 0 0 5"/>
             <TextBlock Text="{Binding Price}" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0 0 0 5"/>
-            <Button Content="BUY" FontWeight="Bold" Command="{Binding BuyCommand}" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Cursor="Hand">
+            <Button Content="BUY" FontWeight="Bold" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Cursor="Hand" Click="Button_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">

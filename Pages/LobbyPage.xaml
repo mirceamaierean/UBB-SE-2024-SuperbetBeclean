@@ -61,10 +61,10 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="160*"/>
-                    <ColumnDefinition Width="131*"/>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="19*"/>
+                    <ColumnDefinition Width="21*"/>
+                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="LeaderboardBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Cursor="Hand" Click="onClickLeaderboardButton" Margin="0,5,0,5">
                     <Button.Background>
@@ -76,8 +76,8 @@
                         <ImageBrush ImageSource="/assets/shopping-cart-white.png" TileMode="Tile"/>
                     </Button.Background>
                 </Button>
-                <!--
-                <Button x:Name="ShopBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Height="40" Grid.Column="2" Cursor="Hand" >
+
+                <Button x:Name="ShopBttn" Style="{StaticResource RoundedButtonStyle}" Content="" Width="40" BorderBrush="White" HorizontalAlignment="Center" Grid.Column="2" Cursor="Hand" Margin="0,5,0,5" Click="ShopBttn_Click" >
                     <Button.Foreground>
                         <ImageBrush Stretch="Fill"/>
                     </Button.Foreground>
@@ -85,7 +85,7 @@
                         <ImageBrush ImageSource="/assets/output-onlinepngtools.png"/>
                     </Button.Background>
                 </Button>
-                -->
+
                 <Button x:Name="BackBttn" Style="{StaticResource HorizontalButtonStyle}" Content="Back" HorizontalAlignment="Center" Width="82" Background="White" BorderBrush="White" FontSize="16" Grid.Column="3" Cursor="Hand" Click="buttonLobbyBack" Margin="0,13,0,13"/>
             </Grid>
             <Grid Grid.Column="0" Background="WhiteSmoke" Width="275" Height="38" HorizontalAlignment="Center" Margin="0,6,0,6">

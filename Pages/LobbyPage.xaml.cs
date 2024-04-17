@@ -57,10 +57,13 @@ namespace SuperbetBeclean.Pages
             strings = dbService.GetLeaderboard();
             _mainFrame.Navigate(new LeaderboardPage(_mainFrame,strings));
         }
-
+        public string returnUserNameOfLobbyPage()
+        {
+           return _mainWindow.userName();
+        }
         private void onShopButtonClick(object sender, RoutedEventArgs e)
         {   
-            _mainFrame.Navigate(new ShopPage(_mainFrame));
+            _mainFrame.Navigate(new ShopPage(_mainFrame, _mainWindow));
         }
 
         private void onClickInternButton(object sender, System.Windows.RoutedEventArgs e)
@@ -98,6 +101,13 @@ namespace SuperbetBeclean.Pages
         private void PlayerIconImg_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             _mainFrame.Navigate(new ProfilePage(_mainFrame, _mainWindow));
+        }
+
+        private void ShopBttn_Click(object sender, RoutedEventArgs e)
+        {
+            string currentUserName = _mainWindow.userName();
+            RequestsWindow requestWindow=new RequestsWindow(currentUserName,this, _mainWindow.userName());
+            requestWindow.Show();
         }
     }
 }
