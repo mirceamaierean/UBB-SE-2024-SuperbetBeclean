@@ -106,5 +106,10 @@ namespace SuperbetBeclean.Windows
         {
             return user.UserStreak;
         }
+
+        public int userId()
+        {
+            return user.UserID;
+        }
     }
 }
