@@ -31,7 +31,7 @@ namespace SuperbetBeclean.Pages
             _mainFrame = mainFrame;
             _mainWindow = mainWindow;
             User player = mainWindow.Player();
-            DataContext = new ProfileViewModel();
+            DataContext = new ProfileViewModel(mainWindow);
             if (!string.IsNullOrEmpty(player.UserCurrentIconPath))
                 profilePageUserAvatar.ImageSource = new BitmapImage(new Uri(player.UserCurrentIconPath, UriKind.Absolute));
             profilePageUsernameTextBlock.Text = mainWindow.userName();

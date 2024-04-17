@@ -29,7 +29,7 @@
 
 
             <TextBlock Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Left" Margin="0 0 0 5"/>
-            <Button Content="EQUIP" FontWeight="Bold" Command="{Binding EquipCommand}" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Cursor="Hand">
+            <Button Content="EQUIP" FontWeight="Bold" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Cursor="Hand" Click="Button_Click_1">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperbetBeclean.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,38 +21,48 @@ namespace SuperbetBeclean.Components
     public partial class OwnedItemComponent : UserControl
     {
 
-        public static readonly DependencyProperty ImagePathProperty = DependencyProperty.Register(
-            "ImagePath", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty OwnedImagePathProperty = DependencyProperty.Register(
+            "OwnedImagePath", typeof(string), typeof(OwnedItemComponent), new PropertyMetadata(default(string)));
 
-        public static readonly DependencyProperty ItemNameProperty = DependencyProperty.Register(
-            "ItemName", typeof(string), typeof(ShopItemComponent), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty OwnedItemNameProperty = DependencyProperty.Register(
+            "OwnedItemName", typeof(string), typeof(OwnedItemComponent), new PropertyMetadata(default(string)));
 
+        public static readonly DependencyProperty OwnedUserIdProperty = DependencyProperty.Register(
+            "OwnedUserId", typeof(int), typeof(OwnedItemComponent), new PropertyMetadata(default(int)));
 
-        public static readonly DependencyProperty EquipCommandProperty = DependencyProperty.Register(
-            "EqipCommand", typeof(ICommand), typeof(ShopItemComponent), new PropertyMetadata(default(ICommand)));
 
         // Properties for data binding
-        public string ImagePath
+        public string OwnedImagePath
         {
-            get { return (string)GetValue(ImagePathProperty); }
-            set { SetValue(ImagePathProperty, value); }
+            get { return (string)GetValue(OwnedImagePathProperty); }
+            set { SetValue(OwnedImagePathProperty, value); }
         }
 
-        public string ItemName
+        public string OwnedItemName
         {
-            get { return (string)GetValue(ItemNameProperty); }
-            set { SetValue(NameProperty, value); }
+            get { return (string)GetValue(OwnedItemNameProperty); }
+            set { SetValue(OwnedItemNameProperty, value); }
         }
 
-        public ICommand EquipCommand
+        public int OwnedUserId
         {
-            get { return (ICommand)GetValue(EquipCommandProperty); }
-            set { SetValue(EquipCommandProperty, value); }
+            get { return (int)GetValue(OwnedUserIdProperty); }
+            set { SetValue(OwnedUserIdProperty, value); }
         }
 
         public OwnedItemComponent()
         {
             InitializeComponent();
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var itemName = OwnedItemName; // Access the ItemName property directly
+            DBService _dbService = new DBService();
+            var itemId = _dbService.GetIconIDByIconName(itemName);
+            Console.WriteLine(OwnedUserId.ToString(), itemId);
+            _dbService.SetCurrentIcon(OwnedUserId, itemId);
         }
     }
 }

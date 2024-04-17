@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using System.Windows;
 
 namespace SuperbetBeclean.Models
 {
@@ -13,7 +13,7 @@ namespace SuperbetBeclean.Models
         public string ImagePath { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
-
+        public int UserId { get; set; }
         public ShopItem(int id, string imagePath, string name, int price)
         {
             Id = id;
@@ -22,6 +22,10 @@ namespace SuperbetBeclean.Models
             Price = price;
         }
 
-        public ICommand BuyCommand { get; set; }
+        // Method to show a message when buying the item
+        public void Buy()
+        {
+            MessageBox.Show($"You have bought {Name} for {Price} chips.");
+        }
     }
 }
