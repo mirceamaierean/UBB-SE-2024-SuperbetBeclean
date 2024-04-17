@@ -71,10 +71,10 @@ namespace SuperbetBeclean.Windows
         {
             gamePages[table].showCards(player);
         }
-        public void notify(string table, User player, int tablePot, int tableBet)
+        public void notify(string table, User player, int tablePot)
         {
             gamePages[table].updatePlayerMoney(player);
-            gamePages[table].updatePot(tablePot, tableBet);
+            gamePages[table].updatePot(tablePot);
         }
         public void foldPlayer(string table, User player)
         {
@@ -101,6 +101,10 @@ namespace SuperbetBeclean.Windows
         {
             gamePages[table].resetPot();
         }
+        public void displayWinner(string table, User player, bool status)
+        {
+            gamePages[table].displayWinner(player, status);
+        }
         public User Player()
         {
             return user;
@@ -126,6 +130,10 @@ namespace SuperbetBeclean.Windows
             return user.UserStreak;
         }
 
+        public string userIcon()
+        {
+            return user.UserCurrentIconPath;
+        }
         public GameTablePage internPage()
         {
             return gamePages["intern"];

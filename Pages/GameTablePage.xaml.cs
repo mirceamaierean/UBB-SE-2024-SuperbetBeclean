@@ -30,7 +30,6 @@ namespace SuperbetBeclean.Pages
         private MainService _service;
         int timer = 0;
         int playerBet = 0;
-        int tableBet = 0;
         string action = "";
         string _tableType;
         ChatWindow _chatWindow;
@@ -43,6 +42,8 @@ namespace SuperbetBeclean.Pages
             _service = service;
             _mainFrame = mainFrame;
             PlayerNameTextBox.Text = _mainWindow.userName();
+            Uri uri = new Uri(_mainWindow.userIcon(), UriKind.Absolute);
+            PlayerIconImg.Source = new BitmapImage(uri);
             PlayerLvlTextBox.Text = "Level: " + _mainWindow.userLevel().ToString();
             PlayerChipsTextBox.Text = "Chips: " + _mainWindow.userChips().ToString();
             _tableType= tableType;
@@ -86,7 +87,6 @@ namespace SuperbetBeclean.Pages
 
         public void endTurn(User player)
         {
-            tableBet = 0;
             Application.Current.Dispatcher.Invoke(() => {
                 Label playerBet = FindName("Player" + player.UserTablePlace + "Bet") as Label;
                 playerBet.Content = "-";
@@ -202,9 +202,12 @@ namespace SuperbetBeclean.Pages
                 Border playerBorder = FindName("Player" + player.UserTablePlace + "Border") as Border;
                 TextBlock playerName = FindName("Player" + player.UserTablePlace + "NameTextBox") as TextBlock;
                 TextBlock playerLevel = FindName("Player" + player.UserTablePlace + "LvlTextBox") as TextBlock;
+                Image playerIcon = FindName("Player" + player.UserTablePlace + "IconImg") as Image;
                 playerBorder.Visibility = Visibility.Visible;
                 playerName.Text = player.UserName;
                 playerLevel.Text = player.UserLevel.ToString();
+                Uri uri = new Uri(player.UserCurrentIconPath, UriKind.Absolute);
+                playerIcon.Source = new BitmapImage(uri);
                 Border playerMoney = FindName("Player" + player.UserTablePlace + "MoneyData") as Border;
                 Label playerStack = FindName("Player" + player.UserTablePlace + "Stack") as Label;
                 Label playerBet = FindName("Player" + player.UserTablePlace + "Bet") as Label;
@@ -275,23 +278,21 @@ namespace SuperbetBeclean.Pages
         private void CallBtn_Click(object sender, RoutedEventArgs e)
         {
             action = "Call";
-            playerBet = tableBet;
+            playerBet = Convert.ToInt32(SliderBet.Minimum);
         }
 
         private void RaiseBttn_Click(object sender, RoutedEventArgs e)
         {
             action = "Raise";
-            tableBet = Convert.ToInt32(SliderBet.Value);
-            playerBet = tableBet;
+            playerBet = Convert.ToInt32(SliderBet.Value);
         }
         private void FoldBttn_Click(object sender, RoutedEventArgs e)
         {
             action = "Fold";
             playerBet = -1;
         }
-        public void updatePot(int pot, int bet)
+        public void updatePot(int pot)
         {
-            tableBet = bet;
             Application.Current.Dispatcher.Invoke(() => {
                 PotValue.Content = pot.ToString();
             });
@@ -307,6 +308,35 @@ namespace SuperbetBeclean.Pages
                 playerStack.Content = "Stack: " + player.UserStack.ToString();
                 playerBet.Content = "Bet: " + player.UserBet.ToString();
             });
+        }
+
+        public void displayWinner(User player, bool status) { 
+            if (status)
+            {
+                Application.Current.Dispatcher.Invoke(() => {
+                    Border playerBorder = FindName("Player" + player.UserTablePlace + "Border") as Border;
+                    Grid playerGrid = FindName("Player" + player.UserTablePlace + "Grid") as Grid;
+                    TextBlock playerName = FindName("Player" + player.UserTablePlace + "NameTextBox") as TextBlock;
+                    TextBlock playerLevel = FindName("Player" + player.UserTablePlace + "LvlTextBox") as TextBlock;
+                    playerBorder.Background = Brushes.LightGreen;
+                    playerGrid.Background = Brushes.LightGreen;
+                    playerName.Foreground = Brushes.WhiteSmoke;
+                    playerLevel.Foreground = Brushes.WhiteSmoke;
+                });
+            }
+            else
+            {
+                Application.Current.Dispatcher.Invoke(() => {
+                    Border playerBorder = FindName("Player" + player.UserTablePlace + "Border") as Border;
+                    Grid playerGrid = FindName("Player" + player.UserTablePlace + "Grid") as Grid;
+                    TextBlock playerName = FindName("Player" + player.UserTablePlace + "NameTextBox") as TextBlock;
+                    TextBlock playerLevel = FindName("Player" + player.UserTablePlace + "LvlTextBox") as TextBlock;
+                    playerBorder.Background = Brushes.WhiteSmoke;
+                    playerGrid.Background = Brushes.WhiteSmoke;
+                    playerName.Foreground = Brushes.Black;
+                    playerLevel.Foreground = Brushes.Black;
+                });
+            }
         }
         private void ChallengesBttn_Click(object sender, RoutedEventArgs e)
         {

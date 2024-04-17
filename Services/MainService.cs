@@ -128,17 +128,17 @@ namespace SuperbetBeclean.Services
             player.UserStack = EMPTY;
             dbService.UpdateUserStack(player.UserID, player.UserStack);
         }
-        public bool joinInternTable(MenuWindow window)
+        public int joinInternTable(MenuWindow window)
         {
             return internTable.joinTable(window, ref sqlConnection);
         }
 
-        public bool joinJuniorTable(MenuWindow window)
+        public int joinJuniorTable(MenuWindow window)
         {
             return juniorTable.joinTable(window, ref sqlConnection);
         }
 
-        public bool joinSeniorTable(MenuWindow window)
+        public int joinSeniorTable(MenuWindow window)
         {
             return seniorTable.joinTable(window, ref sqlConnection);
         }
